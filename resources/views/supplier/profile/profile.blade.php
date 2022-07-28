@@ -2,18 +2,12 @@
 
 @section('style')
 
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/wizard/bs-stepper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/forms/form-wizard.css')}}">
 
 
-
-
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-wizard.css')}}">
-
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 @endsection
 
 
@@ -41,10 +35,7 @@
             </div>
             <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
                 <div class="mb-1 breadcrumb-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -302,8 +293,8 @@
                                     <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                     <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                 </button>
-                                {{-- <button type="submit" class="btn btn-success btn-submit" disabled>Submit</button> --}}
-                                <a href=" {{route('supplier.profile.update')}}" class="btn btn-success btn-submit"><i data-feather='save'></i></a>
+                                <button type="submit" class="btn btn-success btn-submit" disabled>Submit</button>
+
                                 @else
                                 <button type="button" class="btn btn-primary btn-prev">
                                     <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -331,27 +322,17 @@
 
 
 @section('scripts')
-<script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
+
 
     <script src="{{asset('app-assets/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
-    <script src="{{asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
 
-    <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
-    <script src="{{asset('app-assets/js/core/app.js')}}"></script>
+
+
 
     <script src="{{asset('app-assets/js/scripts/forms/form-wizard.js')}}"></script>
 
 
-    <script>
-        $(window).on('load', function() {
-            if (feather) {
-                feather.replace({
-                    width: 14,
-                    height: 14
-                });
-            }
-        })
-    </script>
+
 @endsection
 

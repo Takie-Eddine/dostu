@@ -22,7 +22,7 @@ class Authenticate extends Middleware
 
         if (! $request->expectsJson()) {
 
-            if(Request::is('supplier*')){
+            if(Request::is(app()->getLocale().'/supplier*')){
                 return route('supplier.login');
             }
             else{
