@@ -39,13 +39,9 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><span class="menu-title text-truncate" data-i18n="eCommerce">Products</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Shop</span></a>
+                    <li><a class="d-flex align-items-center" href="{{route('supplier.product.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Products</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Details</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Wish List</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Checkout</span></a>
+                    <li><a class="d-flex align-items-center" href="{{route('supplier.product.create')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Add product</span></a>
                     </li>
                 </ul>
             </li>

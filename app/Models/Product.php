@@ -99,4 +99,8 @@ class Product extends Model
     }
 
 
+    public function companies(){
+        return $this->belongsTo(SupplierCompany::class,'company_id');
+    }
+
 }

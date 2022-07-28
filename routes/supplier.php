@@ -71,11 +71,11 @@ Route::group(['namespace' => 'Supplier' , 'middleware' => 'guest:supplier' , 'pr
 Route::group(['prefix' => 'products'],function(){
 
     Route::get('/',[SupplierProductController::class,'index'])->name('supplier.product.index');
-    Route::get('create',[SupplierProductController::class,'create']) -> name('admin.brands.create');
-    Route::post('store',[SupplierProductController::class,'store']) -> name('admin.brands.store');
-    Route::get('edit/{id}',[SupplierProductController::class,'edit']) -> name('admin.brands.edit');
-    Route::post('update/{id}',[SupplierProductController::class,'update']) -> name('admin.brands.update');
-    Route::get('delete/{id}',[SupplierProductController::class,'destroy']) -> name('admin.brands.delete');
+    Route::get('create',[SupplierProductController::class,'create']) -> name('supplier.product.create');
+    Route::post('store',[SupplierProductController::class,'store']) -> name('supplier.product.store');
+    Route::get('edit/{id}',[SupplierProductController::class,'edit']) -> name('supplier.branproductds.edit');
+    Route::post('update/{id}',[SupplierProductController::class,'update']) -> name('supplier.product.update');
+    Route::get('delete/{id}',[SupplierProductController::class,'destroy']) -> name('supplier.product.delete');
 
 });
 

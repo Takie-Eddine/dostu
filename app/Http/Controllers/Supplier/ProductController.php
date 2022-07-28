@@ -9,13 +9,16 @@ class ProductController extends Controller
 {
     public function index(){
 
+        return view('supplier.product.index');
     }
 
     public function create(){
 
+        return view('suuplier.product.create');
     }
 
     public function store(){
+
 
 
     }
