@@ -26,13 +26,15 @@ class Product extends Model
         'selling_price',
         'qty',
         'in_stock',
-        'is_active'
+        'is_active',
+        'approved'
     ];
 
     protected $casts = [
 
         'in_stock' => 'boolean',
         'is_active' => 'boolean',
+        'approved' => 'boolean',
     ];
 
     protected $translatedAttributes = ['name', 'description', 'title'];
@@ -43,6 +45,11 @@ class Product extends Model
         return $this->is_active == 0 ? 'unactive' : 'active';
     }
 
+    public function getApprove()
+    {
+        return $this->approved == 0 ? 'not approved' : 'approved';
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'product_categories');
@@ -51,6 +58,11 @@ class Product extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', 1);
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->where('approved', 1);
     }
 
     public function tags()
