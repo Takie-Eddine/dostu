@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 ////////////////////////////////ADMIN////////////////////////////
 
 
-Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard.dashboard');
+/*Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard.dashboard');
 
 ////////////////////////////////ADMIN////////////////////////////
 
@@ -120,6 +120,6 @@ Route::group(['prefix' => 'tool'],function(){
 
 Route::get('/',[SupplierController::class,'index'])->name('supplier.supplier');
 
-////////////////////////////////SUPLIER////////////////////////////
+////////////////////////////////SUPLIER////////////////////////////*/
 
 
