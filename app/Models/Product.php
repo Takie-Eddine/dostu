@@ -19,7 +19,7 @@ class Product extends Model
 
 
     protected $fillable = [
-        'brand_id',
+        'company_id',
         'slug',
         'sku',
         'price',
@@ -80,7 +80,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'product_id');
+        return $this->hasMany(Media::class, 'product_id');
     }
 
     public function hasStock($quantity)

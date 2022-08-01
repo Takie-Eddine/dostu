@@ -29,7 +29,15 @@ class ProfileController extends Controller
         try{
 
             DB::beginTransaction();
-            $company = SupplierCompany::create($request->except('_token'));
+            $fileName = "";
+        if ($request->has('logo')) {
+
+            $fileName = uploadImage('profile', $request->logo);
+        }
+            $company = SupplierCompany::create($request->except('_token','logo'));
+
+            $company->logo = $fileName ;
+            $company->save();
 
             $supplier = Supplier::find(auth('supplier')->user()->id);
 

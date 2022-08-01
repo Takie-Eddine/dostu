@@ -25,7 +25,7 @@ class Option extends Model
 
     protected $hidden = ['translations'];
 
-    public function product()
+    public function products()
     {
         return $this->belongsTo(Product::class, 'product_id');
     }

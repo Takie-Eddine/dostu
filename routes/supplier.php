@@ -78,6 +78,8 @@ Route::group([
             Route::get('edit/{id}', [ProductController::class, 'edit'])->name('supplier.branproductds.edit');
             Route::post('update/{id}', [ProductController::class, 'update'])->name('supplier.product.update');
             Route::get('delete/{id}', [ProductController::class, 'destroy'])->name('supplier.product.delete');
+            Route::get('view/{id}', [ProductController::class, 'view'])->name('supplier.product.view');
+
         });
 
 

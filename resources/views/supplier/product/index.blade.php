@@ -65,7 +65,7 @@
                                 <table class="dt-multilingual table">
                                     <thead>
                                         <tr>
-                                            <th></th>
+
                                             <th>Name</th>
                                             <th>Product Number</th>
                                             <th>Sku</th>
@@ -83,9 +83,9 @@
                                                 <th>{{$product->name}}</th>
                                                 <th>{{$product->id}}</th>
                                                 <th>{{$product->sku}}</th>
-                                                <th>{{$product->categories()->name}}</th>
+                                                <th>{{$product-> categories[0]->name}}</th>
                                                 <th></th>
-                                                <th>{{$product->viewd}}</th>
+                                                <th>{{$product->viewed}}</th>
                                                 <th>{{$product->getActive()}}</th>
                                                 <th>{{$product->getApprove()}}</th>
                                                 <th>
@@ -95,8 +95,8 @@
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">edit</a>
 
 
-                                                                <a href="{{route('supplier.product.delete',$product -> id)}}"
-                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">delete</a>
+                                                                <a href="{{route('supplier.product.view',$product -> id)}}"
+                                                                   class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">view</a>
 
 
 

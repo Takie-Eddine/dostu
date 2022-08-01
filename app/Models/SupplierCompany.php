@@ -33,7 +33,7 @@ class SupplierCompany extends Model
         return $this->hasMany(Supplier::class,'company_id');
     }
 
-    public function products(){
+    public function productscomps(){
         return $this->hasMany(Product::class,'company_id');
     }
 }
