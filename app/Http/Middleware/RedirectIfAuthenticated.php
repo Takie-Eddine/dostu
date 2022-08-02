@@ -30,6 +30,12 @@ class RedirectIfAuthenticated
             if ($guard == 'supplier'){
                 return redirect(RouteServiceProvider::SUPPLIER);
             }
+            if ($guard == 'admin'){
+                return redirect(RouteServiceProvider::ADMIN);
+            }
+            if ($guard == 'client'){
+                return redirect(RouteServiceProvider::CLIENT);
+            }
             else{
                 return redirect(RouteServiceProvider::HOME);
             }
