@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Client\ControlController;
+use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ManageController;
 use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\ProductController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Client\SettingsController;
 use App\Http\Controllers\Client\ToolController;
 use App\Http\Controllers\Supplier\SupplierController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,18 +27,71 @@ use Illuminate\Support\Facades\Route;
 ////////////////////////////////ADMIN////////////////////////////
 
 
-/*Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard.dashboard');
+
 
 ////////////////////////////////ADMIN////////////////////////////
 
 
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
+
+    Route::group(['namespace' => 'Client', 'middleware' => 'guest:client', 'prefix' => 'client'], function () {
+
+        Route::get('login', [LoginController::class, 'login'])->name('client.login');
+        Route::post('login', [LoginController::class, 'postLogin'])->name('client.post.login');
+    });
+
+
+    Route::group(['namespace' => 'Client', 'middleware' => 'auth:client', 'prefix' => 'client'], function () {
+
+        Route::get('/client',[ClientController::class,'index'])->name('client.client');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //---------------------------LOGOUT------------------------//
+        Route::get('logout', [LoginController::class, 'logout'])->name('supplier.logout');
+        //---------------------------LOGOUT------------------------//
+
+    });
+
+
+});
 
 
 
 ////////////////////////////////CLIENT////////////////////////////
 
 
-Route::get('/client',[ClientController::class,'index'])->name('client.client');
+/*Route::get('/client',[ClientController::class,'index'])->name('client.client');
 
 ////////////////////////////PRODUCT////////////////////////////
 Route::group(['prefix' => 'products'],function(){

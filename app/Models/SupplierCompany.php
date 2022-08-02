@@ -19,8 +19,14 @@ class SupplierCompany extends Model
 
 
 
-    public function getActive(){
-        return $this->is_active == 1 ? 'مفعل' : 'غير مفعل';
+    public function getActive()
+    {
+        return $this->is_active == 0 ? 'unactive' : 'active';
+
+    }
+
+    public function  getPhotoAttribute($val){
+        return ($val !== null) ? asset('assets/images/brands/' . $val) : "";
     }
 
 
