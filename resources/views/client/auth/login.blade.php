@@ -102,7 +102,7 @@
 
                                 <p class="text-center mt-2">
                                     <span>New on our platform?</span>
-                                    <a href="{{route('signup')}}">
+                                    <a href="{{route('signup.signup')}}">
                                         <span>Create an account</span>
                                     </a>
                                 </p>

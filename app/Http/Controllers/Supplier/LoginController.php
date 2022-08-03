@@ -34,7 +34,6 @@ class LoginController extends Controller
 
         $gaurd = $this -> getGaurd();
         $gaurd -> logout();
-
         return Redirect() -> route('supplier.login');
     }
 

@@ -19,18 +19,18 @@
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/bordered-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/bordered-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/authentication.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/forms/form-validation.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/pages/authentication.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -77,7 +77,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <h2 class="brand-text text-primary ms-1">Vuexy</h2>
+                            <h2 class="brand-text text-primary ms-1">Doshtu</h2>
                         </a>
                         <!-- /Brand logo-->
                         <!-- Left Text-->
@@ -90,25 +90,43 @@
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                                 <h2 class="card-title fw-bold mb-1">Adventure starts here 🚀</h2>
                                 <p class="card-text mb-2">Make your selling easy and fun!</p>
-                                <form class="auth-register-form mt-2" action="" method="POST">
+
+
+                                @include('signup.alerts.success')
+                                @include('signup.alerts.errors')
+                                <form class="auth-register-form mt-2" action="{{route('verifiy')}}" method="POST">
+
+                                    @csrf
                                     <div class="mb-1">
                                         <label class="form-label" for="username">Username</label>
-                                        <input class="form-control" id="username" type="text" name="username" placeholder="johndoe" aria-describedby="register-username" autofocus="" tabindex="1" />
+                                        <input class="form-control" id="username" type="text" name="username" value="{{old('username')}}" placeholder="johndoe" aria-describedby="register-username" autofocus="" tabindex="1"  />
+                                        @error('username')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="email">Email</label>
-                                        <input class="form-control" id="email" type="text" name="email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+                                        <input class="form-control" id="email" type="text" name="email" value="{{old('email')}}" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+                                        @error('email')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="password">Password</label>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="register-password" tabindex="3" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
+                                        @error('password')
+                                        <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <div class="form-check">
-                                            <input class="form-check-input" id="register-privacy-policy" type="checkbox" tabindex="4" />
-                                            <label class="form-check-label" for="register-privacy-policy">I agree to<a href="">&nbsp;privacy policy & terms</a></label>
+                                            <input class="form-check-input" id="agree" type="checkbox" name="agree" tabindex="4" />
+                                            <label class="form-check-label" for="register-privacy-policy">I agree to<a href="http://doshtu.com/policies/">&nbsp;privacy policy & terms</a></label>
+                                            @error("agree")
+                                            <span class="text-danger">{{$message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <button class="btn btn-primary w-100" tabindex="5">Sign up</button>
