@@ -86,7 +86,7 @@ $(function () {
             required: true
           },
           addCard: {
-            required: true
+            required: false
           }
         },
         messages: {
@@ -104,17 +104,10 @@ $(function () {
     });
 
     $(registerMultiStepsWizard)
-      .find('.btn-next')
-      .each(function () {
-        $(this).on('click', function (e) {
-          var isValid = $(this).parent().siblings('form').valid();
-          if (isValid) {
-            numberedStepper.next();
-          } else {
-            e.preventDefault();
-          }
-        });
-      });
+    .find('.btn-next')
+    .on('click', function () {
+        numberedStepper.next();
+    });
 
     $(registerMultiStepsWizard)
       .find('.btn-prev')

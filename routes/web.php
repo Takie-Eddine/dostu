@@ -8,8 +8,10 @@ use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\ProductController;
 use App\Http\Controllers\Client\SettingsController;
 use App\Http\Controllers\Client\ToolController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Supplier\SupplierController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
 
-Route::get('/', function () {
-    return view('signup.signup');
-})->name('signup');
+
+Route::get('/', [HomeController::class,'signup'])->name('signup.signup');
+Route::post('/details', [HomeController::class,'details'])->name('verifiy');
+
+Route::post('/store',[HomeController::class,'store'])->name('store');
 
 
+});

@@ -78,7 +78,7 @@ Route::group([
 
 
         //---------------------------LOGOUT------------------------//
-        Route::get('logout', [LoginController::class, 'logout'])->name('supplier.logout');
+        Route::get('logout', [LoginController::class, 'logout'])->name('client.logout');
         //---------------------------LOGOUT------------------------//
 
     });

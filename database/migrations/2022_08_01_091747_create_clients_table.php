@@ -21,7 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email-verified_at')->nullable();
             $table->string('password');
-            $table->string('mobile')->unique();
+            $table->string('mobile')->index()->unique();
             $table->string('image');
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ use Mindscms\Entrust\Traits\EntrustUserWithPermissionsTrait;
 class Client extends  Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use EntrustUserWithPermissionsTrait;
+
 
 
     protected $guarded=[];
