@@ -20,4 +20,11 @@ class Media extends Model
     public function  getPhotoAttribute($val){
         return ($val !== null) ? asset('assets/images/products/' . $val) : "";
     }
+
+
+
+    public function productimages()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

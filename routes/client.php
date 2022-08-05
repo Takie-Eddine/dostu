@@ -51,6 +51,74 @@ Route::group([
 
 
 
+        Route::group(['prefix' => 'products'],function(){
+
+            Route::get('/',[ProductController::class,'shop'])->name('client.product.index');
+            Route::get('/details/{slug}',[ProductController::class,'details'])->name('client.product.details');
+            Route::get('/wishlist',[ProductController::class,'wishlist'])->name('client.product.wishlist');
+            Route::get('/checkout',[ProductController::class,'checkout'])->name('client.product.checkout');
+
+        });
+
+
+
+
+
+        Route::group(['prefix' => 'settings'],function(){
+
+            Route::get('/',[SettingsController::class,'index'])->name('client.settings.settings');
+
+
+        });
+
+
+
+
+        Route::group(['prefix' => 'orders'],function(){
+
+            Route::get('/',[OrderController::class,'index'])->name('client.order.order');
+
+
+        });
+
+
+
+
+
+
+        Route::group(['prefix' => 'control'],function(){
+
+            Route::get('/',[ControlController::class,'index'])->name('client.control.control');
+
+
+        });
+
+
+
+
+
+
+        Route::group(['prefix' => 'tool'],function(){
+
+            Route::get('/',[ToolController::class,'index'])->name('client.tools.tool');
+
+
+        });
+
+
+
+
+
+
+        Route::group(['prefix' => 'manage'],function(){
+
+            Route::get('/',[ManageController::class,'index'])->name('client.manage.manage');
+
+
+        });
+
+
+
 
 
 

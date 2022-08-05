@@ -39,8 +39,8 @@
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('client.product.index')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Shop</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="{{route('client.product.details')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Details</span></a>
-                    </li>
+                    {{-- <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Details</span></a>
+                    </li> --}}
                     <li><a class="d-flex align-items-center" href="{{route('client.product.wishlist')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Wish List</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="{{route('client.product.checkout')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Checkout</span></a>

@@ -94,7 +94,7 @@
 
                                 @include('signup.alerts.success')
                                 @include('signup.alerts.errors')
-                                <form class="auth-register-form mt-2" action="{{route('verifiy')}}" method="POST">
+                                <form class="auth-register-form mt-2" action="{{route('details')}}" method="post">
 
                                     @csrf
                                     <div class="mb-1">

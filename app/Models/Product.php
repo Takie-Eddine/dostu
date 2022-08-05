@@ -80,7 +80,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(Media::class, 'product_id');
+        return $this->hasMany(Media::class);
     }
 
     public function hasStock($quantity)
