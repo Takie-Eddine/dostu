@@ -130,9 +130,9 @@
 
                             <div class="width-700 mx-auto">
                                 <div class="bs-stepper register-multi-steps-wizard shadow-none">
-                                    <form action="{{ route('store') }}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="{{ route('storeclient') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="password" value="{{$client->password}}">
                                         <div class="bs-stepper-header px-0" role="tablist">
                                             <div class="step" data-target="#account-details" role="tab"
                                                 id="account-details-trigger">
@@ -259,9 +259,7 @@
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="mobile">Mobile
                                                             number</label>
-                                                        <input type="text" name="mobile" id="mobile"
-                                                            class="form-control mobile-number-mask"
-                                                            placeholder="(472) 765-3654" />
+                                                        <input type="text" name="mobile" id="mobile" class="form-control mobile-number-mask" placeholder="(472) 765-3654" />
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="email">Email</label>
@@ -300,86 +298,77 @@
                                                     <h2 class="fw-bolder mb-75">Select Plan</h2>
                                                     <span>Select plan as per your retirement</span>
                                                 </div>
-
-
-                                                <!-- select plan options -->
-                                                <div class="row custom-options-checkable gx-3 gy-2">
-                                                    <div class="col-md-3">
-                                                        <input class="custom-option-item-check" type="radio"
-                                                            name="plans" id="basicPlan" value="" checked />
-                                                        <label class="custom-option-item text-center p-1"
-                                                            for="basicPlan">
-                                                            <span
-                                                                class="custom-option-item-title h3 fw-bolder">Basic</span>
-                                                            <span class="d-block m-75">A simple start for
-                                                                everyone</span>
-                                                            <span class="plan-price">
-                                                                <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                <span
-                                                                    class="pricing-value fw-bolder text-primary">0</span>
-                                                                <sub
-                                                                    class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>
-                                                            </span>
-                                                        </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio" name="plan" value="1"  class="switchery" data-color="success" />
+                                                            <label class="card-title ml-1">Annual</label>
+                                                        </div>
                                                     </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="custom-option-item-check" type="radio"
-                                                            name="plans" id="standardPlan" value="" />
-                                                        <label class="custom-option-item text-center p-1"
-                                                            for="standardPlan">
-                                                            <span
-                                                                class="custom-option-item-title h3 fw-bolder">Standard</span>
-                                                            <span class="d-block m-75">For small to medium
-                                                                businesses</span>
-                                                            <span class="plan-price">
-                                                                <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                <span
-                                                                    class="pricing-value fw-bolder text-primary">99</span>
-                                                                <sub
-                                                                    class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="custom-option-item-check" type="radio"
-                                                            name="plans" id="enterprisePlan" value="" />
-                                                        <label class="custom-option-item text-center p-1"
-                                                            for="enterprisePlan">
-                                                            <span
-                                                                class="custom-option-item-title h3 fw-bolder">Enterprise</span>
-                                                            <span class="d-block m-75">Solution for big
-                                                                organizations</span>
-                                                            <span class="plan-price">
-                                                                <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                <span
-                                                                    class="pricing-value fw-bolder text-primary">499</span>
-                                                                <sub
-                                                                    class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="custom-option-item-check" type="radio"
-                                                            name="plans4" id="enterprisePlan2" value="" />
-                                                        <label class="custom-option-item text-center p-1"
-                                                            for="enterprisePlan2">
-                                                            <span
-                                                                class="custom-option-item-title h3 fw-bolder">Enterprise</span>
-                                                            <span class="d-block m-75">Solution for big
-                                                                organizations</span>
-                                                            <span class="plan-price">
-                                                                <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                <span
-                                                                    class="pricing-value fw-bolder text-primary">499</span>
-                                                                <sub
-                                                                    class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>
-                                                            </span>
-                                                        </label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio" name="plan" value="0"  class="switchery" data-color="success" />
+                                                            <label class="card-title ml-1"> Monthly</label>
+                                                        </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- select plan options -->
+
+
+                                                    <div class="row hidden " id="cats_list" >
+                                                        <div class="row custom-options-checkable gx-3 gy-2">
+
+                                                            @foreach ($plansAnuuals as $plan)
+
+                                                                <div class="col-md-3">
+                                                                    <input class="custom-option-item-check" type="radio"
+                                                                        name="planse" id="{{$plan -> id}}" value="{{$plan -> id}}"  />
+                                                                    <label class="custom-option-item text-center p-1"
+                                                                        for="{{$plan -> id}}">
+                                                                        <span
+                                                                            class="custom-option-item-title h3 fw-bolder">{{$plan -> name}}</span>
+                                                                        <span class="d-block m-75">A simple start for
+                                                                            everyone</span>
+                                                                        <span class="plan-price">
+                                                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
+                                                                            <span
+                                                                                class="pricing-value fw-bolder text-primary">{{$plan -> priceA}}</span>
+                                                                            <sub
+                                                                                class="pricing-duration text-body font-medium-1 fw-bold">/{{$plan -> type}}</sub>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+
+                                                            @endforeach
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row hidden " id="cats_liste" >
+                                                        <div class="row custom-options-checkable gx-3 gy-2">
+                                                            @foreach ($plansMonthlys as $plan)
+                                                                <div class="col-md-3">
+                                                                    <input class="custom-option-item-check" type="radio"
+                                                                        name="planse" id="{{$plan -> id}}" value="{{$plan -> id}}"  />
+                                                                    <label class="custom-option-item text-center p-1"
+                                                                        for="{{$plan -> id}}">
+                                                                        <span
+                                                                            class="custom-option-item-title h3 fw-bolder">{{$plan -> name}}</span>
+                                                                        <span class="d-block m-75">A simple start for
+                                                                            everyone</span>
+                                                                        <span class="plan-price">
+                                                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
+                                                                            <span
+                                                                                class="pricing-value fw-bolder text-primary">{{$plan -> priceM}}</span>
+                                                                            <sub
+                                                                                class="pricing-duration text-body font-medium-1 fw-bold">/{{$plan -> type}}</sub>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
                                                 <!-- / select plan options -->
 
                                                 <div class="content-header my-2 py-1">
@@ -508,6 +497,19 @@
 
 
     });
+</script>
+
+<script>
+    $('input:radio[name="plan"]').change(
+        function(){
+            if (this.checked && this.value == '0') {  // 1 if main cat - 2 if sub cat
+                $('#cats_list').addClass('hidden');
+                $('#cats_liste').removeClass('hidden');
+            }else{
+                $('#cats_list').removeClass('hidden');
+                $('#cats_liste').addClass('hidden');
+            }
+        });
 </script>
 </body>
 <!-- END: Body-->

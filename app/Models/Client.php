@@ -23,7 +23,11 @@ class Client extends  Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'started_payment_date' => 'datetime',
+        'ended_payment_date' => 'datetime',
     ];
+
+
 
 
 
@@ -42,5 +46,12 @@ class Client extends  Authenticatable
 
     public function  getPhotoAttribute($val){
         return ($val !== null) ? asset('assets/images/clients/' . $val) : "";
+    }
+
+
+
+    public function plans(){
+
+        return $this->belongsTo(Client::class,'plans_id');
     }
 }

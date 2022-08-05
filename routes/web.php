@@ -30,9 +30,10 @@ Route::group([
 
 
 Route::get('/', [HomeController::class,'signup'])->name('signup.signup');
-Route::post('/details', [HomeController::class,'details'])->name('verifiy');
 
-Route::post('/store',[HomeController::class,'store'])->name('store');
+Route::post('/details', [HomeController::class,'details'])->name('details');
+
+Route::post('store',[HomeController::class,'storeClient'])->name('storeclient');
 
 
 });

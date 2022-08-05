@@ -86,8 +86,50 @@ $(function () {
             required: true
           },
           addCard: {
-            required: false
-          }
+            required: true
+          },
+          card_name: {
+            required: true
+          },
+          image: {
+            required: true
+          },
+          store_name: {
+            required: true
+          },
+          store_email: {
+            required: true
+          },
+          store_mobile: {
+            required: true
+          },
+          first_name: {
+            required: true
+          },
+          last_name: {
+            required: true
+          },
+          mobile: {
+            required: true
+          },
+          email: {
+            email: true
+          },
+          username: {
+            required: true
+          },
+          plan: {
+            required: true
+          },
+          planse: {
+            required: true
+          },
+          card_exp: {
+            required: true
+          },
+          cvv: {
+            required: true
+          },
         },
         messages: {
           password: {

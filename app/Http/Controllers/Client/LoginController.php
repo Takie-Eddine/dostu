@@ -21,7 +21,7 @@ class LoginController extends Controller
         $remember_me = $request->has('remember_me') ? true : false;
         if (auth()->guard('client')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
 
-            return redirect() -> route('client.client');
+            return redirect()->route('client.client');
         }
 
 
@@ -35,7 +35,7 @@ class LoginController extends Controller
         $gaurd = $this -> getGaurd();
         $gaurd -> logout();
 
-        return Redirect() -> route('client.login');
+        return Redirect()->route('client.login');
     }
 
 

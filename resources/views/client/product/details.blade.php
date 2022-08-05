@@ -3,30 +3,27 @@
 @section('title','Details')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/swiper.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
+
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/bordered-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
+
+
+
+
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-ecommerce-details.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-number-input.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/pages/app-ecommerce-details.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/forms/form-number-input.css')}}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+
     <!-- END: Custom CSS-->
 @endsection
 
@@ -42,9 +39,7 @@
                         <h2 class="content-header-title float-start mb-0">Product Details</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">eCommerce</a>
+                                <li class="breadcrumb-item"><a href="{{route('client.client')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="app-ecommerce-shop.html">Shop</a>
                                 </li>
@@ -57,10 +52,7 @@
             </div>
             <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
                 <div class="mb-1 breadcrumb-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -77,10 +69,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-7">
-                                <h4>Apple Watch Series 5</h4>
-                                <span class="card-text item-company">By <a href="#" class="company-name">Apple</a></span>
+                                <h4>{{$product->name}}</h4>
+                                <span class="card-text item-company">{{$product->title}}</span>
                                 <div class="ecommerce-details-price d-flex flex-wrap mt-1">
-                                    <h4 class="item-price me-1">$499.99</h4>
+                                    <h4 class="item-price me-1">${{$product->price}}</h4>
                                     <ul class="unstyled-list list-inline ps-1 border-start">
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
@@ -90,19 +82,8 @@
                                     </ul>
                                 </div>
                                 <p class="card-text">Available - <span class="text-success">In stock</span></p>
-                                <p class="card-text">
-                                    GPS, Always-On Retina display, 30% larger screen, Swimproof, ECG app, Electrical and optical heart sensors,
-                                    Built-in compass, Elevation, Emergency SOS, Fall Detection, S5 SiP with up to 2x faster 64-bit dual-core
-                                    processor, watchOS 6 with Activity trends, cycle tracking, hearing health innovations, and the App Store on
-                                    your wrist
-                                </p>
-                                <ul class="product-features list-unstyled">
-                                    <li><i data-feather="shopping-cart"></i> <span>Free Shipping</span></li>
-                                    <li>
-                                        <i data-feather="dollar-sign"></i>
-                                        <span>EMI options available</span>
-                                    </li>
-                                </ul>
+                                <p class="card-text">{{$product->description}}</p>
+
                                 <hr />
                                 <div class="product-color-options">
                                     <h6>Colors</h6>
@@ -330,9 +311,6 @@
 
 <script src="{{asset('app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/extensions/swiper.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
-<script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
-<script src="{{asset('app-assets/js/core/app.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/pages/app-ecommerce-details.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/forms/form-number-input.js')}}"></script>
 
