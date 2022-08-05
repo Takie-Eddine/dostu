@@ -85,36 +85,47 @@
                                 <p class="card-text">{{$product->description}}</p>
 
                                 <hr />
-                                <div class="product-color-options">
-                                    <h6>Colors</h6>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="d-inline-block selected">
-                                            <div class="color-option b-primary">
-                                                <div class="filloption bg-primary"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-inline-block">
-                                            <div class="color-option b-success">
-                                                <div class="filloption bg-success"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-inline-block">
-                                            <div class="color-option b-danger">
-                                                <div class="filloption bg-danger"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-inline-block">
-                                            <div class="color-option b-warning">
-                                                <div class="filloption bg-warning"></div>
-                                            </div>
-                                        </li>
-                                        <li class="d-inline-block">
-                                            <div class="color-option b-info">
-                                                <div class="filloption bg-info"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @if(isset($product_attributes) && count($product_attributes) > 0 )
+                                    @foreach($product_attributes as $attribute)
+                                        <div class="product-color-options">
+                                            <h6>{{$attribute->name}}</h6>
+                                                @if(isset($attribute -> options) && count($attribute -> options) > 0 )
+                                                    <select id="group_1" data-product-attribute="1" name="{{$attribute -> name}}">
+                                                        @foreach($attribute -> options as $option)
+                                                            <option value="1" title="S" selected="selected"> {{$option -> name}} </option>
+                                                        @endforeach
+                                                    </select>
+                                                {{-- <ul class="list-unstyled mb-0">
+                                                    <li class="d-inline-block selected">
+                                                        <div class="color-option b-primary">
+                                                            <div class="filloption bg-primary"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-inline-block">
+                                                        <div class="color-option b-success">
+                                                            <div class="filloption bg-success"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-inline-block">
+                                                        <div class="color-option b-danger">
+                                                            <div class="filloption bg-danger"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-inline-block">
+                                                        <div class="color-option b-warning">
+                                                            <div class="filloption bg-warning"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-inline-block">
+                                                        <div class="color-option b-info">
+                                                            <div class="filloption bg-info"></div>
+                                                        </div>
+                                                    </li>
+                                                </ul> --}}
+                                                @endif
+                                        </div>
+                                    @endforeach
+                                @endif
                                 <hr />
                                 <div class="d-flex flex-column flex-sm-row pt-1">
                                     <a href="#" class="btn btn-primary btn-cart me-0 me-sm-1 mb-1 mb-sm-0">

@@ -24,18 +24,18 @@ class ProductController extends Controller
         if (!$data['product']){
         }
 
-        // $product_id = $data['product'] -> id ;
-        // $product_categories_ids =  $data['product'] -> categories ->pluck('id');
+        $product_id = $data['product'] -> id ;
+        $product_categories_ids =  $data['product'] -> categories ->pluck('id');
 
-        // $data['product_attributes'] =  Attribute::whereHas('options' , function ($q) use($product_id){
-        //     $q -> whereHas('product',function ($qq) use($product_id){
-        //         $qq -> where('product_id',$product_id);
-        //     });
-        // })->get();
+        $data['product_attributes'] =  Attribute::whereHas('options' , function ($q) use($product_id){
+            $q -> whereHas('products',function ($qq) use($product_id){
+                $qq -> where('product_id',$product_id);
+            });
+        })->get();
 
-        // $data['related_products'] = Product::whereHas('categories',function ($cat) use($product_categories_ids){
-        //     $cat-> whereIn('categories.id',$product_categories_ids);
-        // }) -> limit(20) -> latest() -> get();
+        $data['related_products'] = Product::whereHas('categories',function ($cat) use($product_categories_ids){
+            $cat-> whereIn('categories.id',$product_categories_ids);
+        }) -> limit(20) -> latest() -> get();
 
         return view('client.product.details',$data);
     }
