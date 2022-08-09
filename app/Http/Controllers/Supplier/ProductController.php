@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Suuplier\ProductRequest;
+use App\Http\Requests\Supplier\ProductRequest ;
+
 use App\Models\Attribute as Attribute;
 use App\Models\Category;
 use App\Models\Media;
@@ -77,7 +78,7 @@ class ProductController extends Controller
 
             $product->name = $request->name;
             $product->description = $request->description;
-            $product->title = $request->title;
+            //$product->title = $request->title;
             $product->save();
 
 
