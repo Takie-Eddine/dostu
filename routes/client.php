@@ -57,7 +57,10 @@ Route::group([
             Route::get('/details/{slug}',[ProductController::class,'details'])->name('client.product.details');
             Route::get('/wishlist',[ProductController::class,'wishlist'])->name('client.product.wishlist');
             Route::get('/checkout',[ProductController::class,'checkout'])->name('client.product.checkout');
-
+            Route::get('/addtostore',[ProductController::class,'addtostore'])->name('client.product.addtostore');
+            Route::get('/edit/{slug}',[ProductController::class,'edit'])->name('client.product.edit');
+            Route::post('/push',[ProductController::class,'push'])->name('client.product.push');
+            Route::get('/editvariants/{id}',[ProductController::class,'editVariant'])->name('client.product.editvariants');
         });
 
 

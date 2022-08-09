@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/extensions/ext-component-sliders.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/pages/app-ecommerce.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/plugins/extensions/ext-component-toastr.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -22,14 +22,14 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-start mb-0">Shop</h2>
+                        <h2 class="content-header-title float-start mb-0">Products</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('client.client')}}">Home</a>
                                 </li>
 
                                 </li>
-                                <li class="breadcrumb-item active">Shop
+                                <li class="breadcrumb-item active">Products
                                 </li>
                             </ol>
                         </div>
@@ -63,6 +63,8 @@
                         </div>
                     </div>
                 </section>
+                @include('client.alerts.errors')
+                @include('client.alerts.success')
                 <!-- E-commerce Content Section Starts -->
 
                 <!-- background Overlay when sidebar is shown  starts-->
@@ -123,13 +125,13 @@
                                     <h4 class="item-price">${{$product->price}} </h4>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-light btn-wishlist">
+                            <a href="{{route('client.product.wishlist')}}" class="btn btn-light btn-wishlist">
                                 <i data-feather="heart"></i>
                                 <span>Wishlist</span>
                             </a>
-                            <a href="#" class="btn btn-primary btn-cart">
+                            <a href="{{route('client.product.addtostore')}}" class="btn btn-primary btn-cart">
                                 <i data-feather="shopping-cart"></i>
-                                <span class="add-to-cart">Add to cart</span>
+                                <span class="add-to-cart">Add to store</span>
                             </a>
                         </div>
                     </div>

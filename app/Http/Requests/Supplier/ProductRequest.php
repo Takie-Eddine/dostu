@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Suuplier;
+namespace App\Http\Requests\Supplier;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,11 +24,11 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:300',
             'company_id'=>'exists:supplier_companies,id',
             'slug' => 'required|unique:products,slug',
-            'description' => 'required|max:1000',
-            'title' => 'required|max:500',
+            'description' => 'required|min:150',
+            //'title' => 'required|max:500',
             'categories' => 'array|min:1', //[]
             'categories.*' => 'numeric|exists:categories,id',
             'tags' => 'nullable',

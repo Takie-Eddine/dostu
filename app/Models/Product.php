@@ -24,6 +24,7 @@ class Product extends Model
         'sku',
         'price',
         'selling_price',
+        'global_price',
         'qty',
         'in_stock',
         'is_active',
@@ -48,6 +49,11 @@ class Product extends Model
     public function getApprove()
     {
         return $this->approved == 0 ? 'not approved' : 'approved';
+    }
+
+    public function getStock()
+    {
+        return $this->in_stock == 0 ? 'out of stock' : 'in stock';
     }
 
     public function categories()

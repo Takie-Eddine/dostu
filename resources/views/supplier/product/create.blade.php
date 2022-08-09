@@ -108,26 +108,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="mb-1 col-md-6">
-                                            <label class="form-label" for="title">Title</label>
-                                            <input type="text" id="title" name="title" value="{{old('title')}}"
-                                                class="form-control" placeholder="title" aria-label="john.doe" />
-                                            @error('title')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="mb-1 form-password-toggle col-md-8">
-                                            <label class="form-label" for="description">Description</label>
-                                            <textarea class="form-control" id="description1" rows="1" placeholder="description" name="description" value="{{old('description')}}"></textarea>
-                                            @error('description')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-1 form-password-toggle col-md-4">
+                                        <div class="mb-1 form-password-toggle col-md-6">
                                             <label class="form-label" for="sku">Sku</label>
                                             <input class="form-control" id="sku" rows="1" placeholder="sku"
                                                 name="sku" value="{{old('sku')}}" />
@@ -135,6 +116,18 @@
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
                                         </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-1 form-password-toggle col-md-12">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description1" rows="1" placeholder="description" name="description" value="{{old('description')}}"></textarea>
+                                            @error('description')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+
 
                                     </div>
                                     <div class="row">
@@ -224,54 +217,56 @@
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="mb-1 col-md-6">
+                                        {{-- <div class="mb-1 col-md-6">
                                             <label class="form-label" for="selling_price">Selling Price</label>
                                             <input type="text" id="selling_price" name="selling_price"
                                                 value="{{old('selling_price')}}"class="form-control" placeholder="20.00" />
                                             @error('selling_price')
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
-                                        </div>
+                                        </div> --}}
 
-                                    </div>
-                                    <div class="row">
 
-                                        <div class="col-sm-6">
-                                            <div class="card-body">
-                                                <div class="demo-inline-spacing">
-                                                    <div class="form-check form-switch">
-                                                        <label class="form-label" for="is_active">Active</label>
-                                                        <input type="checkbox" value="1" name="is_active"
-                                                            id="customSwitch2" class="form-check-input"
-                                                            data-color="success" checked />
-                                                        @error('is_active')
-                                                            <span class="text-danger"> {{ $message }}</span>
-                                                        @enderror
+
+                                            <div class="col-sm-3">
+                                                <div class="card-body">
+                                                    <div class="demo-inline-spacing">
+                                                        <div class="form-check form-switch">
+                                                            <label class="form-label" for="is_active">Active</label>
+                                                            <input type="checkbox" value="1" name="is_active"
+                                                                id="customSwitch2" class="form-check-input"
+                                                                data-color="success" checked />
+                                                            @error('is_active')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+
                                                     </div>
-
                                                 </div>
+
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="card-body">
+                                                    <div class="demo-inline-spacing">
+                                                        <div class="form-check form-switch">
+                                                            <label class="form-label" for="in_stock">In Stock</label>
+                                                            <input type="checkbox" value="1" name="in_stock"
+                                                                id="customSwitch2" class="form-check-input"
+                                                                data-color="success" checked />
+                                                            @error('in_stock')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
                                             </div>
 
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="card-body">
-                                                <div class="demo-inline-spacing">
-                                                    <div class="form-check form-switch">
-                                                        <label class="form-label" for="in_stock">In Stock</label>
-                                                        <input type="checkbox" value="1" name="in_stock"
-                                                            id="customSwitch2" class="form-check-input"
-                                                            data-color="success" checked />
-                                                        @error('in_stock')
-                                                            <span class="text-danger"> {{ $message }}</span>
-                                                        @enderror
-                                                    </div>
 
-                                                </div>
-                                            </div>
-
-                                        </div>
 
                                     </div>
+
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn btn-primary btn-prev">
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -295,33 +290,29 @@
                                         </div>
 
                                         <div class="row">
-                                        @foreach ($attributes as $attribute)
-                                        <div class="mb-1 col-md-6">
-                                            <label class="form-label" for="attribute">Attribute</label>
-                                            <input type="text" id="attribute" name="attribute[]" value="{{$attribute->name}}"class="form-control" placeholder="attribute"  />
-                                            <label class="form-label" for="options"></label>
-                                            <select name="options[]" class="select2 form-select" multiple="multiple" id="default-select-multi.{{$attribute->id}}.23">
-                                                @if ($options && $options->count() > 0)
-                                                    @foreach ($options as $option)
-                                                    @if ($attribute->id == $option->attribute_id)
-                                                    <option value="{{ $option->id }}">{{ $option->name }} </option>
-                                                    @endif
-
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                            @error('options.0')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                            @error('attribute.0')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-
-
-
+                                            @foreach ($attributes as $attribute)
+                                                <div class="mb-1 col-md-6">
+                                                    <label class="form-label" for="attribute">Attribute</label>
+                                                    <input type="text" id="attribute" name="attribute[]" value="{{$attribute->name}}"class="form-control" placeholder="attribute"  />
+                                                    <label class="form-label" for="options"></label>
+                                                    <select name="options[]" class="select2 form-select" multiple="multiple" id="default-select-multi.{{$attribute->id}}.23">
+                                                        @if ($options && $options->count() > 0)
+                                                            @foreach ($options as $option)
+                                                                @if ($attribute->id == $option->attribute_id)
+                                                                    <option value="{{ $option->id }}">{{ $option->name }} </option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                    @error('options.0')
+                                                        <span class="text-danger"> {{ $message }}</span>
+                                                    @enderror
+                                                    @error('attribute.0')
+                                                    <span class="text-danger"> {{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
-                                    </div>
 
 
 
