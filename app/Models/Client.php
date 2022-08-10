@@ -54,4 +54,9 @@ class Client extends  Authenticatable
 
         return $this->belongsTo(Client::class,'plans_id');
     }
+
+
+    public function reviews(){
+        return $this->hasMany(ProductReview::class);
+    }
 }

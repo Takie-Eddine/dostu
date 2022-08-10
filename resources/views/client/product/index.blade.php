@@ -102,11 +102,18 @@
                             <div class="item-wrapper">
                                 <div class="item-rating">
                                     <ul class="unstyled-list list-inline">
+                                        @if ($product->reviews_avg_rating != '')
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <li class="ratings-list-item"><i data-feather="star" class="{{ round($product->reviews_avg_rating) <= $i ? 'unfilled-star' : 'filled-star' }} "></i></li>
+                                            @endfor
+                                        @else
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
+                                        @endif
+
                                     </ul>
                                 </div>
                                 <div>

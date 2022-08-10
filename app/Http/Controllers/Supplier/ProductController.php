@@ -90,8 +90,9 @@ class ProductController extends Controller
             foreach ($request->options as $option) {
 
 
-                Option::whereId($option)->update([
+                Option::create([
 
+                    'attribute_id'=> $request->attribute_id,
                     'product_id' => $product->id,
 
                 ]);

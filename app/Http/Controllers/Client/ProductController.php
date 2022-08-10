@@ -12,8 +12,9 @@ class ProductController extends Controller
     public function shop(){
 
 
-        $products = Product::active()->approved()->get();
+        $products = Product::active()->withAvg('reviews','rating')->approved()->get();
 
+        //return $products;
         return view('client.product.index',compact('products'));
     }
 
@@ -36,7 +37,7 @@ class ProductController extends Controller
 
         $data['related_products'] = Product::whereHas('categories',function ($cat) use($product_categories_ids){
             $cat-> whereIn('categories.id',$product_categories_ids);
-        }) -> limit(20) -> latest() -> get();
+        }) -> limit(20) -> latest() -> withAvg('reviews','rating') -> get();
 
         return view('client.product.statistics',$data);
     }
@@ -88,13 +89,14 @@ class ProductController extends Controller
 
     public function push(Request $request){
 
-        return $request->all();
+        return $request->description;
 
     }
 
     public function editVariant($id){
 
         $product = Product::find($id);
+
         if(!$product){
             return redirect()->route('client.product.statistics')->with(['error' => 'this product does not exist ']);
         }

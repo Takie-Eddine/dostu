@@ -109,4 +109,8 @@ class Product extends Model
         return $this->belongsTo(SupplierCompany::class,'company_id');
     }
 
+    public function reviews(){
+        return $this->hasMany(ProductReview::class);
+    }
+
 }
