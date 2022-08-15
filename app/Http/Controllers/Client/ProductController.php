@@ -17,7 +17,7 @@ class ProductController extends Controller
 
 
         $products = Product::active()->withAvg('reviews','rating')->approved()->get();
-
+        //return $products;
         $categories = Category::all();
 
         //return $products;
@@ -53,8 +53,9 @@ class ProductController extends Controller
 
 
     public function importlist(){
+
         $products = ImportList::all()->where('client_id',auth('client') -> user() ->id);
-        return $products[0]->products;
+        //return $products[2] -> products;
 
         return view('client.product.importlist',compact('products'));
     }

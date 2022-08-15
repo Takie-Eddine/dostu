@@ -16,11 +16,11 @@ class ImportList extends Model
 
 
     public function clients(){
-        return $this->belongsToMany(Client::class,'import_lists');
+        return $this->belongsTo(Client::class,'product_id');
     }
 
     public function products(){
-        return $this->belongsToMany(Product::class,'import_lists');
+        return $this->belongsTo(Product::class,'product_id');
     }
 
 }

@@ -63,7 +63,7 @@ class Client extends  Authenticatable
 
 
     public function importlist(){
-        return $this-> belongsToMany(ImportList::class,'import_lists');
+        return $this-> belongsTo(ImportList::class);
     }
 
 

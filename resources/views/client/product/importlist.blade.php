@@ -50,12 +50,12 @@
             <!-- Wishlist Starts -->
             <section id="wishlist" class="grid-view wishlist-items">
 
-                @if ($products -> products  && count($products-> products)>0)
-                    @foreach ($products-> products as $product)
+                @if ($products   && count($products) >0)
+                    @foreach ($products as $product)
                         <div class="card ecommerce-card">
                             <div class="item-img text-center">
-                                <a href="{{route('client.product.details',$product->slug)}}">
-                                    <img src="{{$product -> images[0] -> photo ?? ''}}" class="img-fluid" alt="img-placeholder" />
+                                <a href="{{route('client.product.details',$product->products->slug)}}">
+                                    <img src="{{$product -> products-> images[0] -> photo ?? ''}}" class="img-fluid" alt="img-placeholder" />
                                 </a>
                             </div>
                             <div class="card-body">
@@ -76,14 +76,14 @@
                                         </ul>
                                     </div>
                                     <div class="item-cost">
-                                        <h6 class="item-price">{{$product -> price}}</h6>
+                                        <h6 class="item-price">{{$product -> products-> price}}</h6>
                                     </div>
                                 </div>
                                 <div class="item-name">
-                                    <a href="{{route('client.product.details',$product->slug)}}">{{$product->name}}</a>
+                                    <a href="{{route('client.product.details',$product->products->slug)}}">{{$product-> products->name}}</a>
                                 </div>
                                 <p class="card-text item-description">
-                                    {{$product->description}}
+                                    {{$product-> products-> description}}
                                 </p>
                             </div>
                             <div class="item-options text-center">
