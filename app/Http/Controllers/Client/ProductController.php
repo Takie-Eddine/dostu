@@ -5,24 +5,23 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\ImportList;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function shop(){
 
 
-        $products = Product::active()->approved()->get();
+        $products = Product::active()->withAvg('reviews','rating')->approved()->get();
 
-<<<<<<< HEAD
         $categories = Category::all();
 
         //return $products;
         return view('client.product.index',compact('products','categories'));
-=======
-        return view('client.product.index',compact('products'));
->>>>>>> parent of 1c1b7c2 (Rating)
     }
 
     public function details($slug){
@@ -44,7 +43,7 @@ class ProductController extends Controller
 
         $data['related_products'] = Product::whereHas('categories',function ($cat) use($product_categories_ids){
             $cat-> whereIn('categories.id',$product_categories_ids);
-        }) -> limit(20) -> latest() -> get();
+        }) -> limit(20) -> latest() -> withAvg('reviews','rating') -> get();
 
         return view('client.product.statistics',$data);
     }
@@ -54,7 +53,42 @@ class ProductController extends Controller
 
 
     public function importlist(){
-        return view('client.product.importlist');
+        $products = ImportList::all()->where('client_id',auth('client') -> user() ->id);
+        return $products[0]->products;
+
+        return view('client.product.importlist',compact('products'));
+    }
+
+
+
+
+    public function addimportlist($id){
+
+        try{
+            $product = Product::find($id);
+
+            if (!$product) {
+                return redirect()->route('client.product.index')->with(['error' => 'this product does not exist ']);
+            }
+
+            $product_imported = ImportList::where('product_id',$id)->where('client_id',auth('client') -> user() ->id)->get();
+
+            if(count($product_imported)>0){
+
+                return redirect()->route('client.product.index')->with(['error' => 'this product is already  exist ']);
+            }
+
+            $product = ImportList::create([
+                'product_id' => $product->id,
+                'client_id' => auth('client') -> user() ->id,
+            ]);
+
+            return redirect()->route('client.product.index')->with(['success' => 'added successfuly ']);
+
+        }catch(Exception $ex){
+            return redirect()->route('client.product.index')->with(['error' => 'there is a problem']);
+        }
+
     }
 
     public function listproduct(){
@@ -96,14 +130,13 @@ class ProductController extends Controller
 
     public function push(Request $request){
 
-        return $request->all();
+        return $request->description;
 
     }
 
     public function editVariant($id){
 
         $product = Product::find($id);
-<<<<<<< HEAD
 
         $attributes = Attribute::whereHas('options' , function ($q) use($id){
             $q -> whereHas('products',function ($qq) use($id){
@@ -116,8 +149,6 @@ class ProductController extends Controller
 
 
 
-=======
->>>>>>> parent of 1c1b7c2 (Rating)
         if(!$product){
             return redirect()->route('client.product.index')->with(['error' => 'this product does not exist ']);
         }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameColumToClientsTable extends Migration
+class AddPlansIdColumToClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,10 @@ class AddUsernameColumToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('username')->unique()->after('last_name');
-
+            $table->integer('plans_id')->unsigned()->after('id');
+            $table->string('ended_payment_date')->nullable()->after('image');
+            $table->string('started_payment_date')->nullable()->after('image');
+            $table->foreign('plans_id')->references('id')->on('plans')->onDelete('cascade');
         });
     }
 

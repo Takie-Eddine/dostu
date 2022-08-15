@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameColumToClientsTable extends Migration
+class CreatePlanTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddUsernameColumToClientsTable extends Migration
      */
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->string('username')->unique()->after('last_name');
+        Schema::create('plan_translations', function (Blueprint $table) {
+            $table->id();
+            $table->integer('plan_id');
+            $table->string('locale');
+            $table->string('name');
+            $table->unique(['plan_id', 'locale']);
 
         });
     }
@@ -26,8 +30,6 @@ class AddUsernameColumToClientsTable extends Migration
      */
     public function down()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('plan_translations');
     }
 }

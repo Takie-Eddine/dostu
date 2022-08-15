@@ -160,11 +160,18 @@
                             <div class="item-wrapper">
                                 <div class="item-rating">
                                     <ul class="unstyled-list list-inline">
+                                        @if ($product->reviews_avg_rating != '')
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <li class="ratings-list-item"><i data-feather="star" class="{{ round($product->reviews_avg_rating) <= $i ? 'unfilled-star' : 'filled-star' }} "></i></li>
+                                            @endfor
+                                        @else
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
                                         <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
+                                        @endif
+
                                     </ul>
                                 </div>
                                 <div>
@@ -183,7 +190,11 @@
                                     <h4 class="item-price">${{$product->price}} </h4>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <a href="{{route('client.product.importlist')}}" class="btn btn-light btn-wishlist">
+=======
+                            <a href="{{route('client.product.addimportlist',$product-> id)}}" class="btn btn-light btn-wishlist">
+>>>>>>> 7ebfd7cad9397cf9546e26da6b8ec6aa19807d66
                                 <i data-feather="heart"></i>
                                 <span>Import list</span>
                             </a>

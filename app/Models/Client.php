@@ -54,4 +54,18 @@ class Client extends  Authenticatable
 
         return $this->belongsTo(Client::class,'plans_id');
     }
+
+
+    public function stores()
+    {
+        return $this -> belongsToMany(Store::class,'client_stores');
+    }
+
+
+    public function importlist(){
+        return $this-> belongsToMany(ImportList::class,'import_lists');
+    }
+
+
+
 }

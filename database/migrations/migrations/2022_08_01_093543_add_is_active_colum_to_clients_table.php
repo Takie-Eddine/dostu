@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsernameColumToClientsTable extends Migration
+class AddIsActiveColumToClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddUsernameColumToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('username')->unique()->after('last_name');
-
+            $table->unsignedTinyInteger('status')->default(0)->after('store_mobile');
         });
     }
 

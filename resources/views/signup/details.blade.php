@@ -220,6 +220,39 @@
 
                                                 </div>
 
+                                                <div class="row">
+
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="store_email"> Country </label>
+                                                        <input type="text" name="country" id="country"
+                                                            class="form-control" placeholder="Turkey"
+                                                            aria-label="john.doe" />
+                                                    </div>
+
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="store_mobile">State</label>
+                                                        <input type="text" name="state" id="state"
+                                                            class="form-control" placeholder="Istanbul" />
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="store_mobile">City</label>
+                                                        <input type="text" name="city" id="city"
+                                                            class="form-control" placeholder="Istanbul" />
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="store_mobile">Pincode</label>
+                                                        <input type="number" name="pincode" id="pincode"
+                                                            class="form-control" placeholder="202356" />
+                                                    </div>
+                                                    <div class="col-md-12 mb-1">
+                                                        <label class="form-label" for="store_mobile">Address</label>
+                                                        <input type="text" name="address" id="address"
+                                                            class="form-control" placeholder="22 jump st" />
+                                                    </div>
+
+
+                                                </div>
+
 
                                                 <div class="d-flex justify-content-between mt-2">
                                                     <button type="button"class="btn btn-outline-secondary btn-prev"
@@ -268,11 +301,16 @@
                                                             class="form-control email-mask" placeholder="Code" />
                                                     </div>
 
-                                                    <div class="col-12 mb-1">
+                                                    <div class="col-6 mb-1">
                                                         <label class="form-label" for="username">Username</label>
                                                         <input type="text" name="username"
                                                             value="{{ $client->username }}" id="username"
                                                             class="form-control" placeholder="username" />
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
+                                                        <label class="form-label" for="store_name">Client Image</label>
+                                                        <input type="file" name="photo" id="photo"
+                                                            class="form-control"  />
                                                     </div>
 
                                                 </div>

@@ -15,7 +15,8 @@ class AddUsernameColumToClientsTable extends Migration
     {
         Schema::table('clients', function (Blueprint $table) {
             $table->string('username')->unique()->after('last_name');
-
+            $table->string('store_mobile')->index()->unique()->after('mobile');
+            $table->string('store_email')->unique()->after('email');
         });
     }
 

@@ -86,6 +86,7 @@ class ProductController extends Controller
             $product->categories()->syncWithoutDetaching($request->categories);
             $product->tags()->syncWithoutDetaching($request->tags);
 <<<<<<< HEAD
+<<<<<<< HEAD
             $product->options()->syncWithoutDetaching($request->options);
 =======
 
@@ -100,6 +101,9 @@ class ProductController extends Controller
                 ]);
             }
 >>>>>>> parent of 1c1b7c2 (Rating)
+=======
+            $product->options()->syncWithoutDetaching($request->options);
+>>>>>>> 7ebfd7cad9397cf9546e26da6b8ec6aa19807d66
 
 
 
