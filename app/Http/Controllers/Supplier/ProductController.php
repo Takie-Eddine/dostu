@@ -48,7 +48,7 @@ class ProductController extends Controller
         //     return $option;
         // }
 
-        try {
+        // try {
 
 
             DB::beginTransaction();
@@ -85,18 +85,7 @@ class ProductController extends Controller
 
             $product->categories()->syncWithoutDetaching($request->categories);
             $product->tags()->syncWithoutDetaching($request->tags);
-
-
-            foreach ($request->options as $option) {
-
-
-                Option::create([
-
-                    'attribute_id'=> $request->attribute_id,
-                    'product_id' => $product->id,
-
-                ]);
-            }
+            $product->options()->syncWithoutDetaching($request->options);
 
 
 
@@ -121,10 +110,10 @@ class ProductController extends Controller
             }
             DB::commit();
             return redirect()->route('supplier.product.index')->with(['success' => 'added with success']);
-        } catch (Exception $ex) {
-            DB::rollback();
-            return redirect()->route('supplier.product.create')->with(['error' => 'there is a problem']);
-        }
+        // } catch (Exception $ex) {
+        //     DB::rollback();
+        //     return redirect()->route('supplier.product.create')->with(['error' => 'there is a problem']);
+        // }
     }
 
     public function edit()

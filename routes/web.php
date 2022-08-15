@@ -10,6 +10,7 @@ use App\Http\Controllers\Client\SettingsController;
 use App\Http\Controllers\Client\ToolController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Supplier\SupplierController;
+
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -36,4 +37,8 @@ Route::post('/details', [HomeController::class,'details'])->name('details');
 Route::post('store',[HomeController::class,'storeClient'])->name('storeclient');
 
 
+
 });
+
+
+

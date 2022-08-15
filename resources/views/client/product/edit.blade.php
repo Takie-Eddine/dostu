@@ -175,7 +175,7 @@
                                                         <i data-feather="edit"></i>
                                                         <span>Edit Variants</span>
                                                     </a>
-                                                    <a href="{{route('client.product.wishlist')}}" class="btn btn-light btn-wishlist">
+                                                    <a href="{{route('client.product.importlist')}}" class="btn btn-light btn-wishlist">
                                                         <i data-feather='truck'></i>
                                                         <span>Shipping Options</span>
                                                     </a>

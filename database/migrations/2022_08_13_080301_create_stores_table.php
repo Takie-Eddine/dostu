@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOptionsTable extends Migration
+class CreateStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->integer('attribute_id')->unsigned()->nullable();
-
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-
+            $table->string('store_name');
+            $table->string('address');
+            $table->string('store_email');
+            $table->string('store_mobile');
+            $table->string('store_logo');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('stores');
     }
 }

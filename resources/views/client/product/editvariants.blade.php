@@ -48,8 +48,11 @@
                                         <th scope="col" class="text-nowrap">#</th>
                                         <th scope="col" class="text-nowrap">Image</th>
                                         <th scope="col" class="text-nowrap">Sku</th>
-                                        <th scope="col" class="text-nowrap">Size</th>
-                                        <th scope="col" class="text-nowrap">Color</th>
+                                        @if ($attributes && count($attributes)>0)
+                                            @foreach ($attributes as $attribute)
+                                                <th scope="col" class="text-nowrap">{{$attribute->name}}</th>
+                                            @endforeach
+                                        @endif
                                         <th scope="col" class="text-nowrap">Ships From</th>
                                         <th scope="col" class="text-nowrap">Cost</th>
                                         <th scope="col" class="text-nowrap">Shipping</th>

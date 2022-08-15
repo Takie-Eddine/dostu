@@ -170,8 +170,7 @@
                                         <div class="mb-1 col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="categories">Category</label>
-                                                <select name="categories[]" class="select2 form-select"
-                                                    multiple="multiple" id="default-select-multi">
+                                                <select name="categories[]" class="select2 form-select" multiple="multiple" id="default-select-multi">
                                                     @if ($categories && $categories->count() > 0)
                                                         @foreach ($categories as $category)
                                                             <option value="{{ $category->id }}">{{ $category->name }}
@@ -291,7 +290,7 @@
 
                                         <div class="row">
                                             @foreach ($attributes as $attribute)
-                                                <div class="mb-1 col-md-6">
+                                                <div class="mb-1 col-md-3">
                                                     <label class="form-label" for="attribute">Attribute</label>
                                                     <input type="text" id="attribute" name="attribute[]" value="{{$attribute->name}}"class="form-control" placeholder="attribute"  />
                                                     <label class="form-label" for="options"></label>

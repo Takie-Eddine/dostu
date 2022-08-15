@@ -3,35 +3,16 @@
 @section('title','Checkout')
 
 @section('style')
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/wizard/bs-stepper.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
-    <!-- END: Vendor CSS-->
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/colors.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/dark-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/bordered-layout.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/semi-dark-layout.css')}}">
-
-    <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-ecommerce.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-pickadate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-wizard.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-number-input.css')}}">
-    <!-- END: Page CSS-->
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 @endsection
 
 @section('content')
@@ -43,14 +24,13 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-start mb-0">Checkout</h2>
+                        <h2 class="content-header-title float-start mb-0">Product In Store</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('client.client')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">eCommerce</a>
-                                </li>
-                                <li class="breadcrumb-item active">Checkout
+
+                                <li class="breadcrumb-item active">Product In Store
                                 </li>
                             </ol>
                         </div>
@@ -676,20 +656,8 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
-<!-- BEGIN Vendor JS-->
 
-<!-- BEGIN: Page Vendor JS-->
 <script src="{{asset('app-assets/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
-<!-- END: Page Vendor JS-->
 
-<!-- BEGIN: Theme JS-->
-<script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
-<script src="{{asset('app-assets/js/core/app.js')}}"></script>
-<!-- END: Theme JS-->
-
-<!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/pages/app-ecommerce-checkout.js')}}"></script>
 @endsection
