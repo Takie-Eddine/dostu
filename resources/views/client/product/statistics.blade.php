@@ -279,17 +279,16 @@
                                                     </div>
                                                     <div class="item-meta">
                                                         <ul class="unstyled-list list-inline mb-25">
-                                                            @if ($_product->reviews_avg_rating != '')
-                                                                @for ($i = 0; $i < 5; $i++)
-                                                                    <li class="ratings-list-item"><i data-feather="star" class="{{ round($_product->reviews_avg_rating) <= $i ? 'unfilled-star' : 'filled-star' }} "></i></li>
-                                                                @endfor
-                                                            @else
-                                                                <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                                                <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                                                <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                                                <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                                                <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
-                                                            @endif
+                                                            <li class="ratings-list-item"><i data-feather="star"
+                                                                    class="filled-star"></i></li>
+                                                            <li class="ratings-list-item"><i data-feather="star"
+                                                                    class="filled-star"></i></li>
+                                                            <li class="ratings-list-item"><i data-feather="star"
+                                                                    class="filled-star"></i></li>
+                                                            <li class="ratings-list-item"><i data-feather="star"
+                                                                    class="filled-star"></i></li>
+                                                            <li class="ratings-list-item"><i data-feather="star"
+                                                                    class="unfilled-star"></i></li>
                                                         </ul>
                                                         <p class="card-text text-primary mb-0">${{$_product -> price}}</p>
                                                     </div>

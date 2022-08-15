@@ -13,12 +13,16 @@ class ProductController extends Controller
     public function shop(){
 
 
-        $products = Product::active()->withAvg('reviews','rating')->approved()->get();
+        $products = Product::active()->approved()->get();
 
+<<<<<<< HEAD
         $categories = Category::all();
 
         //return $products;
         return view('client.product.index',compact('products','categories'));
+=======
+        return view('client.product.index',compact('products'));
+>>>>>>> parent of 1c1b7c2 (Rating)
     }
 
     public function details($slug){
@@ -40,7 +44,7 @@ class ProductController extends Controller
 
         $data['related_products'] = Product::whereHas('categories',function ($cat) use($product_categories_ids){
             $cat-> whereIn('categories.id',$product_categories_ids);
-        }) -> limit(20) -> latest() -> withAvg('reviews','rating') -> get();
+        }) -> limit(20) -> latest() -> get();
 
         return view('client.product.statistics',$data);
     }
@@ -92,13 +96,14 @@ class ProductController extends Controller
 
     public function push(Request $request){
 
-        return $request->description;
+        return $request->all();
 
     }
 
     public function editVariant($id){
 
         $product = Product::find($id);
+<<<<<<< HEAD
 
         $attributes = Attribute::whereHas('options' , function ($q) use($id){
             $q -> whereHas('products',function ($qq) use($id){
@@ -111,6 +116,8 @@ class ProductController extends Controller
 
 
 
+=======
+>>>>>>> parent of 1c1b7c2 (Rating)
         if(!$product){
             return redirect()->route('client.product.index')->with(['error' => 'this product does not exist ']);
         }

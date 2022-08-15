@@ -24,8 +24,6 @@
                                 </li>
                                 <li class="breadcrumb-item active"><a href="{{route('client.product.index')}}">Products</a>
                                 </li>
-                                <li class="breadcrumb-item active"><a href="{{route('client.product.edit',$product->slug)}}">Edit</a>
-                                </li>
                                 <li class="breadcrumb-item active">Edit Variants
                                 </li>
                             </ol>
@@ -41,11 +39,14 @@
             <div class="row" id="table-responsive">
                 <div class="col-12">
                     <div class="card">
+
+
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="text-nowrap">#</th>
+<<<<<<< HEAD
                                         <th scope="col" class="text-nowrap">Image</th>
                                         <th scope="col" class="text-nowrap">Sku</th>
                                         @if ($attributes && count($attributes)>0)
@@ -61,28 +62,88 @@
                                         <th scope="col" class="text-nowrap">Compared At Price</th>
                                         <th scope="col" class="text-nowrap">Inventory</th>
 
+=======
+                                        <th scope="col" class="text-nowrap">Heading 1</th>
+                                        <th scope="col" class="text-nowrap">Heading 2</th>
+                                        <th scope="col" class="text-nowrap">Heading 3</th>
+                                        <th scope="col" class="text-nowrap">Heading 4</th>
+                                        <th scope="col" class="text-nowrap">Heading 5</th>
+                                        <th scope="col" class="text-nowrap">Heading 6</th>
+                                        <th scope="col" class="text-nowrap">Heading 7</th>
+                                        <th scope="col" class="text-nowrap">Heading 8</th>
+                                        <th scope="col" class="text-nowrap">Heading 9</th>
+                                        <th scope="col" class="text-nowrap">Heading 10</th>
+                                        <th scope="col" class="text-nowrap">Heading 11</th>
+                                        <th scope="col" class="text-nowrap">Heading 12</th>
+                                        <th scope="col" class="text-nowrap">Heading 13</th>
+>>>>>>> parent of 1c1b7c2 (Rating)
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($product->options && count($product->options) >0)
-                                        @foreach ($product->options as $item)
-                                        <tr>
-                                            <td class="text-nowrap">{{$item->id}}</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                            <td class="text-nowrap">Table cell</td>
-                                        </tr>
-                                        @endforeach
-                                    @endif
-
+                                    <tr>
+                                        <td class="text-nowrap">1</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                        <td class="text-nowrap">Table cell</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                        <td>Table cell</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

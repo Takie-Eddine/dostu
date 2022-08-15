@@ -85,7 +85,21 @@ class ProductController extends Controller
 
             $product->categories()->syncWithoutDetaching($request->categories);
             $product->tags()->syncWithoutDetaching($request->tags);
+<<<<<<< HEAD
             $product->options()->syncWithoutDetaching($request->options);
+=======
+
+
+            foreach ($request->options as $option) {
+
+
+                Option::whereId($option)->update([
+
+                    'product_id' => $product->id,
+
+                ]);
+            }
+>>>>>>> parent of 1c1b7c2 (Rating)
 
 
 
