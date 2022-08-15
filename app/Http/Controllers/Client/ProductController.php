@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Category;
+use App\Models\ImportList;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -50,7 +53,42 @@ class ProductController extends Controller
 
 
     public function importlist(){
-        return view('client.product.importlist');
+        $products = ImportList::all()->where('client_id',auth('client') -> user() ->id);
+        return $products[0]->products;
+
+        return view('client.product.importlist',compact('products'));
+    }
+
+
+
+
+    public function addimportlist($id){
+
+        try{
+            $product = Product::find($id);
+
+            if (!$product) {
+                return redirect()->route('client.product.index')->with(['error' => 'this product does not exist ']);
+            }
+
+            $product_imported = ImportList::where('product_id',$id)->where('client_id',auth('client') -> user() ->id)->get();
+
+            if(count($product_imported)>0){
+
+                return redirect()->route('client.product.index')->with(['error' => 'this product is already  exist ']);
+            }
+
+            $product = ImportList::create([
+                'product_id' => $product->id,
+                'client_id' => auth('client') -> user() ->id,
+            ]);
+
+            return redirect()->route('client.product.index')->with(['success' => 'added successfuly ']);
+
+        }catch(Exception $ex){
+            return redirect()->route('client.product.index')->with(['error' => 'there is a problem']);
+        }
+
     }
 
     public function listproduct(){

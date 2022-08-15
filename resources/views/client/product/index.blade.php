@@ -190,7 +190,7 @@
                                     <h4 class="item-price">${{$product->price}} </h4>
                                 </div>
                             </div>
-                            <a href="{{route('client.product.importlist')}}" class="btn btn-light btn-wishlist">
+                            <a href="{{route('client.product.addimportlist',$product-> id)}}" class="btn btn-light btn-wishlist">
                                 <i data-feather="heart"></i>
                                 <span>Import list</span>
                             </a>

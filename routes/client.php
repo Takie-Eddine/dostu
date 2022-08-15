@@ -56,6 +56,7 @@ Route::group([
             Route::get('/',[ProductController::class,'shop'])->name('client.product.index');
             Route::get('/details/{slug}',[ProductController::class,'details'])->name('client.product.details');
             Route::get('/importlist',[ProductController::class,'importlist'])->name('client.product.importlist');
+            Route::get('/addtoimportlist/{id}',[ProductController::class,'addimportlist'])->name('client.product.addimportlist');
             Route::get('/addedtostore',[ProductController::class,'listproduct'])->name('client.product.listproducts');
             Route::get('/addtostore',[ProductController::class,'addtostore'])->name('client.product.addtostore');
             Route::get('/edit/{slug}',[ProductController::class,'edit'])->name('client.product.edit');

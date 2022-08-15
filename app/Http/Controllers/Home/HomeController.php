@@ -9,6 +9,7 @@ use App\Http\Requests\Home\VerifyRequest;
 use App\Models\Card;
 use App\Models\Client;
 use App\Models\Plan;
+use App\Models\Store;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,19 +36,19 @@ class HomeController extends Controller
     public function storeClient(Request $request){
 
 
-        try {
+        // try {
 
             DB::beginTransaction();
 
             $fileName = "";
-            if ($request->has('image')) {
-                $fileName = uploadImage('clients', $request->image);
+            $fileName1 = "";
+
+            if ($request->has('photo')) {
+                $fileName1 = uploadImage('clients', $request->photo);
             }
 
             $client = Client::create([
-                'store_name' => $request->store_name,
-                'store_email' => $request->store_email,
-                'store_mobile' => $request->store_mobile,
+
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'mobile' => $request->mobile,
@@ -55,8 +56,25 @@ class HomeController extends Controller
                 'username' => $request->username,
                 'password' => bcrypt($request->password),
                 'plans_id' => $request->planse,
-                'image' => $fileName,
+                'image' => $fileName1,
                 'status' => 1,
+                'started_payment_date'=> now(),
+            ]);
+
+            if ($request->has('image')) {
+                $fileName = uploadImage('clients', $request->image);
+            }
+
+            $store = Store::create([
+                'store_name' => $request->store_name,
+                'store_email' => $request->store_email,
+                'store_mobile' => $request->store_mobile,
+                'store_logo' =>$fileName,
+                'address' => $request->address,
+                'country' => $request->country,
+                'city' => $request->city,
+                'state' => $request->state,
+                'pincode' => $request->pincode,
             ]);
 
 
@@ -69,13 +87,15 @@ class HomeController extends Controller
 
             ]);
 
+            $client->stores()->syncWithoutDetaching($store);
+
             return redirect()->route('client.login')->with(['success' => 'please login']);
             DB::commit();
 
-        } catch (Exception $ex) {
-            DB::rollback();
-            return redirect()->route('signup.signup')->with(['error' => ' there is ap roblem']);
-        }
+        // } catch (Exception $ex) {
+        //     DB::rollback();
+        //     return redirect()->route('signup.signup')->with(['error' => ' there is ap roblem']);
+        // }
     }
 
 }

@@ -11,4 +11,12 @@ class Store extends Model
 
 
     protected $guarded = [];
+
+
+
+
+    public function clients()
+    {
+        return $this -> belongsToMany(Client::class,'client_stores');
+    }
 }
