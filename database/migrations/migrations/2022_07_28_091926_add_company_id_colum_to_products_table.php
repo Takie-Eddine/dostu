@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPriceColumToOptionsTable extends Migration
+class AddCompanyIdColumToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddPriceColumToOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('options', function (Blueprint $table) {
-            $table->double('price')->after('product_id');
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('company_id')->unsigned()->after('id');
+
+            $table->foreign('company_id')->references('id')->on('supplier_companies')->onDelete('cascade');
         });
     }
 
@@ -25,7 +27,7 @@ class AddPriceColumToOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('options', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

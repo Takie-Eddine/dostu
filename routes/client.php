@@ -55,12 +55,15 @@ Route::group([
 
             Route::get('/',[ProductController::class,'shop'])->name('client.product.index');
             Route::get('/details/{slug}',[ProductController::class,'details'])->name('client.product.details');
-            Route::get('/wishlist',[ProductController::class,'wishlist'])->name('client.product.wishlist');
-            Route::get('/checkout',[ProductController::class,'checkout'])->name('client.product.checkout');
+            Route::get('/importlist',[ProductController::class,'importlist'])->name('client.product.importlist');
+            Route::get('/addedtostore',[ProductController::class,'listproduct'])->name('client.product.listproducts');
             Route::get('/addtostore',[ProductController::class,'addtostore'])->name('client.product.addtostore');
             Route::get('/edit/{slug}',[ProductController::class,'edit'])->name('client.product.edit');
             Route::post('/push',[ProductController::class,'push'])->name('client.product.push');
             Route::get('/editvariants/{id}',[ProductController::class,'editVariant'])->name('client.product.editvariants');
+            Route::get('/getproductsbycategory/{id}',[ProductController::class,'getcategory'])->name('client.product.index.getbycategory');
+            Route::get('/getproductsbyrating/{id}',[ProductController::class,'getbyrate'])->name('client.product.index.getbyrate');
+            Route::get('/getproductsbyprice/{id}',[ProductController::class,'getbyprice'])->name('client.product.index.getbyprice');
         });
 
 

@@ -88,13 +88,11 @@
                                                     <div id="blog-editor-wrapper">
                                                         <div id="blog-editor-container">
                                                             <div class="editor">
-                                                                <p>
-                                                                    {{$product->description}}
-                                                                </p>
+                                                                <textarea name="description" aria-valuetext="{{($product->description)}}">{{($product->description)}}</textarea>
                                                             </div>
                                                         </div>
                                                         @error('description')
-                                                    <span class="text-danger"> {{ $message }}</span>
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                                     </div>
                                                 </div>
@@ -104,11 +102,13 @@
                                                     <div class="mb-2">
                                                         <label class="form-label" for="blog-edit-category">Tags</label>
                                                         @if ($product-> tags && count($product-> tags)>0)
-                                                            @foreach ($product-> tags as $tag)
+
                                                             <select id="blog-edit-category" class="select2 form-select" name="tags[]" multiple>
+                                                                @foreach ($product-> tags as $tag)
                                                                 <option value="{{$tag->id}}" selected>{{$tag->name}}</option>
+                                                                @endforeach
                                                             </select>
-                                                            @endforeach
+
                                                         @endif
                                                         @error('name')
                                                     <span class="text-danger"> {{ $message }}</span>
@@ -175,7 +175,7 @@
                                                         <i data-feather="edit"></i>
                                                         <span>Edit Variants</span>
                                                     </a>
-                                                    <a href="{{route('client.product.wishlist')}}" class="btn btn-light btn-wishlist">
+                                                    <a href="{{route('client.product.importlist')}}" class="btn btn-light btn-wishlist">
                                                         <i data-feather='truck'></i>
                                                         <span>Shipping Options</span>
                                                     </a>

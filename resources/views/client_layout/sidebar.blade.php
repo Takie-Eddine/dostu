@@ -41,9 +41,9 @@
                     </li>
                     {{-- <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Details</span></a>
                     </li> --}}
-                    <li><a class="d-flex align-items-center" href="{{route('client.product.wishlist')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Wish List</span></a>
+                    <li><a class="d-flex align-items-center" href="{{route('client.product.importlist')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Import List</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="{{route('client.product.checkout')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Checkout</span></a>
+                    <li><a class="d-flex align-items-center" href="{{route('client.product.listproducts')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Product In Store</span></a>
                     </li>
                 </ul>
             </li>
