@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
-use App\Models\Supplier;
-use Faker\Factory;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class EntrustSeeder extends Seeder
+class CategoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +14,6 @@ class EntrustSeeder extends Seeder
      */
     public function run()
     {
-
-
-
 
     }
 }

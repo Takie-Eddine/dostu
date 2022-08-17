@@ -87,14 +87,14 @@
                                 </p>
                             </div>
                             <div class="item-options text-center">
-                                <button type="button" class="btn btn-light btn-wishlist remove-wishlist">
-                                    <i data-feather="x"></i>
+
+                                <a href="{{route('client.product.importlist.destroy',$product-> products -> id)}}" class="btn btn-light btn-wishlist">
                                     <span>Remove</span>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-cart move-cart">
+                                </a>
+                                <a href="{{route('client.product.details',$product-> products -> slug)}}" class="btn btn-primary btn-cart">
                                     <i data-feather="shopping-cart"></i>
-                                    <span class="add-to-cart">Move to cart</span>
-                                </button>
+                                    <span class="add-to-cart">Add to store</span>
+                                </a>
                             </div>
                         </div>
                     @endforeach
