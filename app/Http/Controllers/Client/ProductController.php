@@ -7,6 +7,7 @@ use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\ImportList;
 use App\Models\Product;
+use App\Models\StoreProduct;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class ProductController extends Controller
 
 
         $products = Product::active()->withAvg('reviews','rating')->approved()->get();
-
+        //return $products;
         $categories = Category::all();
 
         //return $products;
@@ -53,8 +54,9 @@ class ProductController extends Controller
 
 
     public function importlist(){
+
         $products = ImportList::all()->where('client_id',auth('client') -> user() ->id);
-        return $products[0]->products;
+        //return $products[2] -> products;
 
         return view('client.product.importlist',compact('products'));
     }
@@ -91,8 +93,24 @@ class ProductController extends Controller
 
     }
 
+
+    public function destroy($id){
+
+        $product = ImportList::where('product_id',$id)->where('client_id',auth('client') -> user() ->id)->get();
+
+        if(count($product)<0){
+            return redirect()->route('client.product.index')->with(['error' => 'this product does not  exist ']);
+        }
+
+
+        return redirect()->route('client.product.importlist')->with(['success' => 'removed successfuly']);
+    }
+
     public function listproduct(){
-        return view('client.product.list');
+
+        $products = StoreProduct::all()->where('store_id',auth('client')-> user() -> stores);
+
+        return view('client.product.list',compact('products'));
     }
 
 

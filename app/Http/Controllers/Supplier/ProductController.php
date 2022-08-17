@@ -26,6 +26,7 @@ class ProductController extends Controller
 
         $products = Product::all()->where('company_id', auth()->user()->company_id);
 
+        //return $products;
         return view('supplier.product.index', compact('products'));
     }
 

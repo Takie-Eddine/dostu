@@ -110,12 +110,12 @@ class Product extends Model
     }
 
     public function reviews(){
-        return $this->hasMany(ProductReview::class,'id');
+        return $this->hasMany(ProductReview::class,'product_id');
     }
 
 
     public function importlist(){
-        return $this->belongsToMany(ImportList::class,'import_lists');
+        return $this->belongsToMany(ImportList::class);
     }
 
 

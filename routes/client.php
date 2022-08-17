@@ -65,6 +65,7 @@ Route::group([
             Route::get('/getproductsbycategory/{id}',[ProductController::class,'getcategory'])->name('client.product.index.getbycategory');
             Route::get('/getproductsbyrating/{id}',[ProductController::class,'getbyrate'])->name('client.product.index.getbyrate');
             Route::get('/getproductsbyprice/{id}',[ProductController::class,'getbyprice'])->name('client.product.index.getbyprice');
+            Route::get('/importlist/{id}', [ProductController::class,'destroy'])->name('client.product.importlist.destroy');
         });
 
 
