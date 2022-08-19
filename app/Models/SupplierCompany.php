@@ -25,8 +25,8 @@ class SupplierCompany extends Model
 
     }
 
-    public function  getPhotoAttribute($val){
-        return ($val !== null) ? asset('assets/images/brands/' . $val) : "";
+    public function  getLogoAttribute($val){
+        return ($val !== null) ? asset('assets/images/profile/' . $val) : "";
     }
 
 

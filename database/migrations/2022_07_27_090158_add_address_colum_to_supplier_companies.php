@@ -15,10 +15,10 @@ class AddAddressColumToSupplierCompanies extends Migration
     {
         Schema::table('supplier_companies', function (Blueprint $table) {
 
-            $table->integer('country')->unsigned()->after('address');
-            $table->string('city')->after('address');
-            $table->string('state')->after('address');
-            $table->integer('pincode')->after('address');
+            $table->string('country')->after('address');
+            $table->string('city')->after('country');
+            $table->string('state')->after('city');
+            $table->integer('pincode')->after('state');
 
 
             $table->foreign('country')

@@ -15,9 +15,10 @@ class ProfileController extends Controller
 {
     public function profile(){
 
-        $data='';
+        //$data='';
         $data = auth()->user()->companies()->get();
 
+        //return $data;
 
             return view('supplier.profile.profile',compact('data'));
 
@@ -26,18 +27,22 @@ class ProfileController extends Controller
 
     public function store(ProfileRequest $request){
 
+        //return $request;
+
         try{
 
             DB::beginTransaction();
             $fileName = "";
-        if ($request->has('logo')) {
+            if ($request->has('logo')) {
 
-            $fileName = uploadImage('profile', $request->logo);
-        }
+                $fileName = uploadImage('profile', $request->logo);
+
+            }
             $company = SupplierCompany::create($request->except('_token','logo'));
 
             $company->logo = $fileName ;
             $company->save();
+
 
             $supplier = Supplier::find(auth('supplier')->user()->id);
 

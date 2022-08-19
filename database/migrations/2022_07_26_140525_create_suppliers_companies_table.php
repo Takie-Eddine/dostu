@@ -21,10 +21,10 @@ class CreateSuppliersCompaniesTable extends Migration
             $table->string('address');
             $table->string('website')->nullable();
             $table->string('logo')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(0);
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('twiter')->nullable();
+            $table->string('twitter')->nullable();
             $table->string('youtube')->nullable();
             $table->string('telegram')->nullable();
             $table->string('linkedin')->nullable();

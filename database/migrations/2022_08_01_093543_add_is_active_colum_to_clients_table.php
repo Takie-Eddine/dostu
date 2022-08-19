@@ -14,7 +14,7 @@ class AddIsActiveColumToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->unsignedTinyInteger('status')->default(0)->after('store_mobile');
+            $table->unsignedTinyInteger('status')->default(0)->after('email');
         });
     }
 

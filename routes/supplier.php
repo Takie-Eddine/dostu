@@ -75,11 +75,23 @@ Route::group([
             Route::get('/', [ProductController::class, 'index'])->name('supplier.product.index');
             Route::get('create', [ProductController::class, 'create'])->name('supplier.product.create');
             Route::post('store', [ProductController::class, 'store'])->name('supplier.product.store');
-            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('supplier.branproductds.edit');
+            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('supplier.product.edit');
             Route::post('update/{id}', [ProductController::class, 'update'])->name('supplier.product.update');
             Route::get('delete/{id}', [ProductController::class, 'destroy'])->name('supplier.product.delete');
             Route::get('view/{id}', [ProductController::class, 'view'])->name('supplier.product.view');
+            Route::get('deleteimage/{id}',[ProductController::class, 'deleteimage'])->name('supplier.product.edit.deleteimage');
 
+        });
+
+
+
+
+        Route::get('test', function(){
+            return view('supplier.test');
+        });
+
+        Route::post('test', function(){
+            return view('supplier.test');
         });
 
 

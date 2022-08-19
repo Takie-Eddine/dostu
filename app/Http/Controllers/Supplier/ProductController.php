@@ -36,6 +36,8 @@ class ProductController extends Controller
         $data = [];
 
         $data['categories'] = Category::active()->get();
+
+
         $data['options'] = Option::all();
         $data['attributes'] = Attribute::all();
         $data['tags'] = Tag::all();
@@ -45,9 +47,6 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
-        // foreach ($request->options as $option) {
-        //     return $option;
-        // }
 
         try {
 
@@ -117,17 +116,67 @@ class ProductController extends Controller
         }
     }
 
-    public function edit()
-    {
+    public function edit($id){
+
+        $data = [];
+        $data['categories'] = Category::active()->get();
+        $data['product'] = Product::find($id);
+        $data['options'] = Option::all();
+        $data['attributes'] = Attribute::all();
+        $data['tags'] = Tag::all();
+
+
+        // return $data['product'] ->options;
+
+
+
+        if(!$data['product']){
+
+            return redirect()->route('supplier.product.index')->with(['error' => 'this product does not exist']);
+        }
+
+
+        return view('supplier.product.edit',$data);
+
     }
 
 
-    public function update()
-    {
+    public function update(Request $request , $id){
+
+        return $request;
+
     }
 
 
-    public function view()
-    {
+    public function deleteimage($id){
+
+        try{
+            $image = Media::find($id);
+
+            if (!$image) {
+                return redirect()->route('supplier.product.index')->with(['error' => 'this photo does not exist']);
+            }
+
+            $image->delete();
+
+            return redirect()->back()->with(['success' => 'delete with success']);
+
+        }catch(Exception $ex){
+            return redirect()->route('supplier.product.index')->with(['error' => 'there is a problem']);
+        }
+
+    }
+
+
+    public function view($id){
+        $product = Product::find($id);
+
+        if(!$product){
+
+            return redirect()->route('supplier.product.index')->with(['error' => 'this product does not exist']);
+        }
+        //return $product -> images;
+
+        return view('supplier.product.view',compact('product'));
     }
 }

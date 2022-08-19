@@ -366,8 +366,7 @@
                                                                         for="{{$plan -> id}}">
                                                                         <span
                                                                             class="custom-option-item-title h3 fw-bolder">{{$plan -> name}}</span>
-                                                                        <span class="d-block m-75">A simple start for
-                                                                            everyone</span>
+                                                                        <span class="d-block m-75"></span>
                                                                         <span class="plan-price">
                                                                             <sup class="font-medium-1 fw-bold text-primary">$</sup>
                                                                             <span
