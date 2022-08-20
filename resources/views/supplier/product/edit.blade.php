@@ -44,7 +44,7 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="{{ route('supplier.product.index') }}">Products</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Edit Product</a>
+                                    <li class="breadcrumb-item"><a >Edit Product</a>
                                     </li>
 
                                 </ol>
@@ -71,7 +71,7 @@
                 <form action="{{ route('supplier.product.update',$product->id) }}" method="POST" enctype="multipart/form-data" name="registration">
                     @csrf
 
-
+                    <input name="id" value="{{$product -> id}}" type="hidden">
 
 
                     <section class="modern-horizontal-wizard">
@@ -149,7 +149,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <input type="hidden" name="description" value="{{$product->description}}">
+
                                         {{-- <div class="mb-1 form-password-toggle col-md-12">
 
                                             <label class="form-label" for="description">Description</label>
@@ -159,10 +159,10 @@
                                             @enderror
                                         </div> --}}
                                         <label class="form-label">Description</label>
-                                        <div id="blog-editor-wrapper">
+                                        <div id="editorcontents" name="editorcontents">
                                             <div id="blog-editor-container">
-                                                <div class="editor">
-                                                    <textarea name="description" class="form-control" >{{($product->description)}}</textarea>
+                                                <div class="">
+                                                    <textarea name="description" id="description" class="form-control" >{!!($product->description)!!}</textarea>
                                                 </div>
                                             </div>
                                             @error('description')
@@ -194,11 +194,11 @@
                                                 <label class="form-label" for="categories">Category</label>
                                                 <select name="categories[]" class="select2 form-select" multiple="multiple" id="default-select-multi">
                                                     @if ($categories && $categories->count() > 0 && $product-> categories && count($product-> categories)>0)
-                                                        @foreach ($product-> categories as $category)
+                                                        {{-- @foreach ($product-> categories as $category)
                                                             <option value="{{$category->id}}"  selected >{{$category->name}}</option>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
+                                                            <option value="{{ $category->id }}" {{in_array($category->id,$product->categories->pluck('id')->toArray())? 'selected' : null }}>{{ $category->name }}
                                                             </option>
                                                         @endforeach
                                                     @endif
@@ -217,11 +217,11 @@
                                                 <select name="tags[]" class="select2 form-select" multiple="multiple"
                                                     id="default-select-multi1">
                                                     @if ($tags && $tags->count() > 0 && $product-> tags && count($product-> tags)>0)
-                                                        @foreach ($product-> tags as $tag)
+                                                        {{-- @foreach ($product-> tags as $tag)
                                                         <option value="{{$tag->id}}" selected >{{$tag->name}}</option>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                         @foreach ($tags as $tag)
-                                                            <option value="{{ $tag->id }}">{{ $tag->name }}
+                                                            <option value="{{ $tag->id }} "  {{in_array($tag->id,$product->tags->pluck('id')->toArray())? 'selected' : null }}>{{ $tag->name }}
                                                             </option>
                                                         @endforeach
                                                     @endif
@@ -236,14 +236,14 @@
 
                                     </div>
                                     <div class="row">
-                                        {{-- <div class="mb-1 col-md-6">
+                                        <div class="mb-1 col-md-6">
                                             <label class="form-label" for="price">Price</label>
                                             <input type="text" id="price" name="price" value="{{$product->price}}"
                                                 class="form-control" placeholder="20.00" />
                                             @error('price')
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
-                                        </div> --}}
+                                        </div>
                                         {{-- <div class="mb-1 col-md-6">
                                             <label class="form-label" for="selling_price">Selling Price</label>
                                             <input type="text" id="selling_price" name="selling_price"
@@ -367,7 +367,7 @@
                                                             </div>
                                                             <div class="mb-1 col-md-12">
                                                                 <label class="form-label" for="photo">Images</label>
-                                                                <input type="file" id="photo" name="photo[]" value=""class="form-control" placeholder="upload file" multiple="multiple" />
+                                                                <input type="file" id="photo" name="photo[]"  class="form-control" placeholder="upload file" multiple="multiple" />
                                                                 @error('photo')
                                                                     <span class="text-danger"> {{ $message }}</span>
                                                                 @enderror
@@ -430,7 +430,7 @@
 <script src="{{asset('app-assets/js/scripts/pages/page-blog-edit.js')}}"></script>
 
 
-    <script>
+<script>
         $(function(){
 
             $("#image").fileinput({
@@ -448,42 +448,8 @@
 
 
         });
-    </script>
+</script>
 
-    <script>
-$(function() {
-
-    $("form[name='registration']").validate({
-    // Specify validation rules
-        rules: {
-
-            name: "required",
-            lastname: "required",
-            email: {
-                required: true,
-                email: true
-            },
-            password: {
-                required: true,
-                minlength: 5
-            }
-        },
-
-        messages: {
-            firstname: "Please enter your firstname",
-            lastname: "Please enter your lastname",
-            password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long"
-            },
-            email: "Please enter a valid email address"
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
-});
-    </script>
 
 
 

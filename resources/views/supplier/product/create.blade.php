@@ -119,9 +119,9 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="mb-1 form-password-toggle col-md-12">
-                                            <label class="form-label" for="description">Description</label>
-                                            <textarea class="form-control" id="description1" rows="1" placeholder="description" name="description" value="{{old('description')}}"></textarea>
+                                        <div >
+                                            <label  for="description">Description</label>
+                                            <textarea class="form-control " id="description"  rows="5"  name="description" value="">{!!old('description')!!}</textarea>
                                             @error('description')
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
@@ -130,6 +130,7 @@
 
 
                                     </div>
+
                                     <div class="row">
                                         <div class="mb-1 form-password-toggle col-md-6">
                                             <label class="form-label" for="slug">Slug</label>
@@ -148,6 +149,8 @@
                                             @enderror
                                         </div>
                                     </div>
+
+
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn btn-outline-secondary btn-prev" disabled>
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -355,15 +358,13 @@
     <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-select2.js') }}"></script>
 
-    <script src="{{ asset('app-assets/vendors/js/file-uploaders/dropzone.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-file-uploader.js') }}"></script>
 
     <script src="{{ asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-repeater.js') }}"></script>
 
     <script>
-        $(function(){
-
+        $(document).ready(function() {
             $("#image").fileinput({
 
                 theme:'fas',
@@ -377,46 +378,7 @@
 
             });
 
-
         });
     </script>
-
-    <script>
-$(function() {
-
-    $("form[name='registration']").validate({
-    // Specify validation rules
-        rules: {
-
-            name: "required",
-            lastname: "required",
-            email: {
-                required: true,
-                email: true
-            },
-            password: {
-                required: true,
-                minlength: 5
-            }
-        },
-
-        messages: {
-            firstname: "Please enter your firstname",
-            lastname: "Please enter your lastname",
-            password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long"
-            },
-            email: "Please enter a valid email address"
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
-});
-    </script>
-
-
-
 
 @endsection

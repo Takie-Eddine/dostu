@@ -74,8 +74,14 @@
 
                                             <div class="col-md-12 col-12">
                                                 <div class="mb-2">
-                                                    <label class="form-label" for="blog-edit-title">Title</label>
-                                                    <input type="text" id="blog-edit-title" class="form-control" value="{{$product->name}}" name="name" disabled />
+
+                                                    <hr>
+                                                    {{-- <label class="form-label" for="blog-edit-title">Title</label> --}}
+                                                    <h5>Title</h5>
+                                                    {{-- <input type="text" id="blog-edit-title" class="form-control" value="{{$product->name}}" name="name" disabled /> --}}
+                                                    <div>
+                                                        <span>{{$product->name}}</span>
+                                                    </div>
                                                 </div>
                                                 @error('name')
                                                     <span class="text-danger"> {{ $message }}</span>
@@ -84,11 +90,13 @@
 
                                             <div class="col-12">
                                                 <div class="mb-2">
-                                                    <label class="form-label">Description</label>
+                                                    {{-- <label class="form-label">Description</label> --}}
+                                                    <h5>Description</h5>
                                                     <div id="blog-editor-wrapper">
                                                         <div id="blog-editor-container">
-                                                            <div class="editor">
-                                                                <textarea  readonly disabled>{{($product->description)}}</textarea>
+                                                            <div class="">
+                                                                {!! html_entity_decode($product->description)!!}
+
                                                             </div>
                                                         </div>
                                                         @error('description')
@@ -100,7 +108,7 @@
                                             <div class="col-12 mb-2">
                                                 <div class="col-md-12 col-12">
                                                     <div class="mb-2">
-                                                        <label class="form-label" for="blog-edit-category">Tags</label>
+                                                        {{-- <label class="form-label" for="blog-edit-category">Tags</label>
                                                         @if ($product-> tags && count($product-> tags)>0)
 
                                                             <select id="blog-edit-tag" class="select2 form-select" name="tags[]" disabled multiple>
@@ -112,11 +120,17 @@
                                                         @endif
                                                         @error('tags.0')
                                                             <span class="text-danger"> {{ $message }}</span>
-                                                        @enderror
+                                                        @enderror --}}
 
+                                                        <h5>Tags</h5>
+                                                            @if ($product-> tags && count($product-> tags)>0)
+                                                                @foreach ($product-> tags as $tag)
+                                                                    <span>{{$tag->name}}</span>
+                                                                @endforeach
+                                                            @endif
                                                     </div>
                                                     <div class="mb-2">
-                                                        <label class="form-label" for="blog-edit-category">Categories</label>
+                                                        {{-- <label class="form-label" for="blog-edit-category">Categories</label>
                                                         @if ($product-> categories && count($product-> categories)>0)
 
                                                             <select id="blog-edit-category" class="select2 form-select" name="categories[]"disabled multiple>
@@ -128,8 +142,13 @@
                                                         @endif
                                                         @error('categories.0')
                                                             <span class="text-danger"> {{ $message }}</span>
-                                                        @enderror
-
+                                                        @enderror --}}
+                                                        <h5>Categories</h5>
+                                                        @if ($product-> categories && count($product-> categories)>0)
+                                                        @foreach ($product-> categories as $category)
+                                                                <span>{{$category->name }}</span>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,6 +166,7 @@
                                         <div class="col-12 mb-2">
                                             <div class="border rounded p-2">
                                                 <h4 class="mb-1">Images</h4>
+                                                <hr>
                                                 <div class="d-flex flex-column flex-md-row">
                                                     <div class="featured-info">
                                                         <div class="row">
@@ -164,21 +184,29 @@
                                             </div>
                                             <div class="border rounded p-2">
                                                 <h4 class="mb-1">Details</h4>
-                                                <div class="d-flex flex-column flex-md-row">
+                                                <hr>
+                                                <div class="">
                                                     <div class="row">
                                                         <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="price">Price</label>
+                                                            {{-- <label class="form-label" for="price">Price</label>
                                                             <input type="text" id="price" name="price" value="${{$product->price}}"
                                                                 class="form-control" disabled  />
                                                             @error('price')
                                                                 <span class="text-danger"> {{ $message }}</span>
-                                                            @enderror
+                                                            @enderror --}}
+                                                            <div>
+                                                                <h5>Price</h5>
+                                                            </div>
+
+                                                            <div>
+                                                                <label> ${{$product->price}}</label>
+                                                            </div>
                                                         </div>
 
 
                                                     </div>
                                                 </div>
-                                                <hr>
+
                                                 <div>
 
                                                 </div>
@@ -206,6 +234,8 @@
 <script src="{{asset('app-assets/vendors/js/editors/quill/highlight.min.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/editors/quill/quill.min.js')}}"></script>
 <script src="{{asset('app-assets/js/scripts/pages/page-blog-edit.js')}}"></script>
+
+
 
 @endsection
 

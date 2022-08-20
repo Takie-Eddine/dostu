@@ -27,26 +27,11 @@ $(function () {
   });
 
   // Multiple Files
-
   multipleFiles.dropzone({
-
     paramName: 'file', // The name that will be used to transfer the file
-    maxFilesize: 5, // MB
-    clickable: true,
-    addRemoveLinks: true,
-    acceptedFiles: 'image/*',
-    dictFallbackMessage: " Your browser does not support the multi-image and drag-and-drop feature",
-                dictInvalidFileType: "You cannot upload this type of file ",
-                dictCancelUpload: "Cancel upload",
-                dictCancelUploadConfirmation: "Are you sure you want to cancel the upload of the files?",
-                dictRemoveFile: "delete picture",
-                dictMaxFilesExceeded: "You cannot raise more than this number.",
-                headers: {
-                    'X-CSRF-TOKEN':
-                        "{{ csrf_token() }}"
-                }
-
-});
+    maxFilesize: 0.5, // MB
+    clickable: true
+  });
 
   // Use Button To Select Files
   buttonSelect.dropzone({

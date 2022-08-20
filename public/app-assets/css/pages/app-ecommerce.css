@@ -206,7 +206,7 @@
   padding: 1rem; }
 
 .ecommerce-application .list-view {
-  /* display: grid; */
+  display: grid;
   grid-template-columns: 1fr; }
 
 .ecommerce-application .list-view .ecommerce-card {

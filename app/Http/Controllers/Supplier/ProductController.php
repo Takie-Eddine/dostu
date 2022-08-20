@@ -47,6 +47,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
+        //return $request;
+
 
         try {
 
@@ -141,10 +143,63 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request , $id){
+    public function update(ProductRequest $request , $id){
 
-        return $request;
+        try{
 
+
+            $product = Product::find($id);
+
+            if(!$product){
+                return redirect()->route('supplier.product.index')->with(['error' => 'this product does not exist']);
+            }
+
+            DB::beginTransaction();
+
+                if (!$request->has('is_active'))
+                    $request->request->add(['is_active' => 0]);
+                else
+                    $request->request->add(['is_active' => 1]);
+
+                if (!$request->has('in_stock'))
+                    $request->request->add(['in_stock' => 0]);
+                else
+                    $request->request->add(['in_stock' => 1]);
+
+
+                $product->update($request->all());
+
+                $product->name = $request->name;
+                $product->save();
+
+
+
+                $product->categories()->sync($request->categories);
+                $product->tags()->sync($request->tags);
+                $product->options()->sync($request->options);
+
+
+
+                if ($request->photo && count($request->photo) > 0) {
+
+                    foreach ($request->photo as $photo) {
+
+                        $file_name = uploadImage('products', $photo);
+
+                        Media::create([
+
+                            'product_id' => $product->id,
+                            'photo' => $file_name,
+                        ]);
+                    }
+                }
+
+            DB::commit();
+
+            return redirect()->route('supplier.product.index')->with(['success' => 'update with success']);
+        }catch(Exception $ex){
+            DB::rollback();
+        }
     }
 
 
@@ -170,6 +225,7 @@ class ProductController extends Controller
 
     public function view($id){
         $product = Product::find($id);
+
 
         if(!$product){
 

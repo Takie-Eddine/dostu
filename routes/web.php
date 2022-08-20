@@ -36,4 +36,11 @@ Route::post('/details', [HomeController::class,'details'])->name('details');
 Route::post('store',[HomeController::class,'storeClient'])->name('storeclient');
 
 
+Route::get('/test', function(){
+    return view('supplier.test.index');
+});
+
+Route::post('test', [HomeController::class,'testpost'])->name('testst.post');
+
+
 });

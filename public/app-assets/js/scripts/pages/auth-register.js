@@ -87,49 +87,7 @@ $(function () {
           },
           addCard: {
             required: true
-          },
-          card_name: {
-            required: true
-          },
-          image: {
-            required: true
-          },
-          store_name: {
-            required: true
-          },
-          store_email: {
-            required: true
-          },
-          store_mobile: {
-            required: true
-          },
-          first_name: {
-            required: true
-          },
-          last_name: {
-            required: true
-          },
-          mobile: {
-            required: true
-          },
-          email: {
-            email: true
-          },
-          username: {
-            required: true
-          },
-          plan: {
-            required: true
-          },
-          planse: {
-            required: true
-          },
-          card_exp: {
-            required: true
-          },
-          cvv: {
-            required: true
-          },
+          }
         },
         messages: {
           password: {
@@ -146,10 +104,17 @@ $(function () {
     });
 
     $(registerMultiStepsWizard)
-    .find('.btn-next')
-    .on('click', function () {
-        numberedStepper.next();
-    });
+      .find('.btn-next')
+      .each(function () {
+        $(this).on('click', function (e) {
+          var isValid = $(this).parent().siblings('form').valid();
+          if (isValid) {
+            numberedStepper.next();
+          } else {
+            e.preventDefault();
+          }
+        });
+      });
 
     $(registerMultiStepsWizard)
       .find('.btn-prev')

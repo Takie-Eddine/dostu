@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|max:300',
             'company_id'=>'exists:supplier_companies,id',
-            'slug' => 'required|unique:products,slug',
+            'slug' => 'required|unique:products,slug,'.$this -> id,
             'description' => 'required|min:150',
             //'title' => 'required|max:500',
             'categories' => 'array|min:1', //[]
@@ -35,7 +35,8 @@ class ProductRequest extends FormRequest
             'sku' => 'nullable|min:3|max:10',
             'price' => 'required|min:0|numeric',
             'qty' => 'required',
-            'photo' => 'required|array|min:1',
+            'photo' => 'required_without:id|array|min:1|mimes:jpg,jpeg,png'
+
             //'photo.*' => 'required|string',
 
         ];

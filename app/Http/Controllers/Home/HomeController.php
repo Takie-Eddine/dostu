@@ -98,4 +98,13 @@ class HomeController extends Controller
         // }
     }
 
+
+
+
+    public function testpost(Request $request){
+
+        return $request;
+
+    }
+
 }

@@ -86,13 +86,7 @@ Route::group([
 
 
 
-        Route::get('test', function(){
-            return view('supplier.test');
-        });
 
-        Route::post('test', function(){
-            return view('supplier.test');
-        });
 
 
         ////////////////////////////////////////////////PRODUCT/////////////////////////////////////////////////////////////////
