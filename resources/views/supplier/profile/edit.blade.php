@@ -1,6 +1,6 @@
 @extends('supplier_layout.supplier')
 
-@section('title', 'Profile')
+@section('title', 'Edit Profile')
 
 @section('style')
 
@@ -27,7 +27,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('supplier.supplier')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="">Profile</a>
+                                <li class="breadcrumb-item"><a href="{{route('supplier.profile.profile')}}">Profile </a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="">Edit </a>
                                 </li>
 
                             </ol>
@@ -47,7 +49,7 @@
 
             <!-- Modern Horizontal Wizard -->
 
-            <form action="{{route('supplier.profile.create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('supplier.profile.update',$profile->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <section class="modern-horizontal-wizard">
                             <div class="bs-stepper wizard-modern modern-wizard-example">
@@ -103,12 +105,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="company_name">Company Name</label>
-                                                <input type="text" id="company_name" name="company_name"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->company_name }}" disabled
+                                                <input type="text" id="company_name" name="company_name" value="{{$profile->company_name}}"
+                                                {{-- @if ($data->count()>0 )
+                                                    value="{{$data[0]->company_name }}"
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="company_name" />
                                                 @error('company_name')
@@ -118,12 +120,12 @@
 
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="modern-email">Email</label>
-                                                <input type="email" id="modern-email" name="email"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->email}} " disabled
+                                                <input type="email" id="modern-email" name="email" value="{{$profile->email}}"
+                                                {{-- @if ($data->count()>0 )
+                                                    value="{{$data[0]->email}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="company_name@email.com" aria-label="john.doe" />
                                                 @error('email')
@@ -135,20 +137,14 @@
                                         <div class="row">
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="description">Description</label>
-                                                <div class="">
-                                                    @if ($data->count()>0 )
-                                                        <textarea name="description" id="description" class="form-control" disabled >{!!($data[0]->description)!!}</textarea>
-                                                    @else
-                                                        <textarea name="description" id="description" class="form-control" ></textarea>
-                                                    @endif
-                                                </div>
-                                                {{-- <input type="text" id="description" name="description"
-                                                @if ($data->count()>0 )
+                                                <textarea name="description" id="description" class="form-control" >{!!($profile->description)!!}</textarea>
+                                                {{-- <input type="text" id="description" name="description" --}}
+                                                {{-- @if ($data->count()>0 )
                                                     value="{{$data[0]->description}} "
                                                 @else
                                                     value=""
-                                                @endif
-                                                class="form-control" placeholder="description" /> --}}
+                                                @endif --}}
+                                                {{-- class="form-control" placeholder="description" /> --}}
                                                 @error('description')
                                                 <span class="text-danger"> {{$message}}</span>
                                                 @enderror
@@ -156,12 +152,12 @@
 
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="mobile">Mobile</label>
-                                                <input type="tel" id="mobile" name="mobile"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->mobile}} " disabled
+                                                <input type="tel" id="mobile" name="mobile" value="{{$profile->mobile}}"
+                                                {{-- @if ($data->count()>0 )
+                                                    value="{{$data[0]->mobile}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
                                                 class="form-control" placeholder="+905362013698" />
                                                 @error('mobile')
                                                 <span class="text-danger"> {{$message}}</span>
@@ -171,12 +167,12 @@
                                         <div class="row">
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="website">WebSite</label>
-                                                <input type="text" id="website" name="website"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->website}} " disabled
+                                                <input type="text" id="website" name="website" value="{{$profile->website}}"
+                                                {{-- @if ($data->count()>0 )
+                                                    value="{{$data[0]->website}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
                                                 class="form-control" placeholder="www.exemple.com" />
                                                 @error('website')
                                                 <span class="text-danger"> {{$message}}</span>
@@ -184,12 +180,12 @@
                                             </div>
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="logo">Logo</label>
-                                                <br>
-                                                @if ($data->count()>0 )
-                                                    <img src="{{$data[0]->logo}}" alt="img-placeholder" style="height : 100px; width : 100px" alt="Image" class="img-circle elevation-2" />
+                                                <input type="file" id="logo" name="logo" value="" class="form-control" placeholder="upload image" />
+                                                {{-- @if ($data->count()>0 )
+                                                    <img src="{{$data[0]->logo}}" alt="img-placeholder" style="height : 50px; width : 50px" alt="Image" class="img-circle elevation-2" />
                                                 @else
                                                     <input type="file" id="logo" name="logo" value="" class="form-control" placeholder="upload image" />
-                                                @endif
+                                                @endif --}}
 
                                                 @error('logo')
                                                 <span class="text-danger"> {{$message}}</span>
@@ -216,12 +212,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="country">Country</label>
-                                                <input type="text" id="country"
-                                                @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->country}} " disabled
+                                                <input type="text" id="country" value="{{$profile->country}}"
+                                                {{-- @if ($data && $data->count()>0)
+                                                    value="{{$data[0]->country}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 name="country" class="form-control" placeholder="Turkey" />
                                                 {{-- <select class="form-select">
@@ -237,12 +233,12 @@
                                             </div>
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="city">City</label>
-                                                <input type="text" id="city" name="city"
-                                                @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->city}} " disabled
+                                                <input type="text" id="city" name="city" value="{{$profile->city}}"
+                                                {{-- @if ($data && $data->count()>0)
+                                                    value="{{$data[0]->city}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="Istanbul" />
                                                 @error('city')
@@ -254,12 +250,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="state">District</label>
-                                                <input type="text" id="state" name="state"
-                                                @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->state}} " disabled
+                                                <input type="text" id="state" name="state" value="{{$profile->state}}"
+                                                {{-- @if ($data && $data->count()>0)
+                                                    value="{{$data[0]->state}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="Fatih" />
                                                 @error('state')
@@ -268,12 +264,12 @@
                                             </div>
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="pincode">Pincode</label>
-                                                <input type="text" id="pincode" name="pincode"
-                                                @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->pincode}} " disabled
+                                                <input type="text" id="pincode" name="pincode" value="{{$profile->pincode}}"
+                                                {{-- @if ($data && $data->count()>0)
+                                                    value="{{$data[0]->pincode}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="658921" />
                                                 @error('pincode')
@@ -285,12 +281,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-12">
                                                 <label class="form-label" for="address">Address</label>
-                                                <input type="text" id="address" name="address"
-                                                @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->address}} " disabled
+                                                <input type="text" id="address" name="address" value="{{$profile->address}}"
+                                                {{-- @if ($data && $data->count()>0)
+                                                    value="{{$data[0]->address}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="98  Borough bridge Road, Birmingham" />
                                                 @error('address')
@@ -319,12 +315,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="twitter">Twitter</label>
-                                                <input type="text" id="twitter" name="twitter"
-                                                @if ($data->count()>0  && $data[0]->twitter && $data[0]->twitter->count()>0  )
-                                                    value="{{$data[0]->twitter}} " disabled
+                                                <input type="text" id="twitter" name="twitter" value="{{$profile->twitter}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->twitter && $data[0]->twitter->count()>0  )
+                                                    value="{{$data[0]->twitter}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="https://twitter.com/abc" />
                                                 @error('twitter')
@@ -333,12 +329,12 @@
                                             </div>
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="facebook">Facebook</label>
-                                                <input type="text" id="facebook" name="facebook"
-                                                @if ($data->count()>0  && $data[0]->facebook && $data[0]->facebook->count()>0)
-                                                    value="{{$data[0]->facebook}} " disabled
+                                                <input type="text" id="facebook" name="facebook" value="{{$profile->facebook}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->facebook && $data[0]->facebook->count()>0)
+                                                    value="{{$data[0]->facebook}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="https://facebook.com/abc" />
                                                 @error('facebook')
@@ -349,12 +345,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="youtube">Youtube</label>
-                                                <input type="text" id="youtube" name="youtube"
-                                                @if ($data->count()>0  && $data[0]->youtube && $data[0]->youtube->count()>0)
-                                                    value="{{$data[0]->youtube}} " disabled
+                                                <input type="text" id="youtube" name="youtube" value="{{$profile->youtube}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->youtube && $data[0]->youtube->count()>0)
+                                                    value="{{$data[0]->youtube}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="https://youtube.com/abc" />
                                                 @error('youtube')
@@ -363,12 +359,12 @@
                                             </div>
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="linkedin">Linkedin</label>
-                                                <input type="text" id="linkedin" name="linkedin"
-                                                @if ($data->count()>0  && $data[0]->linkedin && $data[0]->linkedin->count()>0)
-                                                    value="{{$data[0]->linkedin}} " disabled
+                                                <input type="text" id="linkedin" name="linkedin" value="{{$profile->linkedin}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->linkedin && $data[0]->linkedin->count()>0)
+                                                    value="{{$data[0]->linkedin}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
 
                                                 class="form-control" placeholder="https://linkedin.com/abc" />
                                                 @error('linkedin')
@@ -379,12 +375,12 @@
                                         <div class="row">
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="instagram">Instagram</label>
-                                                <input type="text" id="instagram" name="instagram"
-                                                @if ($data->count()>0  && $data[0]->instagram && $data[0]->instagram->count()>0)
-                                                    value="{{$data[0]->instagram}} " disabled
+                                                <input type="text" id="instagram" name="instagram" value="{{$profile->instagram}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->instagram && $data[0]->instagram->count()>0)
+                                                    value="{{$data[0]->instagram}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
                                                 class="form-control" placeholder="https://instagram.com/abc" />
                                                 @error('instagram')
                                                 <span class="text-danger"> {{$message}}</span>
@@ -392,12 +388,12 @@
                                             </div>
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="telegram">Telegram</label>
-                                                <input type="text" id="telegram" name="telegram"
-                                                @if ($data->count()>0  && $data[0]->telegram  && $data[0]->telegram->count()>0)
-                                                    value="{{$data[0]->telegram}} " disabled
+                                                <input type="text" id="telegram" name="telegram" value="{{$profile->telegram}}"
+                                                {{-- @if ($data->count()>0  && $data[0]->telegram  && $data[0]->telegram->count()>0)
+                                                    value="{{$data[0]->telegram}} "
                                                 @else
                                                     value=""
-                                                @endif
+                                                @endif --}}
                                                 class="form-control" placeholder="https://telegram.com/abc" />
                                                 @error('telegram')
                                                 <span class="text-danger"> {{$message}}</span>
@@ -406,25 +402,21 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
 
-                                            @if ($data->count()>0  && $data->count()>0)
+                                            {{-- @if ($data->count()>0  && $data->count()>0)
                                             <button type="button" class="btn btn-primary btn-prev">
                                                 <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
-                                            {{-- <button type="submit" class="btn btn-success btn-submit" disabled>Submit</button> --}}
-                                            <a href="{{route('supplier.profile.edit',$data[0]-> id)}}" class="btn btn-light btn-wishlist">
-                                                <i data-feather='edit'></i>
-                                                <span>Edit</span>
-                                            </a>
+                                            <button type="submit" class="btn btn-success btn-submit" disabled>Submit</button>
 
-                                            @else
+                                            @else --}}
                                             <button type="button" class="btn btn-primary btn-prev">
                                                 <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
                                             <button type="submit" class="btn btn-success btn-submit">Submit</button>
 
-                                            @endif
+                                            {{-- @endif --}}
 
                                         </div>
                                     </div>
@@ -454,13 +446,6 @@
 
     <script src="{{asset('app-assets/js/scripts/forms/form-wizard.js')}}"></script>
 
-
-
-@endsection
-
-
-
-@section('scripts')
 
 
 @endsection

@@ -11,8 +11,9 @@ use App\Http\Controllers\Client\ToolController;
 use App\Http\Controllers\Supplier\LoginController;
 use App\Http\Controllers\Supplier\ProductController;
 use App\Http\Controllers\Supplier\ProfileController;
+use App\Http\Controllers\Supplier\RolePermissionsController;
 use App\Http\Controllers\Supplier\SupplierController;
-
+use App\Http\Controllers\Supplier\UsersController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -60,7 +61,8 @@ Route::group([
 
             Route::get('/', [ProfileController::class, 'profile'])->name('supplier.profile.profile');
             Route::post('/create', [ProfileController::class, 'store'])->name('supplier.profile.create');
-            Route::post('/update', [ProfileController::class, 'update'])->name('supplier.profile.update');
+            Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('supplier.profile.edit');
+            Route::post('/update/{id}', [ProfileController::class, 'update'])->name('supplier.profile.update');
         });
 
 
@@ -80,6 +82,42 @@ Route::group([
             Route::get('delete/{id}', [ProductController::class, 'destroy'])->name('supplier.product.delete');
             Route::get('view/{id}', [ProductController::class, 'view'])->name('supplier.product.view');
             Route::get('deleteimage/{id}',[ProductController::class, 'deleteimage'])->name('supplier.product.edit.deleteimage');
+            Route::get('delete/{id}',[ProductController::class, 'delete'])->name('supplier.product.delete');
+
+        });
+
+        ////////////////////////////////////////////////PRODUCT/////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////Manage/////////////////////////////////////////////////////////////////
+
+
+        Route::group(['prefix' => 'manage'], function () {
+
+
+             ////////////////////////////////////////////////Roles&Permission/////////////////////////////////////////////////////////////////
+            Route::group(['prefix' => 'roles-permission'], function () {
+                Route::get('/roles', [RolePermissionsController::class, 'role'])->name('supplier.manage.role.index');
+                Route::get('/permissions', [RolePermissionsController::class, 'permission'])->name('supplier.manage.permissions.index');
+
+            });
+
+             ////////////////////////////////////////////////Permission/////////////////////////////////////////////////////////////////
+
+
+
+             ////////////////////////////////////////////////Users/////////////////////////////////////////////////////////////////
+
+
+            Route::group(['prefix' => 'users'], function () {
+                Route::get('/', [UsersController::class, 'index'])->name('supplier.user.index');
+
+
+            });
+
+
+
+             ////////////////////////////////////////////////Users/////////////////////////////////////////////////////////////////
 
         });
 
@@ -87,9 +125,9 @@ Route::group([
 
 
 
+        ////////////////////////////////////////////////Manage/////////////////////////////////////////////////////////////////
 
 
-        ////////////////////////////////////////////////PRODUCT/////////////////////////////////////////////////////////////////
 
 
         //---------------------------LOGOUT------------------------//

@@ -378,6 +378,9 @@
 
             });
 
+            // $("#sku").onchange({
+            //     console.log($("#sku".val()));
+            // });
         });
     </script>
 

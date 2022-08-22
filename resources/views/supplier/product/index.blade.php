@@ -102,7 +102,8 @@
                                                                     class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">view</a>
 
 
-
+                                                                    <a href="{{route('supplier.product.delete',$product -> id)}}"
+                                                                        class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">delete</a>
 
                                                                 </div>
                                                     </th>

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Media;
 use App\Models\Option;
 use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Contracts\Cache\Store;
@@ -21,6 +22,12 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $supplier = Supplier::find(auth()->user()->id);
+
+        if ($supplier->company_id == null) {
+            $data = auth()->user()->companies()->get();
+            return redirect()->route('supplier.profile.profile',compact('data'))->with(['error' => 'Please Complete your information']);;
+        }
 
 
 
@@ -32,6 +39,13 @@ class ProductController extends Controller
 
     public function create()
     {
+
+        $supplier = Supplier::find(auth()->user()->id);
+
+        if ($supplier->company_id == null) {
+            $data = auth()->user()->companies()->get();
+            return redirect()->route('supplier.profile.profile',compact('data'))->with(['error' => 'Please Complete your information']);
+        }
 
         $data = [];
 
@@ -235,4 +249,24 @@ class ProductController extends Controller
 
         return view('supplier.product.view',compact('product'));
     }
+
+
+    public function delete($id){
+
+        $product = Product::find($id);
+        if(!$product){
+
+            return redirect()->route('supplier.product.index')->with(['error' => 'this product does not exist']);
+        }
+
+
+        $product -> delete();
+
+        return redirect()->back()->with(['success' => 'delete with success']);
+
+    }
+
+
+
+
 }
