@@ -44,7 +44,7 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="{{ route('supplier.product.index') }}">Products</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a >Edit Product</a>
+                                    <li class="breadcrumb-item active"><a >Edit </a>
                                     </li>
 
                                 </ol>

@@ -29,7 +29,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="{{route('supplier.profile.profile')}}">Profile </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="">Edit </a>
+                                <li class="breadcrumb-item"><a >Edit </a>
                                 </li>
 
                             </ol>

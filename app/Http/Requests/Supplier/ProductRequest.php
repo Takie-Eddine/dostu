@@ -32,11 +32,11 @@ class ProductRequest extends FormRequest
             'categories' => 'array|min:1', //[]
             'categories.*' => 'numeric|exists:categories,id',
             'tags' => 'nullable',
-            'sku' => 'nullable|min:3|max:10|unique:products,sku,',
+            'sku' => 'nullable|min:3|max:10|unique:products,sku,'.$this -> id,
             'price' => 'required|min:0|numeric',
             'qty' => 'required',
             //'photo' => 'required_without:id|array|min:1|mimes:jpg,jpeg,png'
-            'photo' => 'required|array|min:1',
+            'photo' => 'required_without:id|array|min:1',
             'photo.*' => 'mimes:jpg,jpeg,png',
 
         ];

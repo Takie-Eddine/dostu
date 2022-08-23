@@ -34,7 +34,9 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('supplier.supplier') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Add Product</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('supplier.product.index') }}">Products</a>
+                                    </li>
+                                    <li class="breadcrumb-item active"><a  >Add </a>
                                     </li>
 
                                 </ol>
