@@ -33,10 +33,10 @@
                 </li>
             {{-- @endcan --}}
 
-            {{-- @can('') --}}
-                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">complaints</span></a>
+            @can('complaints')
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.complaint.index')}}"><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">complaints</span></a>
                 </li>
-            {{-- @endcan --}}
+            @endcan
 
             @can('manage')
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='tool'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Manage</span></a>
@@ -67,9 +67,14 @@
                 </li>
             @endcan
 
-            {{-- @can('') --}}
+            @can('settings')
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Settings</span></a>
                     <ul class="menu-content">
+
+                        @can('account')
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.setting.profile')}}"><i data-feather='user'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Account</span></a>
+                        @endcan
+
                         @can('tags')
                             <li><a class="d-flex align-items-center" href=""><i data-feather='tag'></i><span class="menu-item text-truncate" data-i18n="Shop">tags</span></a>
                                 <ul>
@@ -106,7 +111,7 @@
 
                     </ul>
                 </li>
-            {{-- @endcan --}}
+            @endcan
 
 
         </ul>

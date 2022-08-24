@@ -3,7 +3,7 @@
 @section('title','Products')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
+{{-- <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/'.getFolder().'/tables/datatable/dataTables.bootstrap5.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/'.getFolder().'/tables/datatable/responsive.bootstrap5.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/'.getFolder().'/tables/datatable/buttons.bootstrap5.min.css')}}">
@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}"> --}}
 
 @endsection
 
@@ -128,7 +128,7 @@
 
 
 @section('scripts')
-    <script src="{{asset('app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
+    {{-- <script src="{{asset('app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js')}}"></script>
@@ -141,5 +141,5 @@
     <script src="{{asset('app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
-    <script src="{{asset('app-assets/js/scripts/tables/table-datatables-basic.js')}}"></script>
+    <script src="{{asset('app-assets/js/scripts/tables/table-datatables-basic.js')}}"></script> --}}
 @endsection
