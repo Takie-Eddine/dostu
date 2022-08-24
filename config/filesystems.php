@@ -56,12 +56,12 @@ return [
             'visibility' => 'public',
         ],
 
-        // 'suppliers' => [
-        //     'driver' => 'local',
-        //     'root' => public_path('assets/images/suppliers'),
-        //     'url' => env('APP_URL').'/storage',
-        //     'visibility' => 'public',
-        // ],
+        'suppliers' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/suppliers'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
 
 
         'clients' => [

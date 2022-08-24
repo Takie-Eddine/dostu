@@ -47,9 +47,63 @@ class UsersController extends Controller
 
 
 
+    public function edit($id){
+
+        $supplier = Supplier::find($id);
+        $roles = Role::get();
+
+        if (!$supplier) {
+            return redirect()->back()-> with(['error' => 'this user does not exist']);
+        }
+
+        return view('supplier.user.edit',compact('supplier','roles'));
+    }
 
 
 
+    public function update(SupplierRequest $request,$id){
+        //return $request;
+
+
+        $supplier = Supplier::find($id);
+
+        if (!$supplier) {
+            return redirect()->back()-> with(['error' => 'this user does not exist']);
+        }
+
+        $supplier->update($request->except('_token', 'id','password_confirmation'));
+
+        return redirect()->route('supplier.user.index')->with(['success' => 'updated with success']);
+    }
+
+    public function view($id){
+
+        $supplier = Supplier::find($id);
+        $roles = Role::get();
+
+        if (!$supplier) {
+            return redirect()->back()-> with(['error' => 'this user does not exist']);
+        }
+
+        return view('supplier.user.view',compact('supplier','roles'));
+
+    }
+
+
+    public function delete($id){
+
+        $supplier = Supplier::find($id);
+        if(!$supplier){
+
+            return redirect()->route('supplier.user.index')->with(['error' => 'this user does not exist']);
+        }
+
+
+        $supplier -> delete();
+
+        return redirect()->back()->with(['success' => 'delete with success']);
+
+    }
 
 
 

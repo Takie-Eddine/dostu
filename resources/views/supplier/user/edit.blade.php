@@ -55,48 +55,77 @@
                             <div class="card-body">
                                 @include('supplier.alerts.errors')
                                 @include('supplier.alerts.success')
-                                <form class="form" action="" method="POST">
+                                <form class="form" action="{{route('supplier.user.update',$supplier->id)}}" method="POST">
+                                    <input type="hidden" name="id" value="{{$supplier->id}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="first-name-column">First Name</label>
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" />
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" value="{{$supplier->first_name}}" />
                                             </div>
+                                            @error('first_name')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
-                                                <label class="form-label" for="last-name-column">Last Name</label>
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name" />
+                                                <label class="form-label" for="first-name-column">Last Name</label>
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="Last Name" name="last_name" value="{{$supplier->last_name}}" />
                                             </div>
+                                                @error('last_name')
+                                                    <span class="text-danger"> {{ $message }}</span>
+                                                @enderror
                                         </div>
 
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="email-id-column">Email</label>
-                                                <input type="email" id="email-id-column" class="form-control" name="email" placeholder="Email" />
+                                                <input type="email" id="email-id-column" class="form-control" name="email" placeholder="Email" value="{{$supplier->email}}"/>
                                             </div>
+                                            @error('email')
+                                                <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="company-column">Password</label>
-                                                <input type="password" id="password-column" class="form-control" name="password" placeholder="Password" />
+                                                <input type="password" id="password-column" class="form-control" value="{{$supplier->password}}" name="password" placeholder="Password" />
                                             </div>
+                                            @error('password')
+                                                    <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="company-column">Password Confirmation</label>
+                                                <input type="password" id="" class="form-control" value="{{$supplier->password}}" name="password_confirmation" placeholder="Confirm Password" />
+                                            </div>
+                                            @error('password')
+                                                    <span class="text-danger"> {{ $message }}</span>
+                                            @enderror
                                         </div>
 
 
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="country-floating">Role</label>
-                                                <select name="role" id="default-select-multi" multiple="multiple"  class="select2 form-select">
-                                                    <option value=""></option>
-                                                </select>
+                                                <select name="role_id" class="form-select" id="selectDefault">
+                                                    @if ($roles && $roles->count()>0)
+                                                        @foreach ($roles as $role)
+                                                            <option value="{{$role->id}}" @if($role -> id == $supplier -> role_id) selected @endif>{{$role->name}}</option>
+                                                        @endforeach
+                                                    @endif
 
+                                                </select>
                                             </div>
+                                            @error('role')
+                                                    <span class="text-danger"> {{ $message }}</span>
+                                                @enderror
                                         </div>
                                         <div class="col-12">
-                                            <button type="reset" class="btn btn-primary me-1">Submit</button>
+                                            <button type="submit" class="btn btn-primary me-1">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                         </div>
                                     </div>
