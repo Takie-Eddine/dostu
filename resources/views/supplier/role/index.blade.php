@@ -1,6 +1,6 @@
 @extends('supplier_layout.supplier')
 
-@section('title', 'User')
+@section('title', 'Role & Permission')
 
 @section('style')
 
@@ -20,12 +20,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-start mb-0">User</h2>
+                        <h2 class="content-header-title float-start mb-0">Role & Permission</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('supplier.supplier')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Users
+                                <li class="breadcrumb-item active">Roles & Permissions
                                 </li>
                             </ol>
                         </div>
@@ -49,59 +49,34 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th>Role</th>
-                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Permission</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($suppliers && $suppliers->count()>0)
-                                        @foreach ($suppliers as $supplier)
+                                    @if ($roles && $roles->count()>0)
+                                        @foreach ($roles as $role)
                                         <tr>
                                             <td>
-                                                <span class="fw-bold">{{$supplier->id}}</span>
+                                                <span class="fw-bold">{{$role->id}}</span>
                                             </td>
                                             <td>
-                                                <span class="fw-bold">{{$supplier->first_name}}</span>
+                                                <span class="fw-bold">{{$role->name}}</span>
                                             </td>
                                             <td>
-                                                <span class="fw-bold">{{$supplier->last_name}}</span>
+                                                @foreach ($role-> permissions as $permission)
+                                                    <span class="fw-bold">{{$permission}} ,</span>
+                                                @endforeach
                                             </td>
-                                            <td>
-                                                <span class="fw-bold">{{$supplier->email}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-bold">{{$supplier->mobile}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-bold">{{$supplier->role->name}}</span>
-                                            </td>
-                                            <td>
-                                                <div class="avatar">
-                                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar pull-up my-0" title="Alberto Glotzbach">
-                                                        <img src="{{asset('assets/images/suppliers/' .$supplier->image)}}" alt="Avatar" height="50" width="50" />
-                                                    </div>
-                                                </div>
-                                            </td>
-
-
                                             <td>
                                                 <div class="btn-group" role="group"
                                                                     aria-label="Basic example">
-                                                                    <a href=""
+                                                                    <a href="{{route('supplier.manage.role-permissions.edit',$role->id)}}"
                                                                     class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">edit</a>
 
-
-                                                                    <a href=""
-                                                                    class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">view</a>
-
-
-                                                                    <a href=""
-                                                                        class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">delete</a>
+                                                                    {{-- <a href=""
+                                                                        class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">delete</a> --}}
 
                                                         </div>
                                             </td>

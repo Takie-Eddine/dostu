@@ -39,7 +39,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('supplier.supplier')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Product</a>
+                                <li class="breadcrumb-item active"><a >Products</a>
                                 </li>
 
                             </ol>
@@ -105,7 +105,7 @@
                                                                     <a href="{{route('supplier.product.delete',$product -> id)}}"
                                                                         class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">delete</a>
 
-                                                                </div>
+                                                        </div>
                                                     </th>
                                                 </tr>
                                             @endforeach

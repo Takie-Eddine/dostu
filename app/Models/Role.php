@@ -5,9 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Mindscms\Entrust\EntrustRole;
-
-class Role extends EntrustRole
+class Role extends Model
 {
-    protected $guarded = [];
+    use HasFactory;
+
+
+
+    public $timestamps = false;
+    protected $fillable = [
+        'name', 'permissions'   // json field
+    ];
+
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
+
+    public function getPermissionsAttribute($permissions)
+    {
+        return json_decode($permissions, true);
+    }
 }
