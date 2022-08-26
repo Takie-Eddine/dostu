@@ -55,12 +55,12 @@
                             <div class="card-body">
                                 @include('supplier.alerts.errors')
                                 @include('supplier.alerts.success')
-                                <form class="form" action="{{route('supplier.complaint.create')}}" method="POST">
+                                <form class="form" action="{{route('supplier.complaint.send')}}" method="POST">
 
                                     @csrf
 
-                                    <input type="hidden" name="store_id" value="{{$complaint->store_id}}">
-                                    <input type="hidden" name="product_id" value="{{$complaint->product_id}}">
+
+                                    <input type="hidden" name="admin_id" value="{{$admin->id}}">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">

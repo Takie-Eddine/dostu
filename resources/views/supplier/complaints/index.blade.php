@@ -49,7 +49,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Client Name</th>
+                                        {{-- <th>Store Name</th> --}}
                                         <th>Product Name</th>
                                         <th>Title</th>
                                         <th>Body</th>
@@ -57,42 +57,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @if ($suppliers && $suppliers->count()>0)
-                                        @foreach ($suppliers as $supplier) --}}
+                                    @if ($complaints && $complaints->count()>0)
+                                        @foreach ($complaints as $complaint)
                                         <tr>
                                             <td>
-                                                {{-- <span class="fw-bold">{{$supplier->id}}</span> --}}
+                                                <span class="fw-bold">{{$complaint->id}}</span>
+                                            </td>
+                                            {{-- <td>
+                                                <span class="fw-bold">{{$complaint->store->store_name}}</span>
+                                            </td> --}}
+                                            <td>
+                                                <span class="fw-bold">{{$complaint->product->name}}</span>
                                             </td>
                                             <td>
-                                                {{-- <span class="fw-bold">{{$supplier->first_name}}</span> --}}
+                                                <span class="fw-bold">{!!($complaint->body)!!}</span>
                                             </td>
                                             <td>
-                                                {{-- <span class="fw-bold">{{$supplier->last_name}}</span> --}}
+                                                <span class="fw-bold">{{$complaint->title}}</span>
                                             </td>
-                                            <td>
-                                                {{-- <span class="fw-bold">{{$supplier->email}}</span> --}}
-                                            </td>
-                                            <td>
-                                                {{-- <span class="fw-bold">{{$supplier->mobile}}</span> --}}
-                                            </td>
-
-
 
 
                                             <td>
                                                 <div class="btn-group" role="group"
                                                                     aria-label="Basic example">
-                                                                    {{-- <a href="{{route('supplier.complaint.respond',1)}}"
-                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">send</a> --}}
+                                                                    <a href="{{route('supplier.complaint.respond',$complaint->id)}}"
+                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">send</a>
 
 
-
+                                                                    <a href="{{route('supplier.complaint.view',$complaint->id)}}"
+                                                                        class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">view</a>
 
                                                         </div>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach
-                                    @endif --}}
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

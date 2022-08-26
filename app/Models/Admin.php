@@ -4,21 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Store extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
 
-    protected $guarded = [];
+    protected $table="admins";
 
+    protected $guarded=[];
 
+    public $timestamps = true ;
 
-
-    public function clients()
-    {
-        return $this -> belongsToMany(Client::class,'client_stores');
-    }
 
 
     public function complaints(){

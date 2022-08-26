@@ -34,7 +34,13 @@
             {{-- @endcan --}}
 
             @can('complaints')
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.complaint.index')}}"><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">complaints</span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Complaints</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.complaint.index')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Complaints</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.complaint.newcomplaint')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Add complaints</span></a>
+                        </li>
+                    </ul>
                 </li>
             @endcan
 
@@ -42,9 +48,9 @@
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='tool'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Manage</span></a>
                     <ul class="menu-content">
                         @can('users')
-                            <li><a class="d-flex align-items-center" href=""><i data-feather='user'></i><span class="menu-item text-truncate" data-i18n="Shop">users</span></a>
+                            <li><a class="d-flex align-items-center" href=""><i data-feather='user'></i><span class="menu-item text-truncate" data-i18n="Shop">Users</span></a>
                                 <ul class="menu-content">
-                                    <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.user.index')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">users</span></a>
+                                    <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.user.index')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Users</span></a>
                                     </li>
                                     <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.user.create')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Add users</span></a>
                                     </li>

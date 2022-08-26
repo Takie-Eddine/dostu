@@ -121,4 +121,10 @@ class Product extends Model
 
 
 
+    public function complaints(){
+        return $this->hasMany(Complaint::class);
+    }
+
+
+
 }

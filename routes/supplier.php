@@ -225,17 +225,19 @@ Route::group([
 
 
 
-        ////////////////////////////////////////////////PROFILE/////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////COMPLAINT/////////////////////////////////////////////////////////////////
         Route::group(['prefix' => 'complaints', 'middleware'=>'can:complaints'], function () {
 
             Route::get('/', [ComplaintsController::class, 'index'])->name('supplier.complaint.index');
             Route::get('/respond/{id}', [ComplaintsController::class, 'respond'])->name('supplier.complaint.respond');
             Route::post('/create', [ComplaintsController::class, 'create'])->name('supplier.complaint.create');
-            Route::get('/view/{id}', [ComplaintsController::class, 'view'])->name('supplier.profile.update');
+            Route::get('/newcomplaint', [ComplaintsController::class, 'newcomplaint'])->name('supplier.complaint.newcomplaint');
+            Route::post('/send', [ComplaintsController::class, 'send'])->name('supplier.complaint.send');
+            Route::get('/view/{id}', [ComplaintsController::class, 'view'])->name('supplier.complaint.view');
         });
 
 
-        ////////////////////////////////////////////////PROFILE/////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////COMPLAINT/////////////////////////////////////////////////////////////////
 
 
 

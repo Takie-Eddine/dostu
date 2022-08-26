@@ -17,9 +17,9 @@ class ProfileController extends Controller
     public function profile(){
 
 
-        $data = auth()->user()->companies()->get();
+        $data = auth()->user()->companies;
 
-
+            //return $data;
             return view('supplier.profile.profile',compact('data'));
 
     }

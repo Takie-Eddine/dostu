@@ -90,7 +90,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="company-column">Password</label>
-                                                <input type="password" id="password-column" class="form-control" name="password" placeholder="Password" />
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Password" />
                                             </div>
                                             @error('password')
                                                     <span class="text-danger"> {{ $message }}</span>

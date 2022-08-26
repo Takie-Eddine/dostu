@@ -42,4 +42,9 @@ class SupplierCompany extends Model
     public function productscomps(){
         return $this->hasMany(Product::class,'company_id');
     }
+
+
+    public function complaints(){
+        return $this->hasMany(Complaint::class);
+    }
 }

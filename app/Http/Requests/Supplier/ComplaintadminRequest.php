@@ -4,7 +4,7 @@ namespace App\Http\Requests\Supplier;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SupplierRequest extends FormRequest
+class ComplaintadminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,11 @@ class SupplierRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|min:2',
-            'last_name' => 'required|min:2',
-            'role_id' => 'required|numeric|exists:roles,id',
-            'email' => 'required|email|unique:suppliers,email,'.$this -> id,
-            'password'  => 'required_without:id|confirmed',
-            // 'photo'=>'required_without:id',
-            // 'photo.*' => 'mimes:jpg,jpeg,png',
+            'title' =>'required',
+            'body' =>'required',
+            'admin_id' => 'required|exists:admins,id',
+
+
         ];
     }
 }

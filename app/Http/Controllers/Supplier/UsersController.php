@@ -29,6 +29,8 @@ class UsersController extends Controller
 
     public function store(SupplierRequest $request) {
 
+        //return $request;
+
         $user = new Supplier();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;

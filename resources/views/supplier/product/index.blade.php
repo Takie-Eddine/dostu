@@ -67,7 +67,7 @@
                                 <table class="dt-multilingual table">
                                     <thead>
                                         <tr>
-
+                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Product Number</th>
                                             <th>Sku</th>
@@ -83,6 +83,7 @@
                                         @if ($products && count($products)>0)
                                             @foreach ($products as $product)
                                                 <tr>
+                                                    <th>{{$product->id}}</th>
                                                     <th>{{$product->name}}</th>
                                                     <th>{{$product->id}}</th>
                                                     <th>{{$product->sku}}</th>

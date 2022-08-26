@@ -104,8 +104,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="company_name">Company Name</label>
                                                 <input type="text" id="company_name" name="company_name"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->company_name }}" disabled
+                                                @if ($data && $data->count()>0 )
+                                                    value="{{$data->company_name }}" disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -119,8 +119,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="modern-email">Email</label>
                                                 <input type="email" id="modern-email" name="email"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->email}} " disabled
+                                                @if ($data && $data->count()>0 )
+                                                    value="{{$data->email}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -136,8 +136,8 @@
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="description">Description</label>
                                                 <div class="">
-                                                    @if ($data->count()>0 )
-                                                        <textarea name="description" id="description" class="form-control" disabled >{!!($data[0]->description)!!}</textarea>
+                                                    @if ($data && $data->count()>0 )
+                                                        <textarea name="description" id="description" class="form-control" disabled >{!!($data->description)!!}</textarea>
                                                     @else
                                                         <textarea name="description" id="description" class="form-control" ></textarea>
                                                     @endif
@@ -157,8 +157,8 @@
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="mobile">Mobile</label>
                                                 <input type="tel" id="mobile" name="mobile"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->mobile}} " disabled
+                                                @if ($data && $data->count()>0 )
+                                                    value="{{$data->mobile}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -172,8 +172,8 @@
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="website">WebSite</label>
                                                 <input type="text" id="website" name="website"
-                                                @if ($data->count()>0 )
-                                                    value="{{$data[0]->website}} " disabled
+                                                @if ($data && $data->count()>0 )
+                                                    value="{{$data->website}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -185,8 +185,8 @@
                                             <div class="mb-1 form-password-toggle col-md-6">
                                                 <label class="form-label" for="logo">Logo</label>
                                                 <br>
-                                                @if ($data->count()>0 )
-                                                    <img src="{{$data[0]->logo}}" alt="img-placeholder" style="height : 100px; width : 100px" alt="Image" class="img-circle elevation-2" />
+                                                @if ($data && $data->count()>0 )
+                                                    <img src="{{$data->logo}}" alt="img-placeholder" style="height : 100px; width : 100px" alt="Image" class="img-circle elevation-2" />
                                                 @else
                                                     <input type="file" id="logo" name="logo" value="" class="form-control" placeholder="upload image" />
                                                 @endif
@@ -218,7 +218,7 @@
                                                 <label class="form-label" for="country">Country</label>
                                                 <input type="text" id="country"
                                                 @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->country}} " disabled
+                                                    value="{{$data->country}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -239,7 +239,7 @@
                                                 <label class="form-label" for="city">City</label>
                                                 <input type="text" id="city" name="city"
                                                 @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->city}} " disabled
+                                                    value="{{$data->city}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -256,7 +256,7 @@
                                                 <label class="form-label" for="state">District</label>
                                                 <input type="text" id="state" name="state"
                                                 @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->state}} " disabled
+                                                    value="{{$data->state}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -270,7 +270,7 @@
                                                 <label class="form-label" for="pincode">Pincode</label>
                                                 <input type="text" id="pincode" name="pincode"
                                                 @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->pincode}} " disabled
+                                                    value="{{$data->pincode}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -287,7 +287,7 @@
                                                 <label class="form-label" for="address">Address</label>
                                                 <input type="text" id="address" name="address"
                                                 @if ($data && $data->count()>0)
-                                                    value="{{$data[0]->address}} " disabled
+                                                    value="{{$data->address}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -320,8 +320,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="twitter">Twitter</label>
                                                 <input type="text" id="twitter" name="twitter"
-                                                @if ($data->count()>0  && $data[0]->twitter && $data[0]->twitter->count()>0  )
-                                                    value="{{$data[0]->twitter}} " disabled
+                                                @if ($data && $data->twitter   )
+                                                    value="{{$data->twitter}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -334,8 +334,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="facebook">Facebook</label>
                                                 <input type="text" id="facebook" name="facebook"
-                                                @if ($data->count()>0  && $data[0]->facebook && $data[0]->facebook->count()>0)
-                                                    value="{{$data[0]->facebook}} " disabled
+                                                @if ($data &&  $data->facebook)
+                                                    value="{{$data->facebook}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -350,8 +350,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="youtube">Youtube</label>
                                                 <input type="text" id="youtube" name="youtube"
-                                                @if ($data->count()>0  && $data[0]->youtube && $data[0]->youtube->count()>0)
-                                                    value="{{$data[0]->youtube}} " disabled
+                                                @if ($data && $data->youtube )
+                                                    value="{{$data->youtube}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -364,8 +364,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="linkedin">Linkedin</label>
                                                 <input type="text" id="linkedin" name="linkedin"
-                                                @if ($data->count()>0  && $data[0]->linkedin && $data[0]->linkedin->count()>0)
-                                                    value="{{$data[0]->linkedin}} " disabled
+                                                @if ($data && $data->linkedin)
+                                                    value="{{$data->linkedin}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -380,8 +380,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="instagram">Instagram</label>
                                                 <input type="text" id="instagram" name="instagram"
-                                                @if ($data->count()>0  && $data[0]->instagram && $data[0]->instagram->count()>0)
-                                                    value="{{$data[0]->instagram}} " disabled
+                                                @if ($data &&  $data->instagram )
+                                                    value="{{$data->instagram}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -393,8 +393,8 @@
                                             <div class="mb-1 col-md-6">
                                                 <label class="form-label" for="telegram">Telegram</label>
                                                 <input type="text" id="telegram" name="telegram"
-                                                @if ($data->count()>0  && $data[0]->telegram  && $data[0]->telegram->count()>0)
-                                                    value="{{$data[0]->telegram}} " disabled
+                                                @if ($data &&  $data->telegram  )
+                                                    value="{{$data->telegram}} " disabled
                                                 @else
                                                     value=""
                                                 @endif
@@ -406,13 +406,13 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
 
-                                            @if ($data->count()>0  && $data->count()>0)
+                                            @if ($data  && $data->count()>0)
                                             <button type="button" class="btn btn-primary btn-prev">
                                                 <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                             </button>
                                             {{-- <button type="submit" class="btn btn-success btn-submit" disabled>Submit</button> --}}
-                                            <a href="{{route('supplier.profile.edit',$data[0]-> id)}}" class="btn btn-light btn-wishlist">
+                                            <a href="{{route('supplier.profile.edit',$data-> id)}}" class="btn btn-light btn-wishlist">
                                                 <i data-feather='edit'></i>
                                                 <span>Edit</span>
                                             </a>
