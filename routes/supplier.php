@@ -170,48 +170,48 @@ Route::group([
 
             ////////////////////////////////////////////////Tags/////////////////////////////////////////////////////////////////
 
-            Route::group(['prefix' => 'tags', 'middleware'=>'can:tags'], function () {
-                Route::get('/', [TagsController::class, 'index'])->name('supplier.tag.index');
-                Route::get('create', [TagsController::class, 'create'])->name('supplier.tag.create');
-                Route::post('store', [TagsController::class, 'store'])->name('supplier.tag.store');
-                Route::get('edit/{id}',[TagsController::class, 'edit']) -> name('supplier.tag.edit');
-                Route::post('update/{id}',[TagsController::class, 'update']) -> name('supplier.tag.update');
-                Route::get('delete/{id}',[TagsController::class, 'destroy']) -> name('supplier.tag.delete');
+            // Route::group(['prefix' => 'tags', 'middleware'=>'can:tags'], function () {
+            //     Route::get('/', [TagsController::class, 'index'])->name('supplier.tag.index');
+            //     Route::get('create', [TagsController::class, 'create'])->name('supplier.tag.create');
+            //     Route::post('store', [TagsController::class, 'store'])->name('supplier.tag.store');
+            //     Route::get('edit/{id}',[TagsController::class, 'edit']) -> name('supplier.tag.edit');
+            //     Route::post('update/{id}',[TagsController::class, 'update']) -> name('supplier.tag.update');
+            //     Route::get('delete/{id}',[TagsController::class, 'destroy']) -> name('supplier.tag.delete');
 
 
-            });
+            // });
 
             ////////////////////////////////////////////////Tags/////////////////////////////////////////////////////////////////
 
 
             ////////////////////////////////////////////////Attributes/////////////////////////////////////////////////////////////////
 
-            Route::group(['prefix' => 'attributes', 'middleware'=>'can:attributes'], function () {
-                Route::get('/', [AttributesController::class, 'index'])->name('supplier.attribute.index');
-                Route::get('create', [AttributesController::class, 'create'])->name('supplier.attribute.create');
-                Route::post('store', [AttributesController::class, 'store'])->name('supplier.attribute.store');
-                Route::get('edit/{id}',[AttributesController::class, 'edit']) -> name('supplier.attribute.edit');
-                Route::post('update/{id}',[AttributesController::class, 'update']) -> name('supplier.attribute.update');
-                Route::get('delete/{id}',[AttributesController::class, 'destroy']) -> name('supplier.attribute.delete');
+            // Route::group(['prefix' => 'attributes', 'middleware'=>'can:attributes'], function () {
+            //     Route::get('/', [AttributesController::class, 'index'])->name('supplier.attribute.index');
+            //     Route::get('create', [AttributesController::class, 'create'])->name('supplier.attribute.create');
+            //     Route::post('store', [AttributesController::class, 'store'])->name('supplier.attribute.store');
+            //     Route::get('edit/{id}',[AttributesController::class, 'edit']) -> name('supplier.attribute.edit');
+            //     Route::post('update/{id}',[AttributesController::class, 'update']) -> name('supplier.attribute.update');
+            //     Route::get('delete/{id}',[AttributesController::class, 'destroy']) -> name('supplier.attribute.delete');
 
 
-            });
+            // });
 
             ////////////////////////////////////////////////Attributes/////////////////////////////////////////////////////////////////
 
 
             ////////////////////////////////////////////////Option/////////////////////////////////////////////////////////////////
 
-            Route::group(['prefix' => 'options' , 'middleware'=>'can:options'], function () {
-                Route::get('/', [OptionsController::class, 'index'])->name('supplier.option.index');
-                Route::get('create', [OptionsController::class, 'create'])->name('supplier.option.create');
-                Route::post('store', [OptionsController::class, 'store'])->name('supplier.option.store');
-                Route::get('edit/{id}',[OptionsController::class, 'edit']) -> name('supplier.option.edit');
-                Route::post('update/{id}',[OptionsController::class, 'update']) -> name('supplier.option.update');
-                Route::get('delete/{id}',[OptionsController::class, 'destroy']) -> name('supplier.option.delete');
+            // Route::group(['prefix' => 'options' , 'middleware'=>'can:options'], function () {
+            //     Route::get('/', [OptionsController::class, 'index'])->name('supplier.option.index');
+            //     Route::get('create', [OptionsController::class, 'create'])->name('supplier.option.create');
+            //     Route::post('store', [OptionsController::class, 'store'])->name('supplier.option.store');
+            //     Route::get('edit/{id}',[OptionsController::class, 'edit']) -> name('supplier.option.edit');
+            //     Route::post('update/{id}',[OptionsController::class, 'update']) -> name('supplier.option.update');
+            //     Route::get('delete/{id}',[OptionsController::class, 'destroy']) -> name('supplier.option.delete');
 
 
-            });
+            // });
 
             ////////////////////////////////////////////////Option/////////////////////////////////////////////////////////////////
 

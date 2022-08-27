@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/' . getFolder() . '/plugins/forms/form-wizard.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
 
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/form-file-uploader.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/file-uploaders/dropzone.min.css') }}">
+
 
 
 @endsection
@@ -110,14 +109,6 @@
                                             @enderror
                                         </div>
 
-                                        <div class="mb-1 form-password-toggle col-md-6">
-                                            <label class="form-label" for="sku">Sku</label>
-                                            <input class="form-control" id="sku" rows="1" placeholder="sku"
-                                                name="sku" value="{{old('sku')}}" />
-                                            @error('sku')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
 
                                     </div>
                                     <div class="row">
@@ -128,49 +119,8 @@
                                                 <span class="text-danger"> {{ $message }}</span>
                                             @enderror
                                         </div>
-
-
-
                                     </div>
 
-                                    <div class="row">
-                                        <div class="mb-1 form-password-toggle col-md-6">
-                                            <label class="form-label" for="slug">Slug</label>
-                                            <input type="text" id="slug" name="slug" value="{{old('slug')}}"
-                                                class="form-control" placeholder="exemple-exemple-exemple" />
-                                            @error('slug')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-1 form-password-toggle col-md-6">
-                                            <label class="form-label" for="qty">Qty</label>
-                                            <input type="text" id="qty" name="qty" value="{{old('qty')}}"
-                                                class="form-control" placeholder="15" />
-                                            @error('qty')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    <div class="d-flex justify-content-between">
-                                        <button type="button" class="btn btn-outline-secondary btn-prev" disabled>
-                                            <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                                            <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                        </button>
-                                        <button type="button" class="btn btn-primary btn-next">
-                                            <span class="align-middle d-sm-inline-block d-none">Next</span>
-                                            <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div id="address-step-modern" class="content" role="tabpanel"
-                                    aria-labelledby="address-step-modern-trigger">
-                                    <div class="content-header">
-                                        <h5 class="mb-0">Product Details</h5>
-                                        <small>Enter Your Product Details..</small>
-                                    </div>
                                     <div class="row">
                                         <div class="mb-1 col-md-6">
                                             <div class="mb-1">
@@ -194,8 +144,7 @@
                                         <div class="mb-1 col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="tags">Tags</label>
-                                                <select name="tags[]" class="select2 form-select" multiple="multiple"
-                                                    id="default-select-multi1">
+                                                <select name="tags[]" class="select2 form-select " multiple="multiple" id="default-select-multi1">
                                                     @if ($tags && $tags->count() > 0)
                                                         @foreach ($tags as $tag)
                                                             <option value="{{ $tag->id }}">{{ $tag->name }}
@@ -213,42 +162,22 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="mb-1 col-md-6">
-                                            <label class="form-label" for="price">Price</label>
-                                            <input type="text" id="price" name="price" value="{{old('price')}}"
-                                                class="form-control" placeholder="20.00" />
-                                            @error('price')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        {{-- <div class="mb-1 col-md-6">
-                                            <label class="form-label" for="selling_price">Selling Price</label>
-                                            <input type="text" id="selling_price" name="selling_price"
-                                                value="{{old('selling_price')}}"class="form-control" placeholder="20.00" />
-                                            @error('selling_price')
-                                                <span class="text-danger"> {{ $message }}</span>
-                                            @enderror
-                                        </div> --}}
-
-
-
-                                            <div class="col-sm-3">
-                                                <div class="card-body">
-                                                    <div class="demo-inline-spacing">
-                                                        <div class="form-check form-switch">
-                                                            <label class="form-label" for="is_active">Active</label>
-                                                            <input type="checkbox" value="1" name="is_active"
+                                        <div class="col-sm-3">
+                                            <div class="card-body">
+                                                <div class="demo-inline-spacing">
+                                                    <div class="form-check form-switch">
+                                                        <label class="form-label" for="is_active">Active</label>
+                                                        <input type="checkbox" value="1" name="is_active"
                                                                 id="customSwitch2" class="form-check-input"
                                                                 data-color="success" checked />
                                                             @error('is_active')
                                                                 <span class="text-danger"> {{ $message }}</span>
                                                             @enderror
-                                                        </div>
-
                                                     </div>
-                                                </div>
 
+                                                </div>
                                             </div>
+                                        </div>
                                             <div class="col-sm-3">
                                                 <div class="card-body">
                                                     <div class="demo-inline-spacing">
@@ -264,15 +193,11 @@
 
                                                     </div>
                                                 </div>
-
                                             </div>
-
-
-
                                     </div>
 
                                     <div class="d-flex justify-content-between">
-                                        <button type="button" class="btn btn-primary btn-prev">
+                                        <button type="button" class="btn btn-outline-secondary btn-prev" disabled>
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                                             <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                         </button>
@@ -282,10 +207,16 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div id="social-links-modern" class="content" role="tabpanel" aria-labelledby="social-links-modern-trigger">
+
+                                <div id="address-step-modern" class="content" role="tabpanel"
+                                    aria-labelledby="address-step-modern-trigger">
+                                    <div class="content-header">
+                                        <h5 class="mb-0">Product Details</h5>
+                                        <small>Enter Your Product Details..</small>
+                                    </div>
 
 
-                                        <div class="mb-1 col-md-12">
+                                    <div class="mb-1 col-md-12">
                                             <label class="form-label" for="photo">Images</label>
                                             <input type="file" id="photo" name="photo[]" value=""class="form-control" placeholder="upload file" multiple="multiple" />
                                             @error('photo')
@@ -321,6 +252,27 @@
 
 
 
+
+
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-primary btn-prev">
+                                            <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
+                                            <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary btn-next">
+                                            <span class="align-middle d-sm-inline-block d-none">Next</span>
+                                            <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="social-links-modern" class="content" role="tabpanel" aria-labelledby="social-links-modern-trigger">
+
+
+
+
+
+
+
                                     <div class="d-flex justify-content-between">
                                         <button type="button" class="btn btn-primary btn-prev">
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -352,18 +304,11 @@
 
 
 
-
-
     <script src="{{ asset('app-assets/vendors/js/forms/wizard/bs-stepper.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-wizard.js') }}"></script>
-
     <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/forms/form-select2.js') }}"></script>
 
-    <script src="{{ asset('app-assets/js/scripts/forms/form-file-uploader.js') }}"></script>
-
-    <script src="{{ asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
-    <script src="{{ asset('app-assets/js/scripts/forms/form-repeater.js') }}"></script>
 
     <script>
         $(document).ready(function() {

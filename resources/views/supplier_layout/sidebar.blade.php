@@ -81,7 +81,7 @@
                             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.setting.profile')}}"><i data-feather='user'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Account</span></a>
                         @endcan
 
-                        @can('tags')
+                        {{-- @can('tags')
                             <li><a class="d-flex align-items-center" href=""><i data-feather='tag'></i><span class="menu-item text-truncate" data-i18n="Shop">tags</span></a>
                                 <ul>
                                     <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.tag.index')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">tags</span></a>
@@ -115,7 +115,7 @@
                         @endcan
 
 
-                    </ul>
+                    </ul>--}}
                 </li>
             @endcan
 

@@ -1,6 +1,6 @@
 @extends('supplier_layout.supplier')
 
-@section('title', 'Respond Complaint')
+@section('title', 'Send Complaint')
 
 @section('style')
 
@@ -28,7 +28,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="{{route('supplier.complaint.index')}}">Complaints</a>
                                 </li>
-                                <li class="breadcrumb-item active"><a>Respond</a>
+                                <li class="breadcrumb-item active"><a>Create</a>
                                 </li>
                             </ol>
                         </div>

@@ -109,6 +109,9 @@
             console.error( error );
         } );
 </script>
+
+
+
     @yield('scripts')
 </body>
 <!-- END: Body-->
