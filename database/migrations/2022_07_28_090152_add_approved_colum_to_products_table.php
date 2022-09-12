@@ -14,7 +14,8 @@ class AddApprovedColumToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('approved')->default(0)->after('is_active');
+            $table->tinyInteger('approved')->default(0)->after('is_active');
+            //$table->tinyInteger()
         });
     }
 

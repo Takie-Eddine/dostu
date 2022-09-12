@@ -13,16 +13,21 @@ class Role extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'name', 'permissions'   // json field
+        'name', 'permissions' ,'permissions_client'  // json field
     ];
 
-    public function users()
-    {
-        $this->hasMany(User::class);
-    }
+    // public function users()
+    // {
+    //     $this->hasMany(User::class);
+    // }
 
     public function getPermissionsAttribute($permissions)
     {
         return json_decode($permissions, true);
+    }
+
+    public function getPermissionsClientAttribute($permissions_client)
+    {
+        return json_decode($permissions_client, true);
     }
 }

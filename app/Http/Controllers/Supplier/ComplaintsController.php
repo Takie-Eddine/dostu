@@ -13,11 +13,13 @@ class ComplaintsController extends Controller
 {
     public function index(){
 
-        $complaints = Complaint::whereHas('product',function ($product) {
-            $product->whereHas('companies',function($company){
-                $company->where('company_id',auth()->user()->company_id);
-            });
-        })->whereNull('company_id')->get();
+        // $complaints = Complaint::whereHas('product',function ($product) {
+        //     $product->whereHas('companies',function($company){
+        //         $company->where('company_id',auth()->user()->company_id);
+        //     });
+        // })->whereNull('company_id')->get();
+
+        $complaints = Complaint::where('company_id',auth()->user()->companies->id)->get();
 
         return view('supplier.complaints.index',compact('complaints'));
 

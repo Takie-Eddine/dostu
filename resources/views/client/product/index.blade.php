@@ -77,16 +77,41 @@
                     <div class="row mt-1">
                         <div class="mb-1 col-md-2">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-flat-secondary"> categories</button>
+                                <button type="button" class="btn btn-flat-secondary"> <a href="{{route('client.product.index')}}" class="btn btn-flat-secondary">categories</a> </button>
                                 <button type="button" class="btn btn-flat-secondary btn-lg dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                    <span class="visually-hidden"></span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    @if ($categories && $categories->count() > 0)
-                                        @foreach ($categories as $category)
-                                            <a class="dropdown-item" href="{{route('client.product.index.getbycategory',$category->id)}}">{{$category->name}}</a>
-                                        @endforeach
-                                    @endif
+                                    <ul class="dropdown-menu">
+                                        @if ($categories && $categories->count() > 0)
+                                            @foreach ($categories as $category)
+                                                <li >
+                                                    <a class="dropdown-item" href="{{route('client.product.index.getbycategory',$category->id)}}">{{$category->name}}</a>
+
+                                                    @isset($category -> childrens)
+                                                        <ul>
+                                                            @foreach ($category -> childrens as $childern)
+                                                            <li>
+                                                                <a class="dropdown-item" href="{{route('client.product.index.getbycategory',$childern->id)}}">{{$childern->name}}</a>
+
+                                                                @isset($category -> childrens)
+                                                                <ul>
+                                                                    @foreach ($childern -> childrens  as $_childern)
+                                                                        <li>
+                                                                            <a class="dropdown-item" href="{{route('client.product.index.getbycategory',$_childern->id)}}">{{$_childern->name}}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endisset
+
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endisset
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
                                 </div>
                             </div>
                             @error('price')
@@ -95,7 +120,7 @@
                         </div>
                         <div class="mb-1 col-md-2">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-flat-secondary">Price</button>
+                                <button type="button" class="btn btn-flat-secondary"><a href="{{route('client.product.index')}}" class="btn btn-flat-secondary">Price</a></button>
                                 <button type="button" class="btn btn-flat-secondary btn-lg dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
@@ -113,7 +138,7 @@
                         </div>
                         <div class="mb-1 col-md-2">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-flat-secondary">Rating</button>
+                                <button type="button" class="btn btn-flat-secondary"><a href="{{route('client.product.index')}}" class="btn btn-flat-secondary">Rating</a></button>
                                 <button type="button" class="btn btn-flat-secondary btn-lg dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
@@ -182,7 +207,7 @@
                                 <a class="text-body" href="{{route('client.product.details',$product -> slug)}}">{{$product->name}}</a>
                                 <span class="card-text item-company">By <a href="#" class="company-name">{{$product->title}}</a></span>
                             </h6>
-                            <p class="card-text item-description"> {{$product->description}} </p>
+                            <p class="card-text item-description"> {!!($product->description)!!} </p>
                         </div>
                         <div class="item-options text-center">
                             <div class="item-wrapper">

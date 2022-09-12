@@ -67,15 +67,17 @@
                                                 <span class="fw-bold">{{$complaint->store->store_name}}</span>
                                             </td> --}}
                                             <td>
-                                                <span class="fw-bold">{{$complaint->product->name}}</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-bold">{!!($complaint->body)!!}</span>
+                                                <span class="fw-bold">{{$complaint->product->name ?? '--'}}</span>
                                             </td>
                                             <td>
                                                 <span class="fw-bold">{{$complaint->title}}</span>
                                             </td>
-
+                                            <td>
+                                                <span class="fw-bold">{{\Illuminate\Support\Str::limit(strip_tags($complaint->body), 50)}}
+                                                    @if (strlen(strip_tags($complaint->body)) > 50)
+                                                    ... <a href="{{route('supplier.complaint.view',$complaint->id) }}" class="btn btn-info btn-sm">Read More</a>
+                                                    @endif</span>
+                                            </td>
 
                                             <td>
                                                 <div class="btn-group" role="group"

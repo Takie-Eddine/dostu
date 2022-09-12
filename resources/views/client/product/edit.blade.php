@@ -5,21 +5,7 @@
 
 @section('style')
 
-
-
-
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/katex.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/quill.snow.css')}}">
-
-
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-quill-editor.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.css')}}">
-
-
-
+<link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/select/select2.min.css') }}">
 
 @endsection
 
@@ -59,6 +45,7 @@
                 @include('supplier.alerts.success')
                 <form action="{{route('client.product.push')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
                     <div class="row">
                         <div class="col-7">
                             <div class="card">
@@ -88,7 +75,7 @@
                                                     <div id="blog-editor-wrapper">
                                                         <div id="blog-editor-container">
                                                             <div class="editor">
-                                                                <textarea name="description" aria-valuetext="{{($product->description)}}">{{($product->description)}}</textarea>
+                                                                <textarea name="description" id="description">{!!($product->description)!!}</textarea>
                                                             </div>
                                                         </div>
                                                         @error('description')
@@ -100,20 +87,37 @@
                                             <div class="col-12 mb-2">
                                                 <div class="col-md-12 col-12">
                                                     <div class="mb-2">
-                                                        <label class="form-label" for="blog-edit-category">Tags</label>
-                                                        @if ($product-> tags && count($product-> tags)>0)
+                                                        <label class="form-label" for="default-select-multi">Tags</label>
+                                                        @if ($tags && $tags->count() > 0 && $product-> tags && count($product-> tags)>0)
 
-                                                            <select id="blog-edit-category" class="select2 form-select" name="tags[]" multiple>
-                                                                @foreach ($product-> tags as $tag)
-                                                                <option value="{{$tag->id}}" selected>{{$tag->name}}</option>
+                                                            <select id="default-select-multi{{rand(00,99)}}" class="select2 form-select" name="tags[]" multiple>
+                                                                @foreach ($tags as $tag)
+                                                                <option value="{{$tag->id}}" {{in_array($tag->id,$product->tags->pluck('id')->toArray())? 'selected' : null }}>{{$tag->name}}</option>
                                                                 @endforeach
                                                             </select>
 
                                                         @endif
-                                                        @error('name')
-                                                    <span class="text-danger"> {{ $message }}</span>
-                                                @enderror
+                                                            @error('tags.0')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
+                                                    </div>
+                                                </div>
 
+                                                <div class="col-md-12 col-12">
+                                                    <div class="mb-2">
+                                                        <label class="form-label" for="default-select-multi">Categories</label>
+                                                        @if ($categories && $categories->count() > 0 && $product-> categories && count($product-> categories)>0)
+
+                                                            <select id="default-select-multi{{rand(00,99)}}" class="select2 form-select" name="categories[]" multiple>
+                                                                @foreach ($categories as $category)
+                                                                <option value="{{$category->id}}" {{in_array($category->id,$product->categories->pluck('id')->toArray())? 'selected' : null }}>{{$category->name}}</option>
+                                                                @endforeach
+                                                            </select>
+
+                                                        @endif
+                                                            @error('categories.0')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,10 +151,10 @@
                                                 </div>
                                             </div>
                                             <div class="border rounded p-2">
-                                                <h4 class="mb-1">Details</h4>
+                                                {{-- <h4 class="mb-1">Details</h4> --}}
                                                 <div class="d-flex flex-column flex-md-row">
                                                     <div class="row">
-                                                        <div class="mb-1 col-md-6">
+                                                        {{-- <div class="mb-1 col-md-6">
                                                             <label class="form-label" for="price">Price</label>
                                                             <input type="text" id="price" name="price" value="${{$product->price}}"
                                                                 class="form-control"  />
@@ -165,8 +169,8 @@
                                                             @error('global_price')
                                                                 <span class="text-danger"> {{ $message }}</span>
                                                             @enderror
-                                                        </div>
-                                                        <label for="">profit margin:</label>
+                                                        </div> --}}
+                                                        {{-- <label for="">profit margin:</label> --}}
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -175,7 +179,7 @@
                                                         <i data-feather="edit"></i>
                                                         <span>Edit Variants</span>
                                                     </a>
-                                                    <a href="{{route('client.product.importlist')}}" class="btn btn-light btn-wishlist">
+                                                    <a href="" class="btn btn-light btn-wishlist">
                                                         <i data-feather='truck'></i>
                                                         <span>Shipping Options</span>
                                                     </a>
@@ -202,11 +206,10 @@
 
 @section('scripts')
 
-<script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/editors/quill/katex.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/editors/quill/highlight.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/editors/quill/quill.min.js')}}"></script>
-<script src="{{asset('app-assets/js/scripts/pages/page-blog-edit.js')}}"></script>
+<script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/forms/form-select2.js') }}"></script>
+
+
 
 @endsection
 

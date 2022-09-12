@@ -48,6 +48,8 @@
         </div>
         <div class="content-body">
             <!-- Wishlist Starts -->
+            @include('client.alerts.errors')
+            @include('client.alerts.success')
             <section id="wishlist" class="grid-view wishlist-items">
 
                 @if ($products   && count($products) >0)
@@ -83,7 +85,7 @@
                                     <a href="{{route('client.product.details',$product->products->slug)}}">{{$product-> products->name}}</a>
                                 </div>
                                 <p class="card-text item-description">
-                                    {{$product-> products-> description}}
+                                    {!!($product-> products-> description)!!}
                                 </p>
                             </div>
                             <div class="item-options text-center">

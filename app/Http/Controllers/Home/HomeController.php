@@ -10,6 +10,8 @@ use App\Models\Card;
 use App\Models\Client;
 use App\Models\Plan;
 use App\Models\Store;
+use App\Models\Subscription;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,25 +28,29 @@ class HomeController extends Controller
 
     public function details(VerifyRequest $request){
 
-            $plansAnuuals = collect(Plan::typeA()->get());
-            $plansMonthlys = collect(Plan::typeM()->get());
+            $plansAnuuals = Plan::typeA()->get();
+            $plansMonthlys = Plan::typeM()->get();
             $client = $request;
+
+            //return $plansAnuuals;
+
             return view('signup.details',compact('client','plansAnuuals','plansMonthlys'));
     }
 
 
-    public function storeClient(Request $request){
+    public function storeClient(ClientRequest $request){
 
+            //return $request;
 
-        // try {
+        try {
 
             DB::beginTransaction();
 
             $fileName = "";
             $fileName1 = "";
 
-            if ($request->has('photo')) {
-                $fileName1 = uploadImage('clients', $request->photo);
+            if ($request->has('image')) {
+                $fileName1 = uploadImage('clients', $request->image);
             }
 
             $client = Client::create([
@@ -58,11 +64,11 @@ class HomeController extends Controller
                 'plans_id' => $request->planse,
                 'image' => $fileName1,
                 'status' => 1,
-                'started_payment_date'=> now(),
+
             ]);
 
-            if ($request->has('image')) {
-                $fileName = uploadImage('clients', $request->image);
+            if ($request->has('store_logo')) {
+                $fileName = uploadImage('clients', $request->store_logo);
             }
 
             $store = Store::create([
@@ -87,15 +93,40 @@ class HomeController extends Controller
 
             ]);
 
+
+            $subscription = Subscription::create([
+                'client_id'=>$client->id,
+                'plan_id'=>$request->plans,
+                'started_date'=>Carbon::now(),
+                'ended_date'=>null,
+
+            ]);
+
+            if($request->plan == 1){
+
+                $subscription->update([
+                    'ended_date'=>Carbon::now()->addYear(),
+                ]);
+
+            }else{
+
+                $subscription->update([
+                    'ended_date'=>Carbon::now()->addMonth(),
+                ]);
+
+            }
+
+
+
             $client->stores()->syncWithoutDetaching($store);
 
             return redirect()->route('client.login')->with(['success' => 'please login']);
             DB::commit();
 
-        // } catch (Exception $ex) {
-        //     DB::rollback();
-        //     return redirect()->route('signup.signup')->with(['error' => ' there is ap roblem']);
-        // }
+        } catch (Exception $ex) {
+            DB::rollback();
+            return redirect()->view('signup.signup')->with(['error' => ' there is ap roblem']);
+        }
     }
 
 

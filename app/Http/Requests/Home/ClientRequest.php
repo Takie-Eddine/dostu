@@ -24,20 +24,21 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            //'store_name' => 'required|max:100|unique:clients',
-            // 'store_email' => 'required|email|unique:clients',
-            // 'store_mobile' => 'required|unique:clients',
-            // 'image' => 'required|mimes:jpg,jpeg,png',
-            // 'first_name' => 'required',
-            // 'last_name' => 'required',
-            // 'mobile' => 'required|unique:clients',
-            // 'email' => 'required|email|unique:clients',
-            // 'username' => 'required|unique:clients',
-            // 'plans' => 'required',
-            // 'addCard' => 'required|unique:cards',
-            // 'card_name' => 'required',
-            // 'card_exp' => 'required',
-            // 'cvv' => 'required|unique:cards',
+            'store_name' => 'required|max:100|unique:stores',
+            'store_email' => 'required|email|unique:stores',
+            'store_mobile' => 'required|unique:stores',
+            'store_logo' => 'required|mimes:jpg,jpeg,png',
+            'image' => 'required|mimes:jpg,jpeg,png',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'mobile' => 'required|unique:clients',
+            'email' => 'required|email|unique:clients',
+            'username' => 'required|unique:clients',
+            'plans' => 'required',
+            'addCard' => 'required|unique:cards',
+            'card_name' => 'required',
+            'card_exp' => 'required',
+            'cvv' => 'required|unique:cards',
         ];
     }
 }

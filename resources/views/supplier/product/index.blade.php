@@ -86,7 +86,7 @@
                                                     <th>{{$product->id}}</th>
                                                     <th>{{$product->name}}</th>
                                                     <th>{{$product->id}}</th>
-                                                    <th>{{$product->sku}}</th>
+                                                    <th>{{$product->sku  ?? '--'}}</th>
                                                     <th>{{$product-> categories[0]->name ?? '--' }}</th>
                                                     <th></th>
                                                     <th>{{$product->viewed}}</th>

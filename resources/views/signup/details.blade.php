@@ -187,9 +187,9 @@
                                                 <div class="row">
 
                                                     <div class="col-md-12 mb-1">
-                                                        <label class="form-label" for="store_name">Store
+                                                        <label class="form-label" for="store_logo">Store
                                                             Logo</label>
-                                                        <input type="file" name="image" id="image"
+                                                        <input type="file" name="store_logo" id="store_logo"
                                                             class="form-control"  />
                                                     </div>
                                                     <div class="col-md-12 mb-1">
@@ -255,14 +255,14 @@
 
 
                                                 <div class="d-flex justify-content-between mt-2">
-                                                    <button type="button"class="btn btn-outline-secondary btn-prev"
+                                                    <button type="button" class="btn btn-outline-secondary btn-prev"
                                                         disabled>
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"class="btn btn-primary btn-next">
+                                                    <button type="button" class="btn btn-primary btn-next">
                                                         <span class="align-middle d-sm-inline-block d-none">Next</span>
                                                         <i data-feather="chevron-right"
                                                             class="align-middle ms-sm-25 ms-0"></i>
@@ -308,8 +308,8 @@
                                                             class="form-control" placeholder="username" />
                                                     </div>
                                                     <div class="col-md-6 mb-1">
-                                                        <label class="form-label" for="store_name">Client Image</label>
-                                                        <input type="file" name="photo" id="photo"
+                                                        <label class="form-label" for="image">Client Image</label>
+                                                        <input type="file" name="image" id="image"
                                                             class="form-control"  />
                                                     </div>
 
@@ -317,13 +317,13 @@
 
 
                                                 <div class="d-flex justify-content-between mt-2">
-                                                    <button type="button"class="btn btn-primary btn-prev">
+                                                    <button type="button" class="btn btn-primary btn-prev">
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"class="btn btn-primary btn-next">
+                                                    <button type="button" class="btn btn-primary btn-next">
                                                         <span class="align-middle d-sm-inline-block d-none">Next</span>
                                                         <i data-feather="chevron-right"
                                                             class="align-middle ms-sm-25 ms-0"></i>
@@ -354,51 +354,37 @@
                                                 <!-- select plan options -->
 
 
-                                                    <div class="row hidden " id="cats_list" >
-                                                        <div class="row custom-options-checkable gx-3 gy-2">
-
-                                                            @foreach ($plansAnuuals as $plan)
-
-                                                                <div class="col-md-3">
-                                                                    <input class="custom-option-item-check" type="radio"
-                                                                        name="planse" id="{{$plan -> id}}" value="{{$plan -> id}}"  />
-                                                                    <label class="custom-option-item text-center p-1"
-                                                                        for="{{$plan -> id}}">
-                                                                        <span
-                                                                            class="custom-option-item-title h3 fw-bolder">{{$plan -> name}}</span>
-                                                                        <span class="d-block m-75"></span>
-                                                                        <span class="plan-price">
-                                                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                            <span
-                                                                                class="pricing-value fw-bolder text-primary">{{$plan -> priceA}}</span>
-                                                                            <sub
-                                                                                class="pricing-duration text-body font-medium-1 fw-bold">/{{$plan -> type}}</sub>
-                                                                        </span>
-                                                                    </label>
-                                                                </div>
-
-                                                            @endforeach
-                                                        </div>
-
+                                                <div class="row hidden" id="cats_liste">
+                                                    <div class="row custom-options-checkable gx-3 gy-2 " >
+                                                        @foreach ($plansMonthlys as $plansMonthly)
+                                                            <div class="col-md-3">
+                                                                <input class="custom-option-item-check" type="radio" name="plans" id="{{$plansMonthly->id}}" value="{{$plansMonthly->id}}" />
+                                                                <label class="custom-option-item text-center p-1" for="{{$plansMonthly->id}}">
+                                                                    <span class="custom-option-item-title h3 fw-bolder">{{$plansMonthly->name}}</span>
+                                                                    <span class="d-block m-75">{{$plansMonthly-> description}}</span>
+                                                                    <span class="plan-price">
+                                                                        <sup class="font-medium-1 fw-bold text-primary">$</sup>
+                                                                        <span class="pricing-value fw-bolder text-primary">{{$plansMonthly->priceM}}</span>
+                                                                        <sub class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
-                                                    <div class="row hidden " id="cats_liste" >
-                                                        <div class="row custom-options-checkable gx-3 gy-2">
-                                                            @foreach ($plansMonthlys as $plan)
+                                                    </div>
+
+                                                    <div class="row hidden" id="cats_list">
+                                                        <div class="row custom-options-checkable gx-3 gy-2 " >
+                                                            @foreach ($plansAnuuals as $plansAnuual)
                                                                 <div class="col-md-3">
-                                                                    <input class="custom-option-item-check" type="radio"
-                                                                        name="planse" id="{{$plan -> id}}" value="{{$plan -> id}}"  />
-                                                                    <label class="custom-option-item text-center p-1"
-                                                                        for="{{$plan -> id}}">
-                                                                        <span
-                                                                            class="custom-option-item-title h3 fw-bolder">{{$plan -> name}}</span>
-                                                                        <span class="d-block m-75">A simple start for
-                                                                            everyone</span>
+                                                                    <input class="custom-option-item-check" type="radio" name="plans" id="{{$plansAnuual->id}}" value="{{$plansAnuual->id}}" />
+                                                                    <label class="custom-option-item text-center p-1" for="{{$plansAnuual->id}}">
+                                                                        <span class="custom-option-item-title h3 fw-bolder">{{$plansAnuual->name}}</span>
+                                                                        <span class="d-block m-75">{{$plansAnuual->	description}}</span>
                                                                         <span class="plan-price">
                                                                             <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                                                            <span
-                                                                                class="pricing-value fw-bolder text-primary">{{$plan -> priceM}}</span>
-                                                                            <sub
-                                                                                class="pricing-duration text-body font-medium-1 fw-bold">/{{$plan -> type}}</sub>
+                                                                            <span class="pricing-value fw-bolder text-primary">{{$plansAnuual->priceA}}</span>
+                                                                            <sub class="pricing-duration text-body font-medium-1 fw-bold">/year</sub>
                                                                         </span>
                                                                     </label>
                                                                 </div>
@@ -455,7 +441,7 @@
 
 
                                                 <div class="d-flex justify-content-between mt-1">
-                                                    <button type="button"class="btn btn-primary btn-prev">
+                                                    <button type="button" class="btn btn-primary btn-prev">
                                                         <i data-feather="chevron-left"
                                                             class="align-middle me-sm-25 me-0"></i>
                                                         <span

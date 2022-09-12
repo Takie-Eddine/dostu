@@ -17,24 +17,22 @@ class Plan extends Model
 
     protected $with = ['translations'];
 
-    protected $translatedAttributes = ['name'];
+    protected $translatedAttributes = ['name','description'];
 
     protected $hidden = ['translations'];
 
     public function scopeTypeA($query)
     {
-        return $query->where('type', 'Annual');
+        return $query->where('type',1);
     }
     public function scopeTypeM($query)
     {
-        return $query->where('type', 'Monthely');
+        return $query->where('type',0);
     }
 
 
-    public function clients(){
 
-        return $this->hasMany(Plan::class);
 
-    }
+
 
 }

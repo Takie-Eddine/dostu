@@ -99,59 +99,98 @@
                         </div>
                     </div>
                     <!--/ Statistics Card -->
+
                 </div>
 
                 <div class="row match-height">
-                    <div class="col-lg-4 col-12">
-                        <div class="row match-height">
-                            <!-- Bar Chart - Orders -->
-                            <div class="col-lg-6 col-md-3 col-6">
-                                <div class="card">
-                                    <div class="card-body pb-50">
-                                        <h6>Orders</h6>
-                                        <h2 class="fw-bolder mb-1">2,76k</h2>
-                                        <div id="statistics-order-chart"></div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-transaction">
+                            <div class="card-header">
+                                <h4 class="card-title">Transactions</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-bs-toggle="dropdown"></i>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="#">Last 28 Days</a>
+                                        <a class="dropdown-item" href="#">Last Month</a>
+                                        <a class="dropdown-item" href="#">Last Year</a>
                                     </div>
                                 </div>
                             </div>
-                            <!--/ Bar Chart - Orders -->
-
-                            <!-- Line Chart - Profit -->
-                            <div class="col-lg-6 col-md-3 col-6">
-                                <div class="card card-tiny-line-stats">
-                                    <div class="card-body pb-50">
-                                        <h6>Profit</h6>
-                                        <h2 class="fw-bolder mb-1">6,24k</h2>
-                                        <div id="statistics-profit-chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/ Line Chart - Profit -->
-
-                            <!-- Earnings Card -->
-                            <div class="col-lg-12 col-md-6 col-12">
-                                <div class="card earnings-card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h4 class="card-title mb-1">Earnings</h4>
-                                                <div class="font-small-2">This Month</div>
-                                                <h5 class="mb-1">$4055.56</h5>
-                                                <p class="card-text text-muted font-small-2">
-                                                    <span class="fw-bolder">68.2%</span><span> more earnings than last month.</span>
-                                                </p>
-                                            </div>
-                                            <div class="col-6">
-                                                <div id="earnings-chart"></div>
+                            <div class="card-body">
+                                <div class="transaction-item">
+                                    <div class="d-flex">
+                                        <div class="avatar bg-light-primary rounded float-start">
+                                            <div class="avatar-content">
+                                                <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
                                             </div>
                                         </div>
+                                        <div class="transaction-percentage">
+                                            <h6 class="transaction-title">Wallet</h6>
+                                            <small>Starbucks</small>
+                                        </div>
                                     </div>
+                                    <div class="fw-bolder text-danger">- $74</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="d-flex">
+                                        <div class="avatar bg-light-success rounded float-start">
+                                            <div class="avatar-content">
+                                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-percentage">
+                                            <h6 class="transaction-title">Bank Transfer</h6>
+                                            <small>Add Money</small>
+                                        </div>
+                                    </div>
+                                    <div class="fw-bolder text-success">+ $480</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="d-flex">
+                                        <div class="avatar bg-light-danger rounded float-start">
+                                            <div class="avatar-content">
+                                                <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-percentage">
+                                            <h6 class="transaction-title">Paypal</h6>
+                                            <small>Add Money</small>
+                                        </div>
+                                    </div>
+                                    <div class="fw-bolder text-success">+ $590</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="d-flex">
+                                        <div class="avatar bg-light-warning rounded float-start">
+                                            <div class="avatar-content">
+                                                <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-percentage">
+                                            <h6 class="transaction-title">Mastercard</h6>
+                                            <small>Ordered Food</small>
+                                        </div>
+                                    </div>
+                                    <div class="fw-bolder text-danger">- $23</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="d-flex">
+                                        <div class="avatar bg-light-info rounded float-start">
+                                            <div class="avatar-content">
+                                                <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-percentage">
+                                            <h6 class="transaction-title">Transfer</h6>
+                                            <small>Refund</small>
+                                        </div>
+                                    </div>
+                                    <div class="fw-bolder text-success">+ $98</div>
                                 </div>
                             </div>
-                            <!--/ Earnings Card -->
                         </div>
                     </div>
-
                     <!-- Revenue Report Card -->
                     <div class="col-lg-8 col-12">
                         <div class="card card-revenue-budget">
@@ -488,70 +527,85 @@
                     </div>
                     <!--/ Company Table Card -->
 
-                    <!-- Developer Meetup Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="card card-developer-meetup">
-                            <div class="meetup-img-wrapper rounded-top text-center">
-                                <img src="{{asset('app-assets/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
+                    <div class="col-md-4 col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-end">
+                                <h4 class="card-title">Customers</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <button class="btn btn-sm border-0 dropdown-toggle px-50" type="button" id="dropdownItem3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Last 7 Days
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownItem3">
+                                        <a class="dropdown-item" href="#">Last 28 Days</a>
+                                        <a class="dropdown-item" href="#">Last Month</a>
+                                        <a class="dropdown-item" href="#">Last Year</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <div class="meetup-header d-flex align-items-center">
-                                    <div class="meetup-day">
-                                        <h6 class="mb-0">THU</h6>
-                                        <h3 class="mb-0">24</h3>
-                                    </div>
-                                    <div class="my-auto">
-                                        <h4 class="card-title mb-25">Developer Meetup</h4>
-                                        <p class="card-text mb-0">Meet world popular developers</p>
-                                    </div>
-                                </div>
-                                <div class="mt-0">
-                                    <div class="avatar float-start bg-light-primary rounded me-1">
-                                        <div class="avatar-content">
-                                            <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                                <div id="customer-chart" class="mt-2 mb-1"></div>
+                                <div class="pt-25">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div class="d-flex align-items-center">
+                                            <i data-feather="circle" class="font-medium-1 text-primary"></i>
+                                            <span class="fw-bold ms-75">New</span>
                                         </div>
+                                        <span>690</span>
                                     </div>
-                                    <div class="more-info">
-                                        <h6 class="mb-0">Sat, May 25, 2020</h6>
-                                        <small>10:AM to 6:PM</small>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="avatar float-start bg-light-primary rounded me-1">
-                                        <div class="avatar-content">
-                                            <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div class="d-flex align-items-center">
+                                            <i data-feather="circle" class="font-medium-1 text-warning"></i>
+                                            <span class="fw-bold ms-75">Returning</span>
                                         </div>
+                                        <span>258</span>
                                     </div>
-                                    <div class="more-info">
-                                        <h6 class="mb-0">Central Park</h6>
-                                        <small>Manhattan, New york City</small>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i data-feather="circle" class="font-medium-1 text-danger"></i>
+                                            <span class="fw-bold ms-75">Referrals</span>
+                                        </div>
+                                        <span>149</span>
                                     </div>
-                                </div>
-                                <div class="avatar-group">
-                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Billy Hopkins" class="avatar pull-up">
-                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-9.jpg')}}" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Amy Carson" class="avatar pull-up">
-                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-6.jpg')}}" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Brandon Miles" class="avatar pull-up">
-                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Daisy Weber" class="avatar pull-up">
-                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-20.jpg')}}" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Jenny Looper" class="avatar pull-up">
-                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-20.jpg')}}" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <h6 class="align-self-center cursor-pointer ms-50 mb-0">+42</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/ Developer Meetup Card -->
 
+
+                    <div class="col-lg-8 col-12">
+                        <div class="card card-user-timeline">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <a href="{{route('supplier.complaint.index')}}"><i data-feather="list" class="user-timeline-title-icon"></i></a>
+                                    <h4 class="card-title"> Complaints</h4>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <ul class="timeline ms-50">
+                                    @foreach ($complaints as $complaint)
+                                        <li class="timeline-item">
+                                            <span class="timeline-point timeline-point-primary timeline-point-indicator"></span>
+                                            <div class="timeline-event">
+                                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                    <h6>{{$complaint->title}}</h6>
+
+                                                </div>
+                                                <p>{{\Illuminate\Support\Str::limit(strip_tags($complaint->body), 50)}}
+                                                    @if (strlen(strip_tags($complaint->body)) > 50)
+                                                    ... <a href="{{route('client.complaint.view',$complaint->id) }}" class="btn btn-info btn-sm">Read More</a>
+                                                    @endif
+                                                </p>
+
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Browser States Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header">
                                 <div>
@@ -620,11 +674,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Browser States Card -->
 
                     <!-- Goal Overview Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title">Goal Overview</h4>
@@ -644,98 +698,69 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ Goal Overview Card -->
-
-                    <!-- Transaction Card -->
+                    <!-- Developer Meetup Card -->
                     <div class="col-lg-4 col-md-6 col-12">
-                        <div class="card card-transaction">
-                            <div class="card-header">
-                                <h4 class="card-title">Transactions</h4>
-                                <div class="dropdown chart-dropdown">
-                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-bs-toggle="dropdown"></i>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Last 28 Days</a>
-                                        <a class="dropdown-item" href="#">Last Month</a>
-                                        <a class="dropdown-item" href="#">Last Year</a>
-                                    </div>
-                                </div>
+                        <div class="card card-developer-meetup">
+                            <div class="meetup-img-wrapper rounded-top text-center">
+                                <img src="{{asset('app-assets/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
                             </div>
                             <div class="card-body">
-                                <div class="transaction-item">
-                                    <div class="d-flex">
-                                        <div class="avatar bg-light-primary rounded float-start">
-                                            <div class="avatar-content">
-                                                <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="transaction-percentage">
-                                            <h6 class="transaction-title">Wallet</h6>
-                                            <small>Starbucks</small>
-                                        </div>
+                                <div class="meetup-header d-flex align-items-center">
+                                    <div class="meetup-day">
+                                        <h6 class="mb-0">THU</h6>
+                                        <h3 class="mb-0">24</h3>
                                     </div>
-                                    <div class="fw-bolder text-danger">- $74</div>
+                                    <div class="my-auto">
+                                        <h4 class="card-title mb-25">Developer Meetup</h4>
+                                        <p class="card-text mb-0">Meet world popular developers</p>
+                                    </div>
                                 </div>
-                                <div class="transaction-item">
-                                    <div class="d-flex">
-                                        <div class="avatar bg-light-success rounded float-start">
-                                            <div class="avatar-content">
-                                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="transaction-percentage">
-                                            <h6 class="transaction-title">Bank Transfer</h6>
-                                            <small>Add Money</small>
+                                <div class="mt-0">
+                                    <div class="avatar float-start bg-light-primary rounded me-1">
+                                        <div class="avatar-content">
+                                            <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
                                         </div>
                                     </div>
-                                    <div class="fw-bolder text-success">+ $480</div>
+                                    <div class="more-info">
+                                        <h6 class="mb-0">Sat, May 25, 2020</h6>
+                                        <small>10:AM to 6:PM</small>
+                                    </div>
                                 </div>
-                                <div class="transaction-item">
-                                    <div class="d-flex">
-                                        <div class="avatar bg-light-danger rounded float-start">
-                                            <div class="avatar-content">
-                                                <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="transaction-percentage">
-                                            <h6 class="transaction-title">Paypal</h6>
-                                            <small>Add Money</small>
+                                <div class="mt-2">
+                                    <div class="avatar float-start bg-light-primary rounded me-1">
+                                        <div class="avatar-content">
+                                            <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
                                         </div>
                                     </div>
-                                    <div class="fw-bolder text-success">+ $590</div>
+                                    <div class="more-info">
+                                        <h6 class="mb-0">Central Park</h6>
+                                        <small>Manhattan, New york City</small>
+                                    </div>
                                 </div>
-                                <div class="transaction-item">
-                                    <div class="d-flex">
-                                        <div class="avatar bg-light-warning rounded float-start">
-                                            <div class="avatar-content">
-                                                <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="transaction-percentage">
-                                            <h6 class="transaction-title">Mastercard</h6>
-                                            <small>Ordered Food</small>
-                                        </div>
+                                <div class="avatar-group">
+                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Billy Hopkins" class="avatar pull-up">
+                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-9.jpg')}}" alt="Avatar" width="33" height="33" />
                                     </div>
-                                    <div class="fw-bolder text-danger">- $23</div>
-                                </div>
-                                <div class="transaction-item">
-                                    <div class="d-flex">
-                                        <div class="avatar bg-light-info rounded float-start">
-                                            <div class="avatar-content">
-                                                <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="transaction-percentage">
-                                            <h6 class="transaction-title">Transfer</h6>
-                                            <small>Refund</small>
-                                        </div>
+                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Amy Carson" class="avatar pull-up">
+                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-6.jpg')}}" alt="Avatar" width="33" height="33" />
                                     </div>
-                                    <div class="fw-bolder text-success">+ $98</div>
+                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Brandon Miles" class="avatar pull-up">
+                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" width="33" height="33" />
+                                    </div>
+                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Daisy Weber" class="avatar pull-up">
+                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-20.jpg')}}" alt="Avatar" width="33" height="33" />
+                                    </div>
+                                    <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="bottom" title="Jenny Looper" class="avatar pull-up">
+                                        <img src="{{asset('app-assets/images/portrait/small/avatar-s-20.jpg')}}" alt="Avatar" width="33" height="33" />
+                                    </div>
+                                    <h6 class="align-self-center cursor-pointer ms-50 mb-0">+42</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/ Transaction Card -->
+                    <!--/ Developer Meetup Card -->
                 </div>
             </section>
             <!-- Dashboard Ecommerce ends -->
@@ -743,4 +768,88 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+
+    $(window).on('load', function () {
+        'use strict';
+
+        var $textHeadingColor = '#5e5873';
+        var $strokeColor = '#ebe9f1';
+        var $labelColor = '#e7eef7';
+        var $avgSessionStrokeColor2 = '#ebf0f7';
+        var $budgetStrokeColor2 = '#dcdae3';
+        var $goalStrokeColor2 = '#51e5a8';
+        var $revenueStrokeColor2 = '#d0ccff';
+        var $textMutedColor = '#b9b9c3';
+        var $salesStrokeColor2 = '#df87f2';
+        var $white = '#fff';
+        var $earningsStrokeColor2 = '#28c76f66';
+        var $earningsStrokeColor3 = '#28c76f33';
+
+        var supportChartOptions;
+        var avgSessionChartOptions;
+        var revenueReportChartOptions;
+        var budgetChartOptions;
+        var goalChartOptions;
+        var revenueChartOptions;
+        var salesChartOptions;
+        var salesLineChartOptions;
+        var sessionChartOptions;
+        var customerChartOptions;
+        var orderChartOptions;
+        var earningsChartOptions;
+
+        var supportChart;
+        var avgSessionChart;
+        var revenueReportChart;
+        var budgetChart;
+        var goalChart;
+        var revenueChart;
+        var salesChart;
+        var salesLineChart;
+        var sessionChart;
+        var customerChart;
+        var orderChart;
+        var earningsChart;
+
+        var $supportTrackerChart = document.querySelector('#support-tracker-chart');
+        var $avgSessionChart = document.querySelector('#avg-session-chart');
+        var $revenueReportChart = document.querySelector('#revenue-report-chart');
+        var $budgetChart = document.querySelector('#budget-chart');
+        var $goalOverviewChart = document.querySelector('#goal-overview-chart');
+        var $revenueChart = document.querySelector('#revenue-chart');
+        var $salesChart = document.querySelector('#sales-chart');
+        var $salesLineChart = document.querySelector('#sales-line-chart');
+        var $sessionChart = document.querySelector('#session-chart');
+        var $customerChart = document.querySelector('#customer-chart');
+        var $productOrderChart = document.querySelector('#product-order-chart');
+        var $earningsChart = document.querySelector('#earnings-donut-chart');
+
+        customerChartOptions = {
+            chart: {
+            type: 'pie',
+            height: 325,
+            toolbar: {
+                show: false
+            }
+            },
+            labels: ['New', 'Returning', 'Referrals'],
+            series: [690, 258, 149],
+            dataLabels: {
+            enabled: false
+            },
+            legend: { show: false },
+            stroke: {
+            width: 4
+            },
+            colors: [window.colors.solid.primary, window.colors.solid.warning, window.colors.solid.danger]
+        };
+        customerChart = new ApexCharts($customerChart, customerChartOptions);
+        customerChart.render();
+
+    });
+</script>
 @endsection

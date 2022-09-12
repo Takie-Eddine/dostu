@@ -30,5 +30,11 @@ class AuthServiceProvider extends ServiceProvider
                 return $auth->hasAbility($ability);
             });
         }
+
+        foreach ( config('global.permissions_client') as $ability => $value) {
+            Gate::define($ability, function ($auth) use ($ability){
+                return $auth->hasAbility($ability);
+            });
+        }
     }
 }

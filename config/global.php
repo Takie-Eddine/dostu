@@ -16,6 +16,22 @@ return[
         'settings' => 'settings control',
         'account' => 'account control',
         'complaints' => 'complaints control',
+    ],
+
+
+    'permissions_client' => [
+
+        'store'=> 'store control',
+        'products'=> 'product control',
+        'manage'=> 'manage control',
+        'user'=> 'user control',
+        'roles-permission'=> 'role-permission control',
+        'settings' => 'settings control',
+        'account' => 'account control',
+        'subscription' => 'subscription control',
+        'complaints' => 'complaints control',
+        'store-setting' => 'store-setting control',
+
     ]
 
 

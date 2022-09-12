@@ -15,13 +15,14 @@ class CreateImportListsTable extends Migration
     {
         Schema::create('import_lists', function (Blueprint $table) {
 
+            $table->id();
             $table->integer('product_id')->unsigned();
-            $table->integer('client_id')->unsigned();
+            $table->integer('store_id')->unsigned();
             $table->timestamps();
 
-            $table->primary(['product_id','client_id']);
+
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
         });
     }
 

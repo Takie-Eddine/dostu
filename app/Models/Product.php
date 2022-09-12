@@ -35,7 +35,8 @@ class Product extends Model
 
         'in_stock' => 'boolean',
         'is_active' => 'boolean',
-        'approved' => 'boolean',
+        //'approved' => 'boolean',
+        'rejected' => 'boolean'
     ];
 
     protected $translatedAttributes = ['name', 'description', 'title'];
@@ -48,8 +49,23 @@ class Product extends Model
 
     public function getApprove()
     {
-        return $this->approved == 0 ? 'not approved' : 'approved';
+        if($this->approved == 0){
+            return 'pending';
+        }
+        if($this->approved == 1){
+            return 'approved';
+        }
+        else{
+            return 'rejected';
+        }
+
+       // return $this->approved == 0 ? 'pending' : 'approved';
     }
+
+    // public function getRejected()
+    // {
+    //     return $this->approved == 0 ? 'rejected' : 'notrejected';
+    // }
 
     public function getStock()
     {
@@ -123,6 +139,11 @@ class Product extends Model
 
     public function complaints(){
         return $this->hasMany(Complaint::class);
+    }
+
+
+    public function variants(){
+        return $this->hasMany(ProductVariant::class);
     }
 
 

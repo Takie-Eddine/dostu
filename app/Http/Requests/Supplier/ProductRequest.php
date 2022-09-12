@@ -26,18 +26,21 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|max:300',
             'company_id'=>'exists:supplier_companies,id',
-            'slug' => 'required|unique:products,slug,'.$this -> id,
+            //'slug' => 'required|unique:products,slug,'.$this -> id,
             'description' => 'required|min:150',
             //'title' => 'required|max:500',
-            'categories' => 'array|min:1', //[]
+            'categories' => 'required|array|min:1', //[]
             'categories.*' => 'numeric|exists:categories,id',
-            'tags' => 'nullable',
-            'sku' => 'nullable|min:3|max:10|unique:products,sku,'.$this -> id,
-            'price' => 'required|min:0|numeric',
-            'qty' => 'required',
+            'tags' => 'required|array|min:1',
+            'tags.*' => 'numeric',
+            'sku' => 'nullable|min:3|max:10',
+            'price' => 'nullable|min:0|numeric',
+            'qty' => 'nullable',
             //'photo' => 'required_without:id|array|min:1|mimes:jpg,jpeg,png'
-            'photo' => 'required_without:id|array|min:1',
+            'photo' => 'nullable|array|min:1',
             'photo.*' => 'mimes:jpg,jpeg,png',
+            // 'images' => 'nullable|array|min:1',
+            // 'images.*' => 'mimes:jpg,jpeg,png',
 
         ];
     }

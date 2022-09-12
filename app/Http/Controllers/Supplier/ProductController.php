@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Media;
 use App\Models\Option;
 use App\Models\Product;
+use App\Models\ProductVariant;
 use App\Models\Supplier;
 use App\Models\Tag;
 use Exception;
@@ -17,6 +18,7 @@ use Illuminate\Contracts\Cache\Store;
 use Intervention\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -58,13 +60,12 @@ class ProductController extends Controller
         return view('supplier.product.create', $data);
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
 
-        return $request;
 
+        // try {
 
-        try {
 
 
             DB::beginTransaction();
@@ -82,14 +83,14 @@ class ProductController extends Controller
             $var = auth()->user()->company_id;
 
             $product = Product::create([
-                'slug' => $request->slug,
+                'slug' => Str::slug($request->name),
                 'company_id' => auth()->user()->company_id,
                 'in_stock' => $request->in_stock,
                 'is_active' => $request->is_active,
-                'price' => $request->price,
-                'selling_price' => $request->selling_price,
-                'sku' => $request->sku,
-                'qty' => $request->qty,
+                // 'price' => $request->price,
+                // 'selling_price' => $request->selling_price,
+                // 'sku' => $request->sku,
+                // 'qty' => $request->qty,
             ]);
 
             $product->name = $request->name;
@@ -97,25 +98,73 @@ class ProductController extends Controller
             //$product->title = $request->title;
             $product->save();
 
+            if ($request->tags) {
+                foreach($request->tags as $tag){
+                    $ta = Tag::find($tag);
+                    //return $ta;
+                    if(!$ta){
+                        $data[] = $tag;
+                        foreach ($data as $key) {
+                            $tag = Tag::create([
+                                'slug'=>$key
+                            ]);
+                            $tag->name=$key;
+                            $tag->save();
+                            $product->tags()->syncWithoutDetaching($tag);
+                        };
+
+                    }else{
+                        $data1[]=$tag;
+                    }
+                }
+            }
+
+            // if ($request->tags) {
+
+            // }
+
 
 
             $product->categories()->syncWithoutDetaching($request->categories);
-            $product->tags()->syncWithoutDetaching($request->tags);
-            $product->options()->syncWithoutDetaching($request->options);
+            if ($request->tags) {
+                $product->tags()->syncWithoutDetaching($data1);
+            }
+
+
+            if ($request->variants) {
+                foreach ($request->variants as $variant) {
+                    if ($variant) {
+                        $fileName = "";
+                        if ($variant['photo']) {
+                            $fileName = uploadImage('products', $variant['photo']);
+                        }
+
+
+                        $product_variants = ProductVariant::create([
+                            'product_id' =>$product->id,
+                            'vriants' => json_encode($variant['options']),
+                            'price' => $variant['price'],
+                            'sku' => $variant['sku'],
+                            'qty'=> $variant['qty'],
+                            'photo' => $fileName,
+                        ]);
+
+                        $product->options()->syncWithoutDetaching($variant['options']);
+                    }
+                }
+            }
+
+            //return $request->variants;
+            //$product->options()->syncWithoutDetaching($request->options);
+
+            if ($request->image && count($request->image) > 0) {
 
 
 
+                foreach ($request->image as $image) {
 
 
-
-            if ($request->photo && count($request->photo) > 0) {
-
-
-
-                foreach ($request->photo as $photo) {
-
-
-                    $file_name = uploadImage('products', $photo);
+                    $file_name = uploadImage('products', $image);
 
                     Media::create([
 
@@ -126,10 +175,10 @@ class ProductController extends Controller
             }
             DB::commit();
             return redirect()->route('supplier.product.index')->with(['success' => 'added with success']);
-        } catch (Exception $ex) {
-            DB::rollback();
-            return redirect()->route('supplier.product.create')->with(['error' => 'there is a problem']);
-        }
+        // } catch (Exception $ex) {
+        //     DB::rollback();
+        //     return redirect()->route('supplier.product.create')->with(['error' => 'there is a problem']);
+        // }
     }
 
     public function edit($id){

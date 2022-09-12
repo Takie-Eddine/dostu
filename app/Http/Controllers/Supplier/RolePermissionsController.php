@@ -12,7 +12,7 @@ class RolePermissionsController extends Controller
 {
     public function rolepermission(){
 
-        $roles = Role::all();
+        $roles = Role::whereNull('permissions_client')->get();
         return view('supplier.role.index',compact('roles'));
 
     }

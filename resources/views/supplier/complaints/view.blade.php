@@ -75,12 +75,15 @@
                                     </div>
                                     <div class="col-12 col-sm-6 mb-1">
                                         <h5> Body  : </h5>
-                                        <span> {{$complaint->body}}</span>
+                                        <span> {!!($complaint->body)!!}</span>
                                     </div>
-                                    <div class="col-12 col-sm-6 mb-1">
-                                        <h5> Product Name : </h5>
-                                        <span> {{$complaint->product->name}}</span>
-                                    </div>
+                                    @if ($complaint->product_id)
+                                        <div class="col-12 col-sm-6 mb-1">
+                                            <h5> Product Name : </h5>
+                                            <span> {{$complaint->product->name}}</span>
+                                        </div>
+                                    @endif
+
                                 </div>
                             </form>
                             <!--/ form -->
