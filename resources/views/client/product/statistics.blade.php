@@ -206,7 +206,7 @@
 
                                     <p class="card-text">Available - @if ($product->in_stock == 0)
                                             <span class="text-warning"> {{ $product->getStock() }} </span></p>
-                                @else
+                                    @else
                                     <span class="text-success"> {{ $product->getStock() }} </span></p>
                                     @endif
 
@@ -290,7 +290,7 @@
                                                             <li class="ratings-list-item"><i data-feather="star"
                                                                     class="unfilled-star"></i></li>
                                                         </ul>
-                                                        <p class="card-text text-primary mb-0">${{$_product -> price}}</p>
+                                                        <p class="card-text text-primary mb-0">${{$_product -> our_price}}</p>
                                                     </div>
                                                 </a>
                                             </div>

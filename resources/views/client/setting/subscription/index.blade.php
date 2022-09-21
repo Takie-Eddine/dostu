@@ -77,6 +77,8 @@
                     </ul>
 
                     <!-- profile -->
+                    @include('client.alerts.errors')
+                    @include('client.alerts.success')
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Current plan</h4>
@@ -85,16 +87,16 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-2 pb-50">
-                                        <h5>Your Current Plan is <strong>Basic</strong></h5>
-                                        <span>A simple start for everyone</span>
+                                        <h5>Your Current Plan is <strong>{{$plan->name}}</strong></h5>
+                                        <span></span>
                                     </div>
                                     <div class="mb-2 pb-50">
-                                        <h5>Active until Dec 09, 2021</h5>
+                                        <h5>Active until {{$subscription->ended_date}}</h5>
                                         <span>We will send you a notification upon Subscription expiration</span>
                                     </div>
                                     <div class="mb-2 mb-md-1">
-                                        <h5>$199 Per Month <span class="badge badge-light-primary ms-50">Popular</span></h5>
-                                        <span>Standard plan for small to medium businesses</span>
+                                        <h5>{{$popular->priceM}}$ Per Month <span class="badge badge-light-primary ms-50">Popular</span></h5>
+                                        <span>{{$popular->name}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -114,10 +116,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary me-1 mt-1" data-bs-toggle="modal" data-bs-target="#upgradePlanModal">
-                                        Upgrade Plan
-                                    </button>
-                                    <button class="btn btn-outline-danger cancel-subscription mt-1">Cancel Subscription</button>
+                                    <a href="{{route('client.setting.subscription.upgrade',$subscription->id)}}" class="btn btn-primary me-1 mt-1" > Upgrade Plan </a>
+                                    <a href="{{route('client.setting.subscription.cancel',$subscription->id)}}" class="btn btn-outline-danger cancel-subscription mt-1">Cancel Subscription</a>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +133,11 @@
 </div>
 
 
-
-
 @endsection
 
 
 
 
 @section('scripts')
-
 
 @endsection

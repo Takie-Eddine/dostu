@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugColumToStoreProductsTable extends Migration
+class AddSoftdeleteColumToStoreProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,6 @@ class AddSlugColumToStoreProductsTable extends Migration
     public function up()
     {
         Schema::table('store_products', function (Blueprint $table) {
-            $table->string('slug')->unique()->after('store_id');
-            $table->boolean('in_stock')->after('slug');
-            $table->boolean('is_active')->after('in_stock');
             $table->softDeletes();
         });
     }

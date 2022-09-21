@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\UserRequest;
 use App\Models\Client;
 use App\Models\Role;
 use App\Models\Supplier;
@@ -36,7 +37,7 @@ class UsersController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(UserRequest $request){
 
         //return $request;
 
@@ -96,9 +97,18 @@ class UsersController extends Controller
 
 
 
-    public function update(Request $request,$id){
+    public function update(UserRequest $request,$id){
 
         //return $request;
+        $supplier = Client::find($id);
+
+        if (!$supplier) {
+            return redirect()->back()-> with(['error' => 'this user does not exist']);
+        }
+
+        $supplier->update($request->except('_token', 'id','password_confirmation'));
+
+        return redirect()->route('client.user.index')->with(['success' => 'updated with success']);
 
 
     }

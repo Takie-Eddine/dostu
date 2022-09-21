@@ -200,7 +200,7 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <h6 class="item-price">${{$product->price}}</h6>
+                                    <h6 class="item-price">${{$product->our_price}}</h6>
                                 </div>
                             </div>
                             <h6 class="item-name">

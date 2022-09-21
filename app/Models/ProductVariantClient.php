@@ -12,9 +12,7 @@ class ProductVariantClient extends Model
     protected $guarded = [];
 
 
-    public function products(){
-        return $this->belongsTo(ProductStore::class);
-    }
+
 
     public function prod(){
         return $this->belongsTo(Product::class);
@@ -24,5 +22,10 @@ class ProductVariantClient extends Model
     public function getVriantsAttribute($vriants)
     {
         return json_decode($vriants, true);
+    }
+
+
+    public function storeProduct(){
+        return $this->belongsTo(StoreProduct::class);
     }
 }

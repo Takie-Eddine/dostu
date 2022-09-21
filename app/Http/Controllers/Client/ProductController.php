@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\PushRequest;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\ImportList;
+use App\Models\Media;
+use App\Models\MediaStore;
 use App\Models\Product;
 use App\Models\ProductStore;
 use App\Models\ProductVariant;
@@ -201,11 +204,11 @@ class ProductController extends Controller
 
 
 
-    public function push(Request $request){
+    public function push(PushRequest $request){
 
         //return $request;
 
-        // try{
+        try{
 
             DB::beginTransaction();
             $product = StoreProduct::create([
@@ -220,13 +223,37 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->save();
 
+            $variants = ProductVariantClient::where('product_id',$product-> product_id)->where('store_id',$product->store_id)->get();
+
+            for ($i=0; $i <$variants->count() ; $i++) {
+                $variants[$i]->update([
+                    'store_product_id'=>$product->id,
+                ]);
+            }
+
+            $photos = Media::where('product_id',$product->product_id)->get();
+
+            //return $photos[0];
+
+            foreach ($photos as  $value) {
+                MediaStore::create([
+                    'store_product_id' =>$product->id,
+                    'store_id'=>auth('client')->user()->stores[0]->id,
+                    'product_id'=>$product->product_id,
+                    'photo'=> $value -> photo ,
+                ]);
+            }
 
             DB::commit();
 
+            return redirect()->back()->with(['success' => 'The product pushed to store with success']);
 
-        // }catch(Exception $ex){
-        //     DB::rollback();
-        // }
+
+        }catch(Exception $ex){
+            DB::rollback();
+            return redirect()->back()->with(['error' => 'There is a problem']);
+
+        }
 
     }
 
@@ -234,30 +261,16 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        //return $product->options[0];
-
         $product_variants = ProductVariant::where('product_id',$id)->get();
-        $product_variant_clients = ProductVariantClient::where('product_id',$id)->get()->toArray();
-        //return $product_variant_clients;
-        //return $product_variants->vriants;
 
-        // $attributes = Attribute::whereHas('options' , function ($q) use($id){
-        //     $q -> whereHas('products',function ($qq) use($id){
-        //         $qq->whereHas('options',function($qqq) use($id){
-        //             $qqq -> where('product_id',$id);
-        //         });
-
-        //     });
-        // })->get();
-
-
-        if (!$product_variant_clients) {
-            return redirect()->back()->with(['error' => 'this product does not have varinats ']);
+        if (count($product_variants) == 0) {
+            return redirect()->route('client.product.index')->with(['error' => 'This product does not have variants ']);
         }
-        if(!$product && !$product_variants){
 
+        if(!$product){
             return redirect()->route('client.product.index')->with(['error' => 'this product does not exist ']);
         }
+
         return view('client.product.editvariants',compact('product','product_variants'));
     }
 
@@ -265,46 +278,86 @@ class ProductController extends Controller
 
     public function saveVariant(Request $request){
 
+
+
         try{
 
-            $product = ProductVariantClient::select('product_variant_id')->where('product_id',$request->product_id)->get();
 
-            //return $product;
-
-            if ($product->isEmpty()) {
-                $products = ProductVariant::where('product_id',$request->product_id)->get();
-
-                foreach ($products as $value) {
-                    $p = ProductVariantClient::create([
-                        'product_variant_id'=>$value->id,
-                        'product_id'=>$value->product_id,
-                        'store_id'=>auth('client') -> user() ->stores[0]->id,
-                        'vriants'=>json_encode($value->vriants),
-                        'price'=>$value->price,
-                        'selling_price'=>$value->selling_price,
-                        'global_price'=>$value->global_price,
-                        'qty'=>$value->qty,
-                        'sku'=>$value->sku,
-                        'photo'=>$value->photo
-                    ]);
-                }
-            }
             for ($i=0; $i <count($request->id) ; $i++) {
-                ProductVariantClient::where('product_variant_id',$request->id[$i]) ->update([
+                $productvariant = ProductVariant::find($request->id[$i]);
+                ProductVariantClient::updateOrCreate([
+                    'product_id' => $request->product_id,
+                    'product_variant_id' => $request->id[$i],
+                    'store_id' => auth('client')->user()->stores[0]->id,
                     'sku'=>$request->sku[$i],
                     'selling_price' =>$request->selling_price[$i],
                     'global_price'=>$request->global_price[$i],
+                    'qty' => $productvariant->qty,
+                    'price' => $productvariant->price,
+                    'photo' => $productvariant->photo,
+                    'vriants' => json_encode($productvariant->	vriants),
                 ]);
             }
-            $prod1 = Product::find($request->product_id);
-            return redirect()->route('client.product.edit',$prod1->slug)->with(['success' => 'update with success']);
+
+            $product = Product::find($productvariant->product_id);
+
+            return redirect()->route('client.product.edit',$product->slug)->with(['success' => 'Your variants saved with success']);
+
 
         }catch(Exception $ex){
 
+            return redirect()->back()->with(['error' => 'There is a problem ']);
+
         }
 
-        return $request;
+            //return $request ;
 
+            // $product = ProductVariantClient::select('product_variant_id')->where('product_id',$request->product_id)->get();
+
+            // //return $product;
+
+            // if ($product->isEmpty()) {
+            //     $products = ProductVariant::where('product_id',$request->product_id)->get();
+
+            //     foreach ($products as $value) {
+            //         $p = ProductVariantClient::create([
+            //             'product_variant_id'=>$value->id,
+            //             'product_id'=>$value->product_id,
+            //             'store_id'=>auth('client') -> user() ->stores[0]->id,
+            //             'vriants'=>json_encode($value->vriants),
+            //             'price'=>$value->price,
+            //             'selling_price'=>$value->selling_price,
+            //             'global_price'=>$value->global_price,
+            //             'qty'=>$value->qty,
+            //             'sku'=>$value->sku,
+            //             'photo'=>$value->photo
+            //         ]);
+            //     }
+            // }
+            // for ($i=0; $i <count($request->id) ; $i++) {
+            //     ProductVariantClient::where('product_variant_id',$request->id[$i]) ->update([
+            //         'sku'=>$request->sku[$i],
+            //         'selling_price' =>$request->selling_price[$i],
+            //         'global_price'=>$request->global_price[$i],
+            //     ]);
+            // }
+            // $prod1 = Product::find($request->product_id);
+            // return redirect()->route('client.product.edit',$prod1->slug)->with(['success' => 'update with success']);
+
+
+    }
+
+
+    public function remove($id){
+
+        $product = StoreProduct::find($id);
+
+        if (!$product) {
+            return redirect()->back()->with(['error'=>'This product does not exist']);
+        }
+
+        $product->delete();
+        return redirect()->back()->with(['success'=>'Product deleted with success']);
     }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRealtionsColumToSubscriptionsTable extends Migration
+class AddPopularColumToPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddRealtionsColumToSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('subscriptions', function (Blueprint $table) {
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+        Schema::table('plans', function (Blueprint $table) {
+            $table->tinyInteger('popular')->after('priceA')->default(0);
         });
     }
 
@@ -26,7 +25,7 @@ class AddRealtionsColumToSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('subscriptions', function (Blueprint $table) {
+        Schema::table('plans', function (Blueprint $table) {
             //
         });
     }

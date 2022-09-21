@@ -33,10 +33,16 @@
                 </li>
             @endcan
 
-            {{-- @can('orders') --}}
-                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('client.order.order')}}"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">Orders</span></a>
+            @can('orders')
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">Orders</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('client.order.order')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Orders</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('client.order.create')}}"><i data-feather='circle'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Add Orders</span></a>
+                        </li>
+                    </ul>
                 </li>
-            {{-- @endcan --}}
+            @endcan
 
             @can('complaints')
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Complaints</span></a>

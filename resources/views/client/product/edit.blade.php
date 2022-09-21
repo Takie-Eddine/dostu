@@ -154,15 +154,8 @@
                                                 {{-- <h4 class="mb-1">Details</h4> --}}
                                                 <div class="d-flex flex-column flex-md-row">
                                                     <div class="row">
+
                                                         {{-- <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="price">Price</label>
-                                                            <input type="text" id="price" name="price" value="${{$product->price}}"
-                                                                class="form-control"  />
-                                                            @error('price')
-                                                                <span class="text-danger"> {{ $message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="mb-1 col-md-6">
                                                             <label class="form-label" for="global_price">Compare at price</label>
                                                             <input type="text" id="global_price" name="global_price" value="${{$product->global_price}}"
                                                                 class="form-control"  />
@@ -171,6 +164,7 @@
                                                             @enderror
                                                         </div> --}}
                                                         {{-- <label for="">profit margin:</label> --}}
+
                                                     </div>
                                                 </div>
                                                 <hr>

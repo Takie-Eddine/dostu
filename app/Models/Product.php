@@ -25,6 +25,8 @@ class Product extends Model
         'price',
         'selling_price',
         'global_price',
+        'our_price',
+        'shipping_time',
         'qty',
         'in_stock',
         'is_active',
@@ -104,6 +106,8 @@ class Product extends Model
     {
         return $this->hasMany(Media::class);
     }
+
+
 
     public function hasStock($quantity)
     {

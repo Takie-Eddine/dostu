@@ -58,6 +58,8 @@
                     </div>
                 </div>
 
+                @include('client.alerts.errors')
+                @include('client.alerts.success')
 
                 <div class="bs-stepper-content">
 
@@ -69,14 +71,14 @@
                                     @foreach ($products as $product)
                                         <div class="card ecommerce-card">
                                             <div class="item-img">
-                                                <a href="{{route('client.product.details',$product->slug)}}"">
+                                                <a href="{{route('client.product.details',$product->slug)}}">
                                                     <img src="{{$product -> images[0] -> photo ?? ''}}" alt="img-placeholder" />
                                                 </a>
                                             </div>
                                             <div class="card-body">
                                                 <div class="item-name">
-                                                    <h6 class="mb-0"><a href="app-ecommerce-details.html" class="text-body">Apple Watch Series 5</a></h6>
-                                                    <span class="item-company">By <a href="#" class="company-name">Apple</a></span>
+                                                    <h6 class="mb-0"><a href="{{route('client.product.details',$product->slug)}}" class="text-body">{{$product->name}}</a></h6>
+
                                                     <div class="item-rating">
                                                         <ul class="unstyled-list list-inline">
                                                             @if ($product->reviews_avg_rating != '')
@@ -93,35 +95,28 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <span class="text-success mb-1">In Stock</span>
-                                                <div class="item-quantity">
-                                                    <span class="quantity-title">Qty:</span>
-                                                    <div class="quantity-counter-wrapper">
-                                                        <div class="input-group">
-                                                            <input type="text" class="quantity-counter" value="1" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span class="delivery-date text-muted">Delivery by, Wed Apr 25</span>
-                                                <span class="text-success">17% off 4 offers Available</span>
+
+                                                <p class="card-text">  @if ($product->in_stock == 0)
+                                                    <span class="text-warning"> {{ $product->getStock() }} </span></p>
+                                                @else
+                                                <span class="text-success"> {{ $product->getStock() }} </span></p>
+                                                @endif
+
                                             </div>
                                             <div class="item-options text-center">
                                                 <div class="item-wrapper">
                                                     <div class="item-cost">
-                                                        <h4 class="item-price">$19.99</h4>
+                                                        <h4 class="item-price">{{$product->variants[0]->price}}$</h4>
                                                         <p class="card-text shipping">
-                                                            <span class="badge rounded-pill badge-light-success">Free Shipping</span>
+                                                            {{-- <span class="badge rounded-pill badge-light-success">Free Shipping</span> --}}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-light mt-1 remove-wishlist">
+                                                <a href="{{route('client.product.removefromstore',$product->id)}}" class="btn btn-light mt-1 remove-wishlist">
                                                     <i data-feather="x" class="align-middle me-25"></i>
                                                     <span>Remove</span>
-                                                </button>
-                                                <button type="button" class="btn btn-primary btn-cart move-cart">
-                                                    <i data-feather="heart" class="align-middle me-25"></i>
-                                                    <span class="text-truncate">Add to Wishlist</span>
-                                                </button>
+                                                </a>
+
                                             </div>
                                         </div>
                                     @endforeach

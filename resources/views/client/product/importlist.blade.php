@@ -78,7 +78,7 @@
                                         </ul>
                                     </div>
                                     <div class="item-cost">
-                                        <h6 class="item-price">{{$product -> products-> price}}</h6>
+                                        <h6 class="item-price">{{$product -> products-> our_price}}$</h6>
                                     </div>
                                 </div>
                                 <div class="item-name">

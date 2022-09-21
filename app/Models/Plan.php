@@ -31,6 +31,14 @@ class Plan extends Model
     }
 
 
+    // public function subscriptions(){
+    //     return $this->belongsTo(Subscription::class);
+    // }
+
+
+    public function subscriptions(){
+        return $this->belongsToMany(Client::class,'subscriptions');
+    }
 
 
 

@@ -31,7 +31,7 @@ return[
         'subscription' => 'subscription control',
         'complaints' => 'complaints control',
         'store-setting' => 'store-setting control',
-
+        'orders' => 'order control'
     ]
 
 

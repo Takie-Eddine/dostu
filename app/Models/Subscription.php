@@ -9,15 +9,15 @@ class Subscription extends Model
 {
     use HasFactory;
 
-
     protected $guarded = [];
 
 
-
     public function clients(){
-
-        return $this->belongsToMany(Client::class,'subscriptions');
+        return $this->hasMany(Client::class);
     }
 
+    public function plans(){
+        return $this->hasMany(Plan::class);
+    }
 
 }

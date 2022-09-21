@@ -70,6 +70,7 @@ Route::group([
             Route::get('/importlist',[ProductController::class,'importlist'])->name('client.product.importlist');
             Route::get('/addtoimportlist/{id}',[ProductController::class,'addimportlist'])->name('client.product.addimportlist');
             Route::get('/addedtostore',[ProductController::class,'listproduct'])->name('client.product.listproducts');
+            Route::get('/removefromstore/{id}',[ProductController::class,'remove'])->name('client.product.removefromstore');
             Route::get('/addtostore/{id}',[ProductController::class,'addtostore'])->name('client.product.addtostore');
             Route::get('/edit/{slug}',[ProductController::class,'edit'])->name('client.product.edit');
             Route::post('/push',[ProductController::class,'push'])->name('client.product.push');
@@ -157,7 +158,9 @@ Route::group([
 
             Route::group(['prefix' => 'subscription', 'middleware'=>'can:subscription'], function () {
                 Route::get('/', [SubscriptionController::class, 'index'])->name('client.setting.subscription');
-                Route::get('upgrade', [SubscriptionController::class, 'upgrade'])->name('client.setting.subscription.upgrade');
+                Route::get('upgrade/{id}', [SubscriptionController::class, 'upgrade'])->name('client.setting.subscription.upgrade');
+                Route::get('cancel/{id}', [SubscriptionController::class, 'cancel'])->name('client.setting.subscription.cancel');
+                Route::get('update/{id}', [SubscriptionController::class, 'update'])->name('client.setting.subscription.update');
             });
 
             Route::group(['prefix' => 'store-setting', 'middleware'=>'can:store-setting'], function () {
@@ -171,10 +174,13 @@ Route::group([
 
 
 
-        Route::group(['prefix' => 'orders'],function(){
-
+        Route::group(['prefix' => 'orders','middleware'=>'can:orders'],function(){
             Route::get('/',[OrderController::class,'index'])->name('client.order.order');
-
+            Route::get('/create',[OrderController::class,'create'])->name('client.order.create');
+            Route::post('/store',[OrderController::class,'store'])->name('client.order.store');
+            Route::get('/view/{id}',[OrderController::class,'view'])->name('client.order.view');
+            Route::get('/edit/{id}',[OrderController::class,'edit'])->name('client.order.edit');
+            Route::post('/update/{id}',[OrderController::class,'index'])->name('client.order.update');
 
         });
 

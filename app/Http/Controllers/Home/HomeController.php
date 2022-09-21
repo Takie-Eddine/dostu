@@ -81,6 +81,7 @@ class HomeController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'pincode' => $request->pincode,
+                'default' => 1,
             ]);
 
 

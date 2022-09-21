@@ -68,6 +68,21 @@ class Client extends  Authenticatable
 
 
 
+    // public function subscription(){
+    //     return $this->belongsTo(Subscription::class);
+    // }
+
+    public function subscriptions(){
+        return $this->belongsToMany(Plan::class,'subscriptions');
+    }
+
+
+
+
+
+
+
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
