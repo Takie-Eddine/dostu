@@ -28,10 +28,10 @@
                 </li>
             @endcan
 
-            {{-- @can('') --}}
-                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">Orders</span></a>
+            @can('orders')
+                <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('supplier.order.order')}}"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">Orders</span></a>
                 </li>
-            {{-- @endcan --}}
+            @endcan
 
             @can('complaints')
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather='list'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Complaints</span></a>

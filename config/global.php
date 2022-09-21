@@ -16,6 +16,7 @@ return[
         'settings' => 'settings control',
         'account' => 'account control',
         'complaints' => 'complaints control',
+        'orders' => 'order control',
     ],
 
 

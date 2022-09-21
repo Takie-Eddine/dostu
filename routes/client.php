@@ -180,7 +180,8 @@ Route::group([
             Route::post('/store',[OrderController::class,'store'])->name('client.order.store');
             Route::get('/view/{id}',[OrderController::class,'view'])->name('client.order.view');
             Route::get('/edit/{id}',[OrderController::class,'edit'])->name('client.order.edit');
-            Route::post('/update/{id}',[OrderController::class,'index'])->name('client.order.update');
+            Route::post('/update/{id}',[OrderController::class,'update'])->name('client.order.update');
+            Route::get('/delete/{id}',[OrderController::class,'delete'])->name('client.order.delete');
 
         });
 

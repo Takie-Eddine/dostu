@@ -1,18 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Client\ClientController;
-use App\Http\Controllers\Client\ControlController;
-use App\Http\Controllers\Client\ManageController;
-use App\Http\Controllers\Client\OrderController;
 
-use App\Http\Controllers\Client\SettingsController;
-use App\Http\Controllers\Client\ToolController;
+
+
 use App\Http\Controllers\Supplier\AccountController;
 use App\Http\Controllers\Supplier\AttributesController;
 use App\Http\Controllers\Supplier\ComplaintsController;
 use App\Http\Controllers\Supplier\LoginController;
 use App\Http\Controllers\Supplier\OptionsController;
+use App\Http\Controllers\Supplier\OrderController ;
 use App\Http\Controllers\Supplier\ProductController;
 use App\Http\Controllers\Supplier\ProfileController;
 use App\Http\Controllers\Supplier\RolePermissionsController;
@@ -242,7 +238,12 @@ Route::group([
 
 
 
-
+        Route::group(['prefix' => 'orders','middleware'=>'can:orders'],function(){
+            Route::get('/',[OrderController::class,'index'])->name('supplier.order.order');
+            Route::get('/view/{id}',[OrderController::class,'view'])->name('supplier.order.view');
+            Route::get('/edit/{id}',[OrderController::class,'edit'])->name('supplier.order.edit');
+            Route::post('/update/{id}',[OrderController::class,'update'])->name('supplier.order.update');
+        });
 
 
 

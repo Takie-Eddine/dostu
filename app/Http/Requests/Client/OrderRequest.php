@@ -13,7 +13,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'product_name' => 'exists:store_product_translations,name|nullable',
+            'price' => 'nullable|min:0|numeric',
+            'qty' => 'nullable|min:1|numeric',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone_mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'email' => 'email|nullable',
+            'city' => 'required',
+            'country' => 'required',
+            'postal_code' => 'nullable',
+            'address' => 'required',
+            'type' => 'required|in:shipping, billing',
         ];
     }
 }
