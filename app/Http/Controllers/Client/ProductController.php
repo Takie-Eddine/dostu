@@ -237,7 +237,7 @@ class ProductController extends Controller
 
             foreach ($photos as  $value) {
                 MediaStore::create([
-                    'store_product_id' =>$product->id,
+                    'store_product_id' => $product->id,
                     'store_id'=>auth('client')->user()->stores[0]->id,
                     'product_id'=>$product->product_id,
                     'photo'=> $value -> photo ,

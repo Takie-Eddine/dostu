@@ -381,7 +381,7 @@
                                                                     <img src="{{asset('assets/images/categories/'.$item->photo)}}" alt="Toolbar svg" height="50" width="50"/>
                                                                 </div>
                                                             </div>
-                                                            <span>{{$item->categories[0]->name}}</span>
+                                                            <span>{{$item->categories[0]->name ?? '__'}}</span>
                                                         </div>
                                                     </td>
                                                     <td class="text-nowrap">
