@@ -30,8 +30,8 @@ Route::group([
 
 
 Route::get('/', [HomeController::class,'signup'])->name('signup.signup');
-
-Route::post('/details', [HomeController::class,'details'])->name('details');
+Route::post('/create', [HomeController::class,'create'])->name('create');
+Route::get('/details', [HomeController::class,'details'])->name('details');
 
 Route::post('store',[HomeController::class,'storeClient'])->name('storeclient');
 

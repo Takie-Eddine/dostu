@@ -106,7 +106,7 @@
                                             <div class="item-options text-center">
                                                 <div class="item-wrapper">
                                                     <div class="item-cost">
-                                                        <h4 class="item-price">{{$product->variants[0]->price}}$</h4>
+                                                        <h4 class="item-price">{{$product->default_price}}$</h4>
                                                         <p class="card-text shipping">
                                                             {{-- <span class="badge rounded-pill badge-light-success">Free Shipping</span> --}}
                                                         </p>

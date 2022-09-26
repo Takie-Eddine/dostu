@@ -155,14 +155,14 @@
                                                 <div class="d-flex flex-column flex-md-row">
                                                     <div class="row">
 
-                                                        {{-- <div class="mb-1 col-md-6">
-                                                            <label class="form-label" for="global_price">Compare at price</label>
-                                                            <input type="text" id="global_price" name="global_price" value="${{$product->global_price}}"
+                                                        <div class="mb-1 col-md-6">
+                                                            <label class="form-label" for="default_price">Default Price</label>
+                                                            <input type="number" id="default_price" name="default_price" value="{{$product->our_price}}"
                                                                 class="form-control"  />
-                                                            @error('global_price')
+                                                            @error('default_price')
                                                                 <span class="text-danger"> {{ $message }}</span>
                                                             @enderror
-                                                        </div> --}}
+                                                        </div>
                                                         {{-- <label for="">profit margin:</label> --}}
 
                                                     </div>

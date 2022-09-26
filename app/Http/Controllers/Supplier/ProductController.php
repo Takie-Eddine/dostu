@@ -64,6 +64,7 @@ class ProductController extends Controller
     {
 
 
+        //return $request;
         // try {
 
 
@@ -87,7 +88,8 @@ class ProductController extends Controller
                 'company_id' => auth()->user()->company_id,
                 'in_stock' => $request->in_stock,
                 'is_active' => $request->is_active,
-                // 'price' => $request->price,
+                'price' => $request->default_price,
+                'shipping_time' => $request->shipping_time,
                 // 'selling_price' => $request->selling_price,
                 // 'sku' => $request->sku,
                 // 'qty' => $request->qty,

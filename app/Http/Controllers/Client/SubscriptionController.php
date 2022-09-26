@@ -18,6 +18,7 @@ class SubscriptionController extends Controller
         //return  $data['subscription'];
         $data['plan'] = auth('client')->user()->subscriptions->first();
 
+
         return view('client.setting.subscription.index',$data);
     }
 

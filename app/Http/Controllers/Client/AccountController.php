@@ -33,7 +33,7 @@ class AccountController extends Controller
             $fileName = '';
 
             if ($request->has('image')) {
-                $fileName = uploadImage('suppliers', $request->image);
+                $fileName = uploadImage('clients', $request->image);
 
                 $client->update([
                     'first_name'=>$request->first_name,

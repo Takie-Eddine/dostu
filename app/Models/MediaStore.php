@@ -12,7 +12,7 @@ class MediaStore extends Model
     protected $table = 'media_stores';
 
 
-    protected $fillable = ['product_id', 'store_id' ,'photo', 'created_at', 'updated_at'];
+    protected $fillable = ['product_id', 'store_product_id' , 'store_id' ,'photo', 'created_at', 'updated_at'];
 
 
 

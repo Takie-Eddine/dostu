@@ -22,7 +22,7 @@ class UsersController extends Controller
 
     public function create(){
 
-        $roles = Role::get();
+        $roles = Role::whereNull('permissions_client')->get();
         return view('supplier.user.create',compact('roles'));
     }
 
@@ -52,7 +52,7 @@ class UsersController extends Controller
     public function edit($id){
 
         $supplier = Supplier::find($id);
-        $roles = Role::get();
+        $roles = Role::whereNull('permissions_client')->get();
 
         if (!$supplier) {
             return redirect()->back()-> with(['error' => 'this user does not exist']);

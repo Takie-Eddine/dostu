@@ -480,6 +480,24 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <br>
+
+                                                    <div class="row">
+                                                        <div class="mb-1 col-md-6">
+                                                            <label  for="default_price">Product Price*</label>
+                                                            <input type="number" class="form-control " id="default_price" placeholder="Product price"   name="default_price" value="{{old('default_price')}}"/>
+                                                            @error('default_price')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="mb-1 col-md-6">
+                                                            <label  for="shipping_time">Shipping Time*</label>
+                                                            <input type="number" class="form-control " id="shipping_time" placeholder="Shipping Time (days)"   name="shipping_time" value="{{old('shipping_time')}}"/>
+                                                            @error('shipping_time')
+                                                                <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
                                                     <div class="row">
                                                         <div class="mb-1 col-md-6">

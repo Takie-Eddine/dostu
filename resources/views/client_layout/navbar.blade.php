@@ -195,7 +195,7 @@
                     <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">{{auth('client') -> user() -> first_name.' '.auth('client') -> user() -> last_name}}</span><span class="user-status">{{auth('client') -> user() -> role-> name}}</span></div><span class="avatar"><img class="round" src="{{asset('assets/images/clients/' . auth('client') -> user() -> image )}}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="page-account-settings-account.html"><i class="me-50" data-feather="settings"></i> Settings</a>
+                    <a class="dropdown-item" href="{{route('client.setting.profile')}}"><i class="me-50" data-feather="settings"></i> Settings</a>
                     <a class="dropdown-item" href="{{route('client.logout')}}"><i class="me-50" data-feather="power"></i> Logout</a>
                 </div>
             </li>

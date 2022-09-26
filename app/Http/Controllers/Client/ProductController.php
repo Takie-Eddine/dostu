@@ -217,7 +217,10 @@ class ProductController extends Controller
                 'slug'=>Product::where('id',$request->product_id)->first()->slug,
                 'in_stock'=>1,
                 'is_active'=>1,
+                'default_price' =>$request->default_price,
             ]);
+
+
 
             $product->name = $request->name;
             $product->description = $request->description;
@@ -233,14 +236,16 @@ class ProductController extends Controller
 
             $photos = Media::where('product_id',$product->product_id)->get();
 
-            //return $photos[0];
+
 
             foreach ($photos as  $value) {
+
                 MediaStore::create([
-                    'store_product_id' => $product->id,
+
                     'store_id'=>auth('client')->user()->stores[0]->id,
                     'product_id'=>$product->product_id,
                     'photo'=> $value -> photo ,
+                    'store_product_id' =>$product->id,
                 ]);
             }
 
@@ -264,7 +269,7 @@ class ProductController extends Controller
         $product_variants = ProductVariant::where('product_id',$id)->get();
 
         if (count($product_variants) == 0) {
-            return redirect()->route('client.product.index')->with(['error' => 'This product does not have variants ']);
+            return redirect()->back()->with(['error' => 'This product does not have variants ']);
         }
 
         if(!$product){

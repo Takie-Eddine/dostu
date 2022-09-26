@@ -34,7 +34,9 @@ class ProductRequest extends FormRequest
             'tags' => 'required|array|min:1',
             'tags.*' => 'numeric',
             'sku' => 'nullable|min:3|max:10',
+            'default_price' => 'required|numeric',
             'price' => 'nullable|min:0|numeric',
+            'shipping_time' => 'required',
             'qty' => 'nullable',
             //'photo' => 'required_without:id|array|min:1|mimes:jpg,jpeg,png'
             'photo' => 'nullable|array|min:1',

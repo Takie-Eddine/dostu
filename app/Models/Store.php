@@ -48,4 +48,6 @@ class Store extends Model
     public function complaints(){
         return $this->hasMany(Complaint::class);
     }
+
+
 }

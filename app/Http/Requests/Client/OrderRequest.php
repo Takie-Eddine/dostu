@@ -35,7 +35,7 @@ class OrderRequest extends FormRequest
             'country' => 'required',
             'postal_code' => 'nullable',
             'address' => 'required',
-            'type' => 'required|in:shipping, billing',
+            'type' => 'required|in:shipping,billing',
         ];
     }
 }

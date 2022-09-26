@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 @include('client.alerts.errors')
                                 @include('client.alerts.success')
-                                <form class="form" action="{{route('client.store.update',$store->id)}}" method="POST">
+                                <form class="form" action="{{route('client.store.update',$store->id)}}" method="POST" enctype="multipart/form-data">
 
                                     @csrf
                                     <div class="row">

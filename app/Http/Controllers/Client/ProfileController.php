@@ -39,19 +39,32 @@ class ProfileController extends Controller
     public function update(StoreRequest $request ,$id){
 
         //return $request;
-        //try{
+        try{
             DB::beginTransaction();
             $store = Store::find($id);
 
-            //$fileName = '';
+            $fileName = '';
 
             if (!$store) {
                 return redirect()->route('client.store.store')->with(['error'=>'This store does not exist']);
             }
 
-            // if ($request->has('store_logo')) {
-            //     $fileName = uploadImage('clients', $request->store_logo);
-            // }
+            if ($request->has('store_logo')) {
+                $fileName = uploadImage('clients', $request->store_logo);
+
+                $store->update([
+                    'store_name' => $request->store_name,
+                    'store_email' => $request->store_email,
+                    'store_mobile' => $request->store_mobile,
+                    'address' => $request->address,
+                    'country' => $request->country,
+                    'city' => $request->city,
+                    'state' => $request->state,
+                    'pincode' => $request->pincode,
+                    'store_logo' => $fileName,
+                ]);
+
+            }
 
 
 
@@ -63,15 +76,15 @@ class ProfileController extends Controller
                 'country' => $request->country,
                 'city' => $request->city,
                 'state' => $request->state,
-                'pincode' => $request->pincode
+                'pincode' => $request->pincode,
             ]);
 
             DB::commit();
             return Redirect()->route('client.store.store')->with(['success'=>'The store updated with success']);
-        //}catch(Exception $ex){
-          //  DB::rollback();
-            //return redirect()->back()->with(['error'=>'There is a problem']);
-        //}
+        }catch(Exception $ex){
+            DB::rollback();
+            return redirect()->back()->with(['error'=>'There is a problem']);
+        }
 
 
 

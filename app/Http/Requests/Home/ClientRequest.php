@@ -35,10 +35,10 @@ class ClientRequest extends FormRequest
             'email' => 'required|email|unique:clients',
             'username' => 'required|unique:clients',
             'plans' => 'required',
-            'addCard' => 'required|unique:cards',
+            'addCard' => 'required',
             'card_name' => 'required',
             'card_exp' => 'required',
-            'cvv' => 'required|unique:cards',
+            'cvv' => 'required',
         ];
     }
 }

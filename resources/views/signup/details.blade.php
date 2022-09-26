@@ -68,8 +68,8 @@
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
                         <!-- Brand logo-->
-                        <a class="brand-logo" href="">
-                            <svg viewBox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        <a class="brand-logo" href="#">
+                            {{-- <svg viewBox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%"
@@ -107,7 +107,10 @@
                                     </g>
                                 </g>
                             </svg>
-                            <h2 class="brand-text text-primary ms-1">Dushtu</h2>
+                            <h2 class="brand-text text-primary ms-1">Dushtu</h2> --}}
+
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" style="width: 35.11px; height: 24px;" viewBox="0 0 35.11 24"><defs><style>.cls-1{fill:none;}.cls-2{fill:#f35a24;}</style></defs><title>icon</title><rect class="cls-1" x="-2797.6051" y="-2766.3185" width="3134.1432" height="4723.3185"/><rect class="cls-1" x="-637.3891" y="-2766.3185" width="3134.1432" height="4723.3185"/><rect class="cls-1" x="-1710.003" y="-2766.3185" width="3134.1432" height="4723.3185"/><path class="cls-2" d="M16.2682,8.1933l1.3411,9.5028a.5641.5641,0,0,0,.4985.6121h6.5681c4.4578-.1027,5.6919-2.8226,4.6845-6.1384-1-3.2929-3.6-7.5042-10.0217-9.0621C16.0942,2.3206,8.4143,3.0307,5.44,4.8051A12.2052,12.2052,0,0,0,0,11.3253,16.5953,16.5953,0,0,1,7.3961,2.46,17.2389,17.2389,0,0,1,20.4447.5074c8.6486,2.0983,11.39,7.336,12.0065,11.9475a8.1852,8.1852,0,0,1-1.28,5.9018c-1.4387,1.81-3.8945,2.3169-6.2067,2.3169H15.4923a.5642.5642,0,0,1-.4985-.6121L16.2682,8.1933"/><circle class="cls-2" cx="16.3679" cy="22.7587" r="1.2413"/><circle class="cls-2" cx="28.8125" cy="22.7587" r="1.2413"/></svg>
+                            <h2 class="brand-text text-primary ms-1">Doshtu</h2>
                         </a>
                         <!-- /Brand logo-->
 
@@ -191,12 +194,18 @@
                                                             Logo</label>
                                                         <input type="file" name="store_logo" id="store_logo"
                                                             class="form-control"  />
+                                                            @error('store_logo')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-12 mb-1">
                                                         <label class="form-label" for="store_name">Store
                                                             Name</label>
                                                         <input type="text" name="store_name" id="store_name"
                                                             class="form-control" placeholder="johndoe store" />
+                                                            @error('store_name')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                 </div>
@@ -208,6 +217,9 @@
                                                         <input type="email" name="store_email" id="store_email"
                                                             class="form-control" placeholder="john.doe@email.com"
                                                             aria-label="john.doe" />
+                                                            @error('store_email')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="col-md-6 mb-1">
@@ -215,6 +227,9 @@
                                                             mobile</label>
                                                         <input type="text" name="store_mobile" id="store_mobile"
                                                             class="form-control" placeholder="+905365016532" />
+                                                            @error('store_mobile')
+                                                        <span class="text-danger"> {{ $message }}</span>
+                                                        @enderror
                                                     </div>
 
 
@@ -227,27 +242,42 @@
                                                         <input type="text" name="country" id="country"
                                                             class="form-control" placeholder="Turkey"
                                                             aria-label="john.doe" />
+                                                            @error('country')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="store_mobile">State</label>
                                                         <input type="text" name="state" id="state"
                                                             class="form-control" placeholder="Istanbul" />
+                                                            @error('state')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="store_mobile">City</label>
                                                         <input type="text" name="city" id="city"
                                                             class="form-control" placeholder="Istanbul" />
+                                                            @error('city')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="store_mobile">Pincode</label>
                                                         <input type="number" name="pincode" id="pincode"
                                                             class="form-control" placeholder="202356" />
+                                                            @error('pincode')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-12 mb-1">
                                                         <label class="form-label" for="store_mobile">Address</label>
                                                         <input type="text" name="address" id="address"
                                                             class="form-control" placeholder="22 jump st" />
+                                                            @error('address')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
 
@@ -282,35 +312,53 @@
                                                             Name</label>
                                                         <input type="text" name="first_name" id="first_name"
                                                             class="form-control" placeholder="John" />
+                                                            @error('first_name')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="mb-1 col-md-6">
                                                         <label class="form-label" for="last_name">Last
                                                             Name</label>
                                                         <input type="text" name="last_name" id="last_name"
                                                             class="form-control" placeholder="Doe" />
+                                                            @error('last_name')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="mobile">Mobile
                                                             number</label>
                                                         <input type="text" name="mobile" id="mobile" class="form-control mobile-number-mask" placeholder="(472) 765-3654" />
+                                                        @error('mobile')
+                                                        <span class="text-danger"> {{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="email">Email</label>
                                                         <input type="email" name="email"
                                                             value="{{ $client->email }}" id="email"
                                                             class="form-control email-mask" placeholder="Code" />
+                                                            @error('email')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="col-6 mb-1">
                                                         <label class="form-label" for="username">Username</label>
                                                         <input type="text" name="username"
-                                                            value="{{ $client->username }}" id="username"
+                                                            value="{{ $client->name }}" id="username"
                                                             class="form-control" placeholder="username" />
+                                                            @error('username')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                     <div class="col-md-6 mb-1">
                                                         <label class="form-label" for="image">Client Image</label>
                                                         <input type="file" name="image" id="image"
                                                             class="form-control"  />
+                                                            @error('image')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                 </div>
@@ -341,12 +389,18 @@
                                                         <div class="form-group mt-1">
                                                             <input type="radio" name="plan" value="1"  class="switchery" data-color="success" />
                                                             <label class="card-title ml-1">Annual</label>
+                                                            @error('plan')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group mt-1">
                                                             <input type="radio" name="plan" value="0"  class="switchery" data-color="success" />
                                                             <label class="card-title ml-1"> Monthly</label>
+                                                            @error('username')
+                                                            <span class="teplanxt-danger"> {{ $message }}</span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -413,6 +467,9 @@
                                                                 id="addCard">
                                                                 <span class="card-type"></span>
                                                             </span>
+                                                            @error('addCard')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                         </div>
                                                     </div>
 
@@ -421,6 +478,9 @@
                                                             Card</label>
                                                         <input type="text" id="addCardName" name="card_name" class="form-control"
                                                             placeholder="John Doe" />
+                                                            @error('card_name')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="col-6 col-md-3 mb-1">
@@ -429,6 +489,9 @@
                                                         <input type="text" id="addCardExpiryDate" name="card_exp"
                                                             class="form-control expiry-date-mask"
                                                             placeholder="MM/YY" />
+                                                            @error('card_exp')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
 
                                                     <div class="col-6 col-md-3 mb-1">
@@ -436,6 +499,9 @@
                                                         <input type="text" id="addCardCvv" name="cvv"
                                                             class="form-control cvv-code-mask" maxlength="3"
                                                             placeholder="654" />
+                                                            @error('cvv')
+                                                            <span class="text-danger"> {{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                 </div>
 

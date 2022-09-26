@@ -95,7 +95,7 @@
 
                                 @include('signup.alerts.success')
                                 @include('signup.alerts.errors')
-                                <form class="auth-register-form mt-2" action="{{route('details')}}" method="post">
+                                <form class="auth-register-form mt-2" action="{{route('create')}}" method="post">
 
                                     @csrf
                                     <div class="mb-1">

@@ -18,6 +18,7 @@ class StoreProduct extends Model
         'product_id',
         'store_id',
         'slug',
+        'default_price'
     ];
     protected $casts = [
 

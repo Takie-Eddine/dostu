@@ -11,6 +11,7 @@ use App\Models\Client;
 use App\Models\Plan;
 use App\Models\Store;
 use App\Models\Subscription;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -26,16 +27,30 @@ class HomeController extends Controller
     }
 
 
-    public function details(VerifyRequest $request){
+    public function create(VerifyRequest $request){
+        $client = User::create([
+            'name'=>$request->username,
+            'email'=>$request->email,
+
+        ]);
+
+        return view('signup.verify');
+    }
+
+
+    public function details(){
 
             $plansAnuuals = Plan::typeA()->get();
             $plansMonthlys = Plan::typeM()->get();
-            $client = $request;
 
-            //return $plansAnuuals;
-
+            $client = User::latest()->first();
+            $client;
             return view('signup.details',compact('client','plansAnuuals','plansMonthlys'));
     }
+
+
+
+
 
 
     public function storeClient(ClientRequest $request){
@@ -64,8 +79,10 @@ class HomeController extends Controller
                 'plans_id' => $request->planse,
                 'image' => $fileName1,
                 'status' => 1,
+                'role_id' =>6,
 
             ]);
+
 
             if ($request->has('store_logo')) {
                 $fileName = uploadImage('clients', $request->store_logo);
@@ -82,6 +99,7 @@ class HomeController extends Controller
                 'state' => $request->state,
                 'pincode' => $request->pincode,
                 'default' => 1,
+
             ]);
 
 
@@ -93,6 +111,9 @@ class HomeController extends Controller
                 'cvv' => $request->cvv,
 
             ]);
+
+
+
 
 
             $subscription = Subscription::create([
