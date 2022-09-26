@@ -14,7 +14,7 @@ class AccountController extends Controller
 
         $client = Client::find(auth()->user()->id);
 
-        return view('Client.setting.profile.view',compact('client'));
+        return view('client.setting.profile.view',compact('client'));
     }
 
 

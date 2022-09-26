@@ -37,28 +37,28 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('/../../public_html/DoshtuDashboard'),
+            'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'products' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/products'),
+            'root' => public_path('/../../public_html/DoshtuDashboard/assets/images/products'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'profile' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/profile'),
+            'root' => public_path('/../../public_html/DoshtuDashboard/assets/images/profile'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'suppliers' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/suppliers'),
+            'root' => public_path('/../../public_html/DoshtuDashboard/assets/images/suppliers'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -66,14 +66,14 @@ return [
 
         'clients' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/clients'),
+            'root' => public_path('/../../public_html/DoshtuDashboardassets/images/clients'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'logo' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/logo'),
+            'root' => public_path('/../../public_html/DoshtuDashboardassets/images/logo'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
